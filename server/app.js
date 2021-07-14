@@ -84,6 +84,11 @@ app.delete("/api/deleteFile", async (req, res) => {
     });
 });
 
+app.get("/api/getUserList", async (req, res) => {
+    const userList = { data: [{ name: "Jeongseup Son", gender: "Male" }] };
+    res.send(userList);
+});
+
 // get function for get list
 app.get("/api/getList", async (req, res) => {
     try {
