@@ -1,5 +1,5 @@
 <template>
-    <div></div>
+    <div>나 들어왔어요</div>
 </template>
 <script>
 export default {
