@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import ClassTable from '../views/ClassTable.vue'
 import Test from '../views/Test.vue'
+import EvalTable from '../views/EvalTable.vue'
 
 const routes = [
     {
@@ -18,6 +19,11 @@ const routes = [
         path: '/test',
         name: 'Test',
         component: Test
+    },
+    {
+        path: '/evaltable',
+        name: 'EvalTable',
+        component: EvalTable
     },
     {
         path: '/about',

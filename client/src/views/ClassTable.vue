@@ -1,95 +1,22 @@
 <template>
     <div>
-        <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Soldout</a>
-                <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div
-                    class="collapse navbar-collapse"
-                    id="navbarSupportedContent"
-                >
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link " aria-current="page" href="#"
-                                >홈</a
-                            >
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">전자제품</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">의류</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">식품</a>
-                        </li>
-                    </ul>
-                    <form class="d-flex">
-                        <input
-                            class="form-control me-2"
-                            type="search"
-                            placeholder="Search"
-                            aria-label="Search"
-                        />
-                        <button class="btn btn-outline-success" type="submit">
-                            Search
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </nav> -->
         <main class="mt-3">
             <div class="container">
-                <!-- <div class="row mb-2">
-                    <div class="col-12">
-                        <select class="form-select">
-                            <option selected></option>
-                            <option value="1">노트북</option>
-                            <option value="2">모니터</option>
-                            <option value="3">마우스/키보드</option>
-                        </select>
-                    </div>
-                </div> -->
-
                 <div class="row g-3">
                     <div class="col-xl-3 col-lg-4 col-md-6">
+                        <button type="button" class="btn  btn-sm btn-dark">
+                            + 새 과정추가
+                        </button>
+                        <!-- 과정추가_card -->
                         <div class="card" style="width: 18rem;">
-                            <!-- <a href="product_detail.html"
-                                ><img
-                                    src="http://earlyadopter.godohosting.com/goods_earlyadopter_godo_co_kr/161/1578374173420m2.jpg?cache_ver=2021033002"
-                                    class="card-img-top"
-                                    alt="..."
-                            /></a> -->
-
                             <div class="card-body">
                                 <h5 class="card-title">
                                     2021년 혁신성장 블록체인반
                                 </h5>
-                                <!-- <p class="card-text">
-                                    <span class="badge bg-dark">전자제품</span>
-                                    <span class="badge bg-dark">컴퓨터</span>
-                                    <span class="badge bg-dark">악세서리</span>
-                                </p> -->
                                 <div
                                     class="d-flex justify-content-between align-items-center"
                                 >
                                     <div class="btn-group" role="group">
-                                        <!-- <button
-                                            type="button"
-                                            class="btn btn-sm btn-outline-secondary"
-                                        >
-                                            장바구니 담기
-                                        </button> -->
                                         <button
                                             type="button"
                                             class="btn  btn-sm btn-dark"
@@ -103,20 +30,7 @@
                                                 </p>
                                             </router-link>
                                         </button>
-                                        <!-- <v-app-bar app color="primary" dark>
-                                            <router-link
-                                                style="text-decoration:none;"
-                                                :to="{ name: 'intro' }"
-                                            >
-                                                <v-btn
-                                                    color="info"
-                                                    class="button"
-                                                    >hi</v-btn
-                                                >
-                                            </router-link>
-                                        </v-app-bar> -->
                                     </div>
-                                    <!-- <small class="text-dark">219,000원</small> -->
                                 </div>
                             </div>
                         </div>
