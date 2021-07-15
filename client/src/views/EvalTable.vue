@@ -8,6 +8,7 @@
                             class="form-select m-3"
                             aria-label="Default select example"
                         >
+                            <!-- eval_table -> class_key  -->
                             <option selected>2021년 혁신성장 블록체인반</option>
                             <option value="1"
                                 >2021년 혁신성장 빅데이터반</option
@@ -19,7 +20,7 @@
                             여기는 해당과정 설명하는 곳입니다. 블록체인 기술을
                             이용한 .... 개발자 양성을 위한 프로젝트입니다.
                         </div>
-                        <!-- 과정추가_card -->
+                        <!-- eval_table -> eval_status  -->
                         <div class="card m-3" style="width: 18rem;">
                             <div class="card-body">
                                 <h5 class="card-title">
@@ -49,7 +50,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        <!-- eval_table -> eval_status  -->
                         <div class="card m-3" style="width: 18rem;">
                             <div class="card-body">
                                 <h5 class="card-title">
