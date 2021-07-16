@@ -52,11 +52,11 @@ const server = app.listen(3000, () => {
 app.use("/static", express.static(__dirname + "/uploads"));
 
 const dbPool = require("mysql").createPool({
-    database: "dev",
-    host: "169.254.167.138",
-    port: 3307,
-    user: "root",
-    password: "28660894",
+    database: process.env.database, // dev
+    host: process.env.host, // ip 주소
+    port: process.env.port,
+    user: process.env.user,
+    password: process.env.password, // 비밀번호
 });
 
 // ===============================================================
@@ -84,9 +84,20 @@ app.delete("/api/deleteFile", async (req, res) => {
     });
 });
 
+// app.get("/api/getUserList", async (req, res) => {
+//     const userList = { data: [{ name: "Jeongseup Son", gender: "Male" }] };
+//     res.send(userList);
+// });
+
+// get function for get list
 app.get("/api/getUserList", async (req, res) => {
-    const userList = { data: [{ name: "Jeongseup Son", gender: "Male" }] };
-    res.send(userList);
+    try {
+        res.send(await sys.db("getUsertb"));
+    } catch (err) {
+        res.status(500).send({
+            error: err,
+        });
+    }
 });
 
 // get function for get list

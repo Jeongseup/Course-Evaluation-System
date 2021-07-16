@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Side from '../views/Side.vue'
-import QuestionTable from '../views/QuestionTable.vue'
+import getUser from '../views/getUser.vue'
 
 const routes = [
     {
@@ -10,9 +10,9 @@ const routes = [
         component: Side
     },
     {
-        path: '/qt',
-        name: 'QuestionTable',
-        component: QuestionTable
+        path: '/test',
+        name: 'getUser',
+        component: getUser
     },
     {
         path: '/',
