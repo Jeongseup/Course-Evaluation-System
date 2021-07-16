@@ -1,5 +1,12 @@
 <template>
     <div>
+<<<<<<< Updated upstream
+=======
+        <ul
+            class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+            id="accordionSidebar"
+        ></ul>
+>>>>>>> Stashed changes
         <main class="mt-3">
             <div class="container">
                 <div class="row g-3">
