@@ -4,11 +4,42 @@ import ClassTable from '../views/ClassTable.vue'
 import Test from '../views/Test.vue'
 import EvalTable from '../views/EvalTable.vue'
 
+// import ClassTable from '../views/ClassTable.vue'
+// import Test from '../views/Test.vue'
+// import EvalTable from '../views/EvalTable.vue'
+import QuestionTable from '../views/QuestionTable.vue'
+import Boot from '../views/Boot.vue'
+
 const routes = [
     {
         path: '/',
         name: 'Home',
         component: Home
+    },
+    // {
+    //     path: '/classtable',
+    //     name: 'ClassTable',
+    //     component: ClassTable
+    // },
+    // {
+    //     path: '/test',
+    //     name: 'Test',
+    //     component: Test
+    // },
+    // {
+    //     path: '/evaltable',
+    //     name: 'EvalTable',
+    //     component: EvalTable
+    // },
+    {
+        path: '/questiontable',
+        name: 'QuestionTable',
+        component: QuestionTable
+    },
+    {
+        path: '/boot',
+        name: 'Boot',
+        component: Boot
     },
     {
         path: '/classtable',
