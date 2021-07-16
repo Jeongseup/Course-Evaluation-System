@@ -3,12 +3,19 @@
         <router-link to="/">Home</router-link> |
         <router-link to="/about">About</router-link>
     </div> -->
+    <!-- <div>
+        <font-awesome-icon icon="user-secret" />
+    </div> -->
     <router-view />
 </template>
 
 <style>
+/* googlefont */
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+
 #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
+    font-family: 'Nanum Gothic Coding', 'Nanum Gothic', Avenir, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;

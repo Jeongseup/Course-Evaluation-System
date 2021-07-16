@@ -1,57 +1,23 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-import Ex from '../views/Ex.vue'
+import Side from '../views/Side.vue'
+import QuestionTable from '../views/QuestionTable.vue'
 
 const routes = [
     {
-        path: '/ex',
-        name: 'Ex',
-        component: Ex
+        path: '/side',
+        name: 'Side',
+        component: Side
+    },
+    {
+        path: '/qt',
+        name: 'QuestionTable',
+        component: QuestionTable
     },
     {
         path: '/',
         name: 'Home',
         component: Home
-    },
-    // {
-    //     path: '/classtable',
-    //     name: 'ClassTable',
-    //     component: ClassTable
-    // },
-    // {
-    //     path: '/test',
-    //     name: 'Test',
-    //     component: Test
-    // },
-    // {
-    //     path: '/evaltable',
-    //     name: 'EvalTable',
-    //     component: EvalTable
-    // },
-    {
-        path: '/questiontable',
-        name: 'QuestionTable',
-        component: QuestionTable
-    },
-    {
-        path: '/boot',
-        name: 'Boot',
-        component: Boot
-    },
-    {
-        path: '/classtable',
-        name: 'ClassTable',
-        component: ClassTable
-    },
-    {
-        path: '/test',
-        name: 'Test',
-        component: Test
-    },
-    {
-        path: '/evaltable',
-        name: 'EvalTable',
-        component: EvalTable
     },
     {
         path: '/about',

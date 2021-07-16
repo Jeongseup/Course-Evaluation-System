@@ -485,20 +485,18 @@
                                     >
                                         <h4 class="small font-weight-bold">
                                             {{ a.resultName }}
-                                            <span class="float-right">{{
-                                                a.resultValue
-                                            }}</span>
+                                            <span class="float-right"
+                                                >평균
+                                                {{ a.resultValue }} 점</span
+                                            >
                                         </h4>
                                         <div class="progress mb-4">
                                             <div
-                                                :class="[
-                                                    `progress-bar ${barColor[i]}`
-                                                ]"
+                                                class="progress-bar bg-info                                                 ]"
                                                 role="progressbar"
                                                 :style="[
                                                     `width: ${a.resultValue}%`
                                                 ]"
-                                                console.log({{barColor[i]}})
                                                 aria-valuenow="20"
                                                 aria-valuemin="0"
                                                 aria-valuemax="100"
@@ -508,9 +506,7 @@
                                 </div>
                             </div>
                         </div>
-                        니러ㅏㅁ나ㅣㅇ러미ㅏㄴㅇ럼니아러민아ㅓ리ㅏㄴ어림낭러
-                        <i class="fab fa-accusoft"></i>
-                        <div style="background:red;">sdfsdfdsfsdf</div>
+
                         <!-- End of Topbar -->
 
                         <!-- Begin Page Content -->
@@ -528,11 +524,6 @@
 <script>
 // ;<link href="css/sb-admin-2.min.css" rel="stylesheet" />
 
-import '../../node_modules/bootstrap/dist/css/sb-admin-2.css'
-import '../../node_modules/bootstrap/dist/css/sb-admin-2.min.css'
-import '../../node_modules/bootstrap/dist/css/all.css'
-import '../../node_modules/bootstrap/dist/css/all.min.css'
-
 export default {
     name: '',
     components: {},
@@ -547,13 +538,8 @@ export default {
             average1: '서버에서 받은 평균(0~10)',
             average: 40,
 
-            barColor: [
-                'bg-Success',
-                'bg-Danger',
-                'bg-Warning',
-                'bg-Primary',
-                'bg-Info'
-            ],
+            barColor: ['success', 'danger', 'warning', 'primary', 'info'],
+            barColor1: 'bg-primary',
 
             result: [
                 {
