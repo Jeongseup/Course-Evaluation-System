@@ -23,7 +23,7 @@ bootstrap template repo : https://github.com/StartBootstrap/startbootstrap-sb-ad
 
 #### 참고자료 - fontawesome
 
-vue-fontawesome official repo : https://github.com/FortAwesome/vue-fontawesome
-vue fontawesome library use guide 1 : https://uxgjs.tistory.com/205
-vue fontawesome library use guide 2: https://velog.io/@inryu/Vue.js%EC%97%90%EC%84%9C-fontAwesome-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
-vue 3.x ver - fontawesome debug : https://blinders.tistory.com/70?category=636275
+-   vue-fontawesome official repo : https://github.com/FortAwesome/vue-fontawesome
+-   vue fontawesome library use guide 1 : https://uxgjs.tistory.com/205
+-   vue fontawesome library use guide 2: https://velog.io/@inryu/Vue.js%EC%97%90%EC%84%9C-fontAwesome-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
+-   vue 3.x ver - fontawesome debug : https://blinders.tistory.com/70?category=636275
