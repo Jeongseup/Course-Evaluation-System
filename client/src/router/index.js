@@ -1,16 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-import ClassTable from '../views/ClassTable.vue'
-import Test from '../views/Test.vue'
-import EvalTable from '../views/EvalTable.vue'
-
-// import ClassTable from '../views/ClassTable.vue'
-// import Test from '../views/Test.vue'
-// import EvalTable from '../views/EvalTable.vue'
-import QuestionTable from '../views/QuestionTable.vue'
-import Boot from '../views/Boot.vue'
+import Ex from '../views/Ex.vue'
 
 const routes = [
+    {
+        path: '/ex',
+        name: 'Ex',
+        component: Ex
+    },
     {
         path: '/',
         name: 'Home',
