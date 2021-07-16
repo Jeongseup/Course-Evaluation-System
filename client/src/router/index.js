@@ -2,24 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import ClassTable from '../views/ClassTable.vue'
 import Test from '../views/Test.vue'
-<<<<<<< Updated upstream
 import EvalTable from '../views/EvalTable.vue'
-=======
-import te from '../views/te.vue'
-import Side from '../views/Side.vue'
->>>>>>> Stashed changes
 
 const routes = [
-    {
-        path: '/side',
-        name: 'Side',
-        component: Side
-    },
-    {
-        path: '/te',
-        name: 'te',
-        component: te
-    },
     {
         path: '/',
         name: 'Home',
