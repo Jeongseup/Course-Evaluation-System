@@ -38,11 +38,11 @@
                                             class="btn btn-primary"
                                         >
                                             <router-link
-                                                to="/test"
+                                                to="/questiontable"
                                                 style="text-decoration: none;"
                                             >
                                                 <p style="color:white;">
-                                                    들어가기
+                                                    강의 평가지 생성
                                                 </p>
                                             </router-link>
                                         </button>
@@ -65,14 +65,14 @@
                                     >
                                         <button
                                             type="button"
-                                            class="btn btn-primary"
+                                            class="btn btn-success"
                                         >
                                             <router-link
                                                 to="/test"
                                                 style="text-decoration: none;"
                                             >
                                                 <p style="color:white;">
-                                                    들어가기
+                                                    강의 평가지 수정
                                                 </p>
                                             </router-link>
                                         </button>

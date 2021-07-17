@@ -53,10 +53,10 @@ app.use("/static", express.static(__dirname + "/uploads"));
 
 const dbPool = require("mysql").createPool({
     database: "dev",
-    host: "169.254.167.138",
-    port: 3307,
-    user: "root",
-    password: "28660894",
+    host: "localhost",
+    port: 3306,
+    user: "team1",
+    password: "team1",
 });
 
 // ===============================================================

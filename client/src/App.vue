@@ -6,6 +6,17 @@
     <!-- <div>
         <font-awesome-icon icon="user-secret" />
     </div> -->
+
+    <div id="nav">
+        <font-awesome-icon icon="user-secret" />
+        <router-link to="/"> Home</router-link> |
+        <font-awesome-icon icon="user-secret" />
+        <router-link to="/sidetest"> Template Test Page</router-link> |
+        <font-awesome-icon icon="user-secret" />
+        <router-link to="/mocktest"> Mockserver Test Page</router-link> |
+        <font-awesome-icon icon="user-secret" />
+        <router-link to="/dbtest"> Database Test Page</router-link>
+    </div>
     <router-view />
 </template>
 
