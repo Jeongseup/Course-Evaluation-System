@@ -1,19 +1,43 @@
 <template>
-    <div></div>
+    <div>
+        <h1>Here is Mockserver request test page.</h1>
+    </div>
+    <div>
+        {{ evaluationPaperList[0] }}
+    </div>
+    <div>
+        {{ evaluationPaperList[1] }}
+    </div>
+    <div>
+        {{ evaluationPaperList[2] }}
+    </div>
 </template>
+
 <script>
+import axios from 'axios'
 export default {
     name: '',
     components: {},
     data() {
         return {
-            sampleData: ''
+            evaluationPaperList: [],
+            url:
+                'https://021382de-6838-47cd-b6bb-3b0fc09fa7c4.mock.pstmn.io/getEvaluationPaperList'
         }
     },
     setup() {},
     created() {},
-    mounted() {},
+    mounted() {
+        this.getEvaluationPaper()
+    },
     unmounted() {},
-    methods: {}
+    methods: {
+        async getEvaluationPaper() {
+            this.evaluationPaperList = (
+                await axios.get(this.url)
+            ).data.evaluation_paper
+            console.log(this.evaluationPaperList)
+        }
+    }
 }
 </script>

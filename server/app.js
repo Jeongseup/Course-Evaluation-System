@@ -90,9 +90,9 @@ app.delete("/api/deleteFile", async (req, res) => {
 // });
 
 // get function for get list
-app.get("/api/getUserList", async (req, res) => {
+app.get("/api/getUserTable", async (req, res) => {
     try {
-        res.send(await sys.db("getUsertb"));
+        res.send(await sys.db("user"));
     } catch (err) {
         res.status(500).send({
             error: err,

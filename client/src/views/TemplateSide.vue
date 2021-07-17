@@ -1,5 +1,8 @@
 <template>
     <div>
+        <div>
+            왜 여기서는 폰트 적용이 안되지?
+        </div>
         <body id="page-top">
             <!-- Page Wrapper -->
             <div id="wrapper">
@@ -16,7 +19,9 @@
                         <div class="sidebar-brand-icon rotate-n-15">
                             <i class="fas fa-laugh-wink"></i>
                         </div>
-                        <div class="sidebar-brand-text mx-3">강사의 품격</div>
+                        <div :class="['sidebar-brand-text', 'mx-3']">
+                            강사의 품격
+                        </div>
                     </a>
 
                     <!-- Divider -->
@@ -510,7 +515,7 @@
                         <!-- End of Topbar -->
 
                         <!-- Begin Page Content -->
-                        <div class="container-fluid">
+                        <div :class="container - fluid">
                             <!-- 404 Error Text -->
                         </div>
                         <!-- /.container-fluid -->
@@ -522,8 +527,6 @@
     </div>
 </template>
 <script>
-// ;<link href="css/sb-admin-2.min.css" rel="stylesheet" />
-
 export default {
     name: '',
     components: {},

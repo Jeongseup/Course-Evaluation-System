@@ -3,7 +3,7 @@ module.exports = {
         query: "select * from t_person",
     },
 
-    getUsertb: {
+    user: {
         query: "select * from user",
     },
 

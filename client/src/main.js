@@ -20,8 +20,8 @@ library.add(faUserSecret)
 
 const app = createApp(App)
 
-app.component('font-awesome-icon', FontAwesomeIcon)
 app.use(store)
     .use(router)
     .mixin(api)
+    .component('font-awesome-icon', FontAwesomeIcon)
     .mount('#app')

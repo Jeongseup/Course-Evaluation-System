@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Get Maria DB Callback Test</h1>
+        <h1>Here is Node.js & Maria DB callback test page.</h1>
         <p>{{ userList }}</p>
     </div>
 </template>

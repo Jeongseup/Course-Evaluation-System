@@ -11,7 +11,7 @@ const routes = [
         component: TemplateSide
     },
     {
-        path: '/dbest',
+        path: '/dbtest',
         name: 'GetDatabaseData',
         component: GetDatabaseData
     },
