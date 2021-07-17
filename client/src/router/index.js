@@ -1,18 +1,24 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-import Side from '../views/Side.vue'
-import getUser from '../views/getUser.vue'
+import TemplateSide from '../views/TemplateSide.vue'
+import GetDatabaseData from '../views/GetDatabaseData.vue'
+import GetMockserverData from '../views/GetMockserverData.vue'
 
 const routes = [
     {
-        path: '/side',
-        name: 'Side',
-        component: Side
+        path: '/sidetest',
+        name: 'TemplateSide',
+        component: TemplateSide
     },
     {
-        path: '/test',
-        name: 'getUser',
-        component: getUser
+        path: '/dbest',
+        name: 'GetDatabaseData',
+        component: GetDatabaseData
+    },
+    {
+        path: '/mocktest',
+        name: 'GetMockserverData',
+        component: GetMockserverData
     },
     {
         path: '/',

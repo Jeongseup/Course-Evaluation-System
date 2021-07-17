@@ -1,11 +1,14 @@
 <template>
-    <!-- <div id="nav">
-        <router-link to="/">Home</router-link> |
-        <router-link to="/about">About</router-link>
-    </div> -->
-    <!-- <div>
+    <div id="nav">
         <font-awesome-icon icon="user-secret" />
-    </div> -->
+        <router-link to="/"> Home</router-link> |
+        <font-awesome-icon icon="user-secret" />
+        <router-link to="/sidetest"> Template Test Page</router-link> |
+        <font-awesome-icon icon="user-secret" />
+        <router-link to="/mocktest"> Mockserver Test Page</router-link> |
+        <font-awesome-icon icon="user-secret" />
+        <router-link to="/dbtest"> Database Test Page</router-link>
+    </div>
     <router-view />
 </template>
 
