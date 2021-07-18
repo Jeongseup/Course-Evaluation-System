@@ -2,6 +2,20 @@
     <!-- question_table 사용 eval_key , eval_oder, eval_contents, eval_type, eval_image -->
     <div>
         <body id="page-top">
+            <!-- body 바로 아래에 추가 스티커 -->
+            <div class="menu-toggle rounded">
+                <!-- 질문추가 -->
+
+                <div><font-awesome-icon icon="file-signature" /></div>
+                <!-- 섹션추가 -->
+                <div><font-awesome-icon icon="file-import" /></div>
+                <!-- 이미지추가 -->
+                <div><font-awesome-icon icon="images" /></div>
+                <!-- 저장 -->
+                <div><font-awesome-icon icon="save" /></div>
+            </div>
+            <!-- 스티커 끝 -->
+
             <!-- Page Wrapper -->
             <div id="wrapper">
                 <!-- Sidebar -->
@@ -94,6 +108,7 @@
                                 style="text-decoration: none;"
                             >
                                 <i class="far fa-list-alt"></i>
+
                                 <span style="color:white">평가지 결과</span>
                             </router-link>
                         </a>
@@ -251,78 +266,125 @@
 
                         <div class="card-header py-3">
                             <div style="margin:30px;">
-                                <a
+                                <!-- Button trigger modal -->
+                                <button
                                     href="#"
+                                    type="button"
                                     class="btn btn-warning btn-icon-split  btn float-right"
-                                    @click="modal2 = !modal2"
+                                    data-toggle="modal"
+                                    data-target="#staticBackdrop"
                                 >
-                                    <span class="text">완료 및 전송</span>
-                                </a>
-                                <div class="black-bg" v-if="modal2 == true">
-                                    <div class="white-bg">
-                                        <h4>수강생선택</h4>
-                                        <!-- 수강생들이 들어갈 공간 -->
-                                        <div class="card shadow mb-4">
-                                            <div class="card-header py-3">
-                                                <h6
-                                                    class="m-0 font-weight-bold text-primary"
+                                    완료 및 전송
+                                </button>
+                                <!-- Modal -->
+                                <div
+                                    class="modal fade"
+                                    id="staticBackdrop"
+                                    data-backdrop="static"
+                                    tabindex="-1"
+                                    role="dialog"
+                                    aria-labelledby="staticBackdropLabel"
+                                    aria-hidden="true"
+                                >
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5
+                                                    class="modal-title"
+                                                    id="staticBackdropLabel"
                                                 >
-                                                    <!-- 우측으로 생성 -->
-                                                    <div class="row">
-                                                        <!-- 수강생 -->
-                                                        <div
-                                                            class="col-xl-3 col-md-6 mb-4"
-                                                            :key="i"
-                                                            v-for="(a,
-                                                            i) in studentName"
+                                                    수강생 선택
+                                                </h5>
+                                                <button
+                                                    type="button"
+                                                    class="close"
+                                                    data-dismiss="modal"
+                                                    aria-label="Close"
+                                                >
+                                                    <span aria-hidden="true"
+                                                        >&times;</span
+                                                    >
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <!-- 수강생들이 들어갈 공간 -->
+                                                <div class="card shadow mb-4">
+                                                    <div
+                                                        class="card-header py-3"
+                                                    >
+                                                        <h6
+                                                            class="m-0 font-weight-bold text-primary"
                                                         >
-                                                            <div
-                                                                class="card border-left-primary shadow h-100 py-2"
-                                                            >
+                                                            <!-- 우측으로 생성 -->
+                                                            <div class="row">
+                                                                <!-- 수강생 -->
                                                                 <div
-                                                                    class="card-body"
+                                                                    class="col-xl-3 col-md-6 mb-4"
+                                                                    :key="i"
+                                                                    v-for="(a,
+                                                                    i) in studentName"
                                                                 >
                                                                     <div
-                                                                        class="row no-gutters align-items-center"
+                                                                        class="card border-left-primary shadow h-100 py-2"
                                                                     >
                                                                         <div
-                                                                            class="col mr-2"
+                                                                            class="card-body"
                                                                         >
                                                                             <div
-                                                                                class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+                                                                                class="row no-gutters align-items-center"
                                                                             >
-                                                                                수강생
+                                                                                <div
+                                                                                    class="col mr-2"
+                                                                                >
+                                                                                    <div
+                                                                                        class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+                                                                                    >
+                                                                                        수강생
+                                                                                    </div>
+                                                                                    <div
+                                                                                        class="h5 mb-0 font-weight-bold text-gray-800"
+                                                                                    >
+                                                                                        {{
+                                                                                            a
+                                                                                        }}
+                                                                                        <input
+                                                                                            type="checkbox"
+                                                                                            checked
+                                                                                        />
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div
+                                                                                    class="col-auto"
+                                                                                >
+                                                                                    <i
+                                                                                        class="fas fa-user-edit fa-2x text-gray-300"
+                                                                                    ></i>
+                                                                                </div>
                                                                             </div>
-                                                                            <div
-                                                                                class="h5 mb-0 font-weight-bold text-gray-800"
-                                                                            >
-                                                                                {{
-                                                                                    a
-                                                                                }}
-                                                                                <input
-                                                                                    type="checkbox"
-                                                                                    checked
-                                                                                />
-                                                                            </div>
-                                                                        </div>
-                                                                        <div
-                                                                            class="col-auto"
-                                                                        >
-                                                                            <i
-                                                                                class="fas fa-user-edit fa-2x text-gray-300"
-                                                                            ></i>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </h6>
                                                     </div>
-                                                </h6>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-secondary"
+                                                    data-dismiss="modal"
+                                                >
+                                                    닫기
+                                                </button>
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-primary"
+                                                >
+                                                    확인
+                                                </button>
                                             </div>
                                         </div>
-                                        <button @click="modal2 = 'false'">
-                                            선택완료
-                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -610,7 +672,7 @@ export default {
             title: '2주차 강의 평가',
             modal2: false,
             // modal1: false
-            studentName: ['장태진', '장태진1', '장태진2', '장태진3', '장태진4']
+            studentName: ['장태진', '태진장', '태진태', '진태진', '태진태진']
         }
     },
     setup() {},
@@ -642,5 +704,26 @@ div {
     background: white;
     border-radius: 8px;
     padding: 20px;
+}
+
+.menu-toggle {
+    position: fixed;
+    right: 15px;
+    top: 40vh;
+    width: 50px;
+    height: 200px;
+    text-align: center;
+    color: #fff;
+    background: rgba(52, 58, 64, 0.5);
+    line-height: 50px;
+    z-index: 999;
+}
+
+.menu-toggle:focus,
+.menu-toggle:hover {
+    color: #fff;
+}
+.menu-toggle:hover {
+    background: #343a40;
 }
 </style>
