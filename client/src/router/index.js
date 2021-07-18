@@ -3,8 +3,20 @@ import Home from '../views/Home.vue'
 import TemplateSide from '../views/TemplateSide.vue'
 import GetDatabaseData from '../views/GetDatabaseData.vue'
 import GetMockserverData from '../views/GetMockserverData.vue'
+import QuestionTable from '../views/QuestionTable.vue'
+import List from '../views/List.vue'
 
 const routes = [
+    {
+        path: '/list',
+        name: 'List',
+        component: List
+    },
+    {
+        path: '/questiontable',
+        name: 'QuestionTable',
+        component: QuestionTable
+    },
     {
         path: '/sidetest',
         name: 'TemplateSide',
