@@ -32,7 +32,8 @@ import {
     faSave,
     faAngleUp,
     faClipboardList,
-    faCalendarDay
+    faCalendarDay,
+    faTrashAlt
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 library.add(
@@ -52,7 +53,8 @@ library.add(
     faSave,
     faAngleUp,
     faClipboardList,
-    faCalendarDay
+    faCalendarDay,
+    faTrashAlt
 )
 
 const app = createApp(App)

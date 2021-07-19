@@ -1,139 +1,110 @@
 <template>
     <!-- question_table 사용 eval_key , eval_oder, eval_contents, eval_type, eval_image -->
     <div>
-        <body id="page-top">
+        <!-- 컴포넌트 -->
+        <div id="page-top">
             <!-- Page Wrapper -->
             <div id="wrapper">
-                <!-- Content Wrapper -->
+                <sidebar />
                 <div id="content-wrapper" class="d-flex flex-column">
                     <!-- Main Content -->
                     <div id="content">
-                        <div class="container">
-                            <div class="row g-3">
-                                <div class="col-xl-3 col-lg-4 col-md-6">
-                                    <div
-                                        class="card-header py-3"
-                                        style="margin:30px;  btn float-right;"
-                                    >
-                                        <a
-                                            href="#"
-                                            class="btn btn-warning btn-icon-split "
-                                        >
-                                            <span class="text">
-                                                + 새 과정 추가</span
-                                            >
-                                        </a>
-                                    </div>
-
-                                    <!-- 과정추가_card -->
-                                    <div class="card" style="width: 18rem;">
-                                        <div class="card-body">
-                                            <h5 class="card-title">
-                                                2021년 혁신성장 블록체인반
-                                            </h5>
-                                            <div
-                                                class="d-flex justify-content-between align-items-center"
-                                            >
+                        <topbar />
+                        <!-- 컴포넌트 끝 -->
+                        <body>
+                            <!-- Page Wrapper -->
+                            <div>
+                                <!-- Content Wrapper -->
+                                <div
+                                    id="content-wrapper"
+                                    class="d-flex flex-column"
+                                >
+                                    <!-- Main Content -->
+                                    <div id="content">
+                                        <div class="container">
+                                            <div class="row g-3">
                                                 <div
-                                                    class="btn-group"
-                                                    role="group"
+                                                    class="col-xl-3 col-lg-4 col-md-6"
                                                 >
-                                                    <button
-                                                        type="button"
-                                                        class="btn  btn-sm btn-dark"
+                                                    <div
+                                                        class="card-header py-3"
+                                                        style="margin:30px;  btn float-right;"
                                                     >
-                                                        <router-link
-                                                            to="/evaltable"
-                                                            style="text-decoration: none;"
+                                                        <a
+                                                            href="#"
+                                                            class="btn btn-warning btn-icon-split "
                                                         >
-                                                            <p
-                                                                style="color:white;"
+                                                            <span class="text">
+                                                                + 새 과정
+                                                                추가</span
                                                             >
-                                                                들어가기
-                                                            </p>
-                                                        </router-link>
-                                                    </button>
+                                                        </a>
+                                                    </div>
+
+                                                    <!-- 과정추가_card -->
+                                                    <div
+                                                        class="card"
+                                                        style="width: 18rem;"
+                                                    >
+                                                        <div class="card-body">
+                                                            <h5
+                                                                class="card-title"
+                                                            >
+                                                                2021년 혁신성장
+                                                                블록체인반
+                                                            </h5>
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center"
+                                                            >
+                                                                <div
+                                                                    class="btn-group"
+                                                                    role="group"
+                                                                >
+                                                                    <button
+                                                                        type="button"
+                                                                        class="btn  btn-sm btn-dark"
+                                                                    >
+                                                                        <router-link
+                                                                            to="/evaltable"
+                                                                            style="text-decoration: none;"
+                                                                        >
+                                                                            <p
+                                                                                style="color:white;"
+                                                                            >
+                                                                                들어가기
+                                                                            </p>
+                                                                        </router-link>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
+                                    <!-- End of Main Content -->
                                 </div>
+                                <!-- End of Content Wrapper -->
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- End of Main Content -->
-
-                    <!-- Footer -->
-                    <footer class="sticky-footer bg-white">
-                        <div class="container my-auto">
-                            <div class="copyright text-center my-auto">
-                                <span>Copyright &copy; Your Website 2020</span>
-                            </div>
-                        </div>
-                    </footer>
-                    <!-- End of Footer -->
-                </div>
-                <!-- End of Content Wrapper -->
-            </div>
-            <!-- End of Page Wrapper -->
-
-            <!-- Scroll to Top Button-->
-            <a class="scroll-to-top rounded" href="#page-top">
-                <i class="fas fa-angle-up"></i>
-            </a>
-
-            <!-- Logout Modal-->
-            <div
-                class="modal fade"
-                id="logoutModal"
-                tabindex="-1"
-                role="dialog"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-            >
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">
-                                Ready to Leave?
-                            </h5>
-                            <button
-                                class="close"
-                                type="button"
-                                data-dismiss="modal"
-                                aria-label="Close"
-                            >
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            Select "Logout" below if you are ready to end your
-                            current session.
-                        </div>
-                        <div class="modal-footer">
-                            <button
-                                class="btn btn-secondary"
-                                type="button"
-                                data-dismiss="modal"
-                            >
-                                Cancel
-                            </button>
-                            <a class="btn btn-primary" href="login.html"
-                                >Logout</a
-                            >
-                        </div>
+                            <!-- End of Page Wrapper -->
+                        </body>
+                        <!-- 컴포넌트 -->
                     </div>
                 </div>
             </div>
-        </body>
+        </div>
+        <!-- 컴포넌트 끝 -->
     </div>
 </template>
 
 <script>
+import Sidebar from '../components/layouts/Sidebar.vue'
+import Topbar from '../components/layouts/Topbar.vue'
 export default {
     name: '',
-    components: {},
+    components: { sidebar: Sidebar, topbar: Topbar },
     data() {
         return {
             sampleData: ''

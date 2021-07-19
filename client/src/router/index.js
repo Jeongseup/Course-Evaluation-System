@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+// import Home from '../views/Home.vue'
 import TemplateSide from '../views/TemplateSide.vue'
 import QuestionTable from '../views/QuestionTable.vue'
 import AnswerTable from '../views/AnswerTable.vue'
@@ -9,14 +9,8 @@ import Login from '../views/Login.vue'
 import GetDatabaseData from '../views/GetDatabaseData.vue'
 import GetMockserverData from '../views/GetMockserverData.vue'
 import List from '../views/List.vue'
-import Test from '../views/Test.vue'
 
 const routes = [
-    {
-        path: '/test',
-        name: 'Test',
-        component: Test
-    },
     {
         path: '/list',
         name: 'List',
@@ -58,11 +52,11 @@ const routes = [
         name: 'AnswerTable',
         component: AnswerTable
     },
-    {
-        path: '/',
-        name: 'Home',
-        component: Home
-    },
+    // {
+    //     path: '/',
+    //     name: 'Home',
+    //     component: Home
+    // },
     {
         path: '/classtable',
         name: 'ClassTable',
@@ -74,18 +68,9 @@ const routes = [
         component: EvalTable
     },
     {
-        path: '/login',
+        path: '/',
         name: 'Login',
         component: Login
-    },
-    {
-        path: '/about',
-        name: 'About',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () =>
-            import(/* webpackChunkName: "about" */ '../views/About.vue')
     }
 ]
 
