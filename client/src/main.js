@@ -10,7 +10,8 @@ import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 // custom css
-import './css/sb-admin-2.min.css'
+import './assets/css/sb-admin-2.min.css'
+// import './assets/js/sb-admin-2'
 
 // fontawesome
 import { library } from '@fortawesome/fontawesome-svg-core'
