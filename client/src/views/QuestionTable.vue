@@ -9,7 +9,20 @@
                 <!-- 섹션추가 -->
                 <div><font-awesome-icon icon="file-import" /></div>
                 <!-- 이미지추가 -->
-                <div><font-awesome-icon icon="images" /></div>
+                <!-- <div><font-awesome-icon icon="images" /></div> -->
+                <div style="clear: none">
+                    <div @click="$refs.file.click()">
+                        <font-awesome-icon icon="images" />
+                    </div>
+                    <input
+                        type="file"
+                        @change="fileSelect"
+                        ref="file"
+                        style="display: none"
+                        accept=".jpg, .png"
+                    />
+                </div>
+
                 <!-- 저장 -->
                 <div><font-awesome-icon icon="save" /></div>
             </div>
@@ -160,23 +173,64 @@
                                 강사명: {{ class_teacher_key }}
                             </div>
                             <div style="margin:10px;">
-                                개강 : <input type="date" /> 종강 :
+                                설문 응답 종료 일 :
                                 <input type="date" />
                             </div>
 
                             <!-- Illustrations -->
-                            <div class="card shadow mb-4 rounded">
-                                <!-- <div class="img-rounded"> -->
-                                <img src="../assets/cup.jpg" alt="..." />
-                                <!-- <div style="width:50%; height:100px;">
+                            <div
+                                class="row"
+                                :key="i"
+                                v-for="(img, i) in imageList"
+                            >
+                                <div class="col-xl-2 col-md-6 mb-4 "></div>
+                                <div class="col-xl-8 col-md-6 mb-4 ">
+                                    <div
+                                        class="card border-left-warning shadow h-100 py-2"
+                                    >
+                                        <div class="card-body">
+                                            <div
+                                                class="row no-gutters align-items-center"
+                                            >
+                                                <div class="col mr-2">
+                                                    <div
+                                                        class="text-lg font-weight-bold text-warning text-uppercase mb-1 text-center"
+                                                    >
+                                                        <ul class="img-items">
+                                                            <li>
+                                                                <div
+                                                                    style="position: relative"
+                                                                >
+                                                                    <img
+                                                                        :src="
+                                                                            img.src
+                                                                        "
+                                                                        style="height: auto; width: 800px;"
+                                                                    />
+                                                                    <span
+                                                                        class="del-mark"
+                                                                        @click="
+                                                                            deleteImg(
+                                                                                i
+                                                                            )
+                                                                        "
+                                                                        >X</span
+                                                                    >
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                        <!-- <div style="width:50%; height:100px;">
                                         <img src="./img/sky.jpg" alt="..." />
                                     </div> -->
-                                <!-- </div> -->
+                                                        <!-- </div> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
-                            <button type="button" class="btn  btn-sm btn-dark">
-                                + 질문추가
-                            </button>
                             <!-- Content Row -->
                             <div class="row">
                                 <!-- Pending Requests Card Example -->
@@ -197,19 +251,22 @@
                                                     >
                                                         <div>
                                                             <h3>
-                                                                {{ title }}
+                                                                <input
+                                                                    type="text"
+                                                                    style="width: 600px;"
+                                                                    placeholder="해당 섹션의 제목을 적어주세요"
+                                                                />
                                                             </h3>
                                                         </div>
                                                     </div>
                                                     <hr />
                                                     <h5>
-                                                        본 설문조사는 강의
-                                                        내용을 평가하고 더 나은
-                                                        수업을준비하기 위한
-                                                        자료로만 쓰여집니다. 각
-                                                        항문에 대한
-                                                        만족도(1=낮음, 5=높음)에
-                                                        표시해 주십시오.
+                                                        <textarea
+                                                            name=""
+                                                            width="100%"
+                                                            rows="10"
+                                                            placeholder="해당 섹션에 대한 설명을 적어주세요."
+                                                        ></textarea>
                                                     </h5>
                                                 </div>
                                                 <div class="col-auto">
@@ -245,6 +302,11 @@
                                                     >
                                                         <div>
                                                             {{ eval_order }}
+                                                            <input
+                                                                type="text"
+                                                                style="width: 600px;"
+                                                                placeholder="질문 내용을 적어주세요"
+                                                            />
                                                         </div>
                                                         <i
                                                             class="fas fa-trash-alt"
@@ -354,16 +416,6 @@
                     </div>
 
                     <!-- End of Main Content -->
-
-                    <!-- Footer -->
-                    <footer class="sticky-footer bg-white">
-                        <div class="container my-auto">
-                            <div class="copyright text-center my-auto">
-                                <span>Copyright &copy; Your Website 2020</span>
-                            </div>
-                        </div>
-                    </footer>
-                    <!-- End of Footer -->
                 </div>
                 <!-- End of Content Wrapper -->
             </div>
@@ -373,50 +425,6 @@
             <a class="scroll-to-top rounded" href="#page-top">
                 <i class="fas fa-angle-up"></i>
             </a>
-
-            <!-- Logout Modal-->
-            <div
-                class="modal fade"
-                id="logoutModal"
-                tabindex="-1"
-                role="dialog"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-            >
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">
-                                Ready to Leave?
-                            </h5>
-                            <button
-                                class="close"
-                                type="button"
-                                data-dismiss="modal"
-                                aria-label="Close"
-                            >
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            Select "Logout" below if you are ready to end your
-                            current session.
-                        </div>
-                        <div class="modal-footer">
-                            <button
-                                class="btn btn-secondary"
-                                type="button"
-                                data-dismiss="modal"
-                            >
-                                Cancel
-                            </button>
-                            <a class="btn btn-primary" href="login.html"
-                                >Logout</a
-                            >
-                        </div>
-                    </div>
-                </div>
-            </div>
         </body>
     </div>
 </template>
@@ -426,6 +434,9 @@ export default {
     components: {},
     data() {
         return {
+            files: null,
+            imageList: [],
+
             course_name: '2021블록체인비즈니스과정',
             class_name: 'Vue.js',
             class_teacher_key: '고승원',
@@ -442,6 +453,23 @@ export default {
     unmounted() {},
     methods: {
         // eval_value_key -> :value="1",  :value="2"  ,:value="3"  ,:value="4"  ,:value="5"
+
+        async fileSelect(e) {
+            const r = await this.$upload('/api/uploadFile', e.target.files[0])
+            console.log(r)
+            this.imageList.push({
+                src: `http://localhost:3000/static/${r.filename}`,
+                filename: r.filename
+            })
+        },
+        async deleteImg(idx) {
+            var filename = this.imageList[idx].filename
+            const r = await this.$delete('/api/deleteFile?filename=' + filename)
+            console.log(r)
+            this.imageList = this.imageList.filter(
+                img => img.filename !== filename
+            )
+        }
     }
 }
 </script>
@@ -466,7 +494,6 @@ div {
     border-radius: 8px;
     padding: 20px;
 }
-
 .menu-toggle {
     position: fixed;
     right: 15px;
@@ -479,12 +506,27 @@ div {
     line-height: 50px;
     z-index: 999;
 }
-
 .menu-toggle:focus,
 .menu-toggle:hover {
     color: #fff;
 }
-.menu-toggle:hover {
+.menu-toggle > div:hover {
     background: #343a40;
+}
+.del-mark {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: white;
+    z-index: 9999;
+    cursor: pointer;
+    background-color: #343a40;
+}
+
+.img-items > li {
+    list-style-type: none;
+    float: center;
+    text-align: center;
+    margin-right: 10px;
 }
 </style>
