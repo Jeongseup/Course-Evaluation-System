@@ -9,9 +9,7 @@
 
             <div class="wrapper">
                 <!-- Sidebar -->
-
                 <!-- End of Sidebar -->
-
                 <!-- Content Wrapper -->
                 <div class="d-flex flex-column content-wrapper">
                     <!-- Main Content -->

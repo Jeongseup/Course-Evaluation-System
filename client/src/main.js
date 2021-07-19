@@ -27,6 +27,7 @@ import {
     faUserEdit,
     faBookReader,
     faFileSignature,
+    faClipboardList,
     faFileImport,
     faImages,
     faSave,
@@ -48,7 +49,8 @@ library.add(
     faFileImport,
     faImages,
     faSave,
-    faAngleUp
+    faAngleUp,
+    faClipboardList
 )
 
 const app = createApp(App)

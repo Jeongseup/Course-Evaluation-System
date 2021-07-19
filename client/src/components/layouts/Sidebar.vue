@@ -1,16 +1,13 @@
 <template>
     <!-- Sidebar -->
-    <ul
-        class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
-        id="accordionSidebar"
-    >
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion">
         <!-- Sidebar - Brand -->
         <a
             class="sidebar-brand d-flex align-items-center justify-content-center"
             href="index.html"
         >
             <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-laugh-wink"></i>
+                <font-awesome-icon icon="laugh-wink" />
             </div>
             <div class="sidebar-brand-text mx-3">강사의 품격</div>
         </a>
@@ -20,9 +17,14 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <router-link to="/list" style="text-decoration: none;">
-                <p style="color:white">HOME</p>
-            </router-link>
+            <a class="nav-link">
+                <!-- <router-link to="/list" style="text-decoration: none;"> -->
+
+                <font-awesome-icon icon="home" />
+                <router-link to="/list" style="text-decoration: none;">
+                    <span style="color:white"> HOME</span>
+                </router-link>
+            </a>
         </li>
 
         <!-- Divider -->
@@ -30,10 +32,10 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#">
-                <i class="fas fa-chalkboard-teacher"></i>
+            <a class="nav-link collapsed">
+                <font-awesome-icon icon="chalkboard-teacher" />
                 <router-link to="/classtable" style="text-decoration: none;">
-                    <p style="color:white">과정등록</p>
+                    <span style="color:white"> 과정등록</span>
                 </router-link>
             </a>
         </li>
@@ -43,10 +45,12 @@
 
         <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#">
-                <i class="far fa-edit"></i>
-                <router-link to="/questiontable" style="text-decoration: none;">
-                    <p style="color:white">평가지 생성</p>
+            <a class="nav-link collapsed">
+                <!-- <router-link to="/questiontable" style="text-decoration: none;"> -->
+
+                <font-awesome-icon icon="edit" />
+                <router-link to="/evaltable" style="text-decoration: none;">
+                    <span style="color:white"> 평가지 생성</span>
                 </router-link>
             </a>
         </li>
@@ -55,20 +59,26 @@
         <hr class="sidebar-divider" />
 
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item active">
-            <a class="nav-link" href="#">
-                <router-link to="/sidetest" style="text-decoration: none;">
-                    <i class="far fa-list-alt"></i>
-
-                    <span style="color:white">평가지 결과</span>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#">
+                <font-awesome-icon icon="clipboard-list" />
+                <router-link to="/list" style="text-decoration: none;">
+                    <span style="color:white"> 평가 리스트</span>
                 </router-link>
             </a>
-            <div
-                id="collapsePages"
-                class="collapse show"
-                aria-labelledby="headingPages"
-                data-parent="#accordionSidebar"
-            ></div>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider" />
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#">
+                <font-awesome-icon icon="list-alt" />
+                <router-link to="/sidetest" style="text-decoration: none;">
+                    <span style="color:white"> 평가지 결과</span>
+                </router-link>
+            </a>
         </li>
 
         <!-- Divider -->
