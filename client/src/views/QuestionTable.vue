@@ -183,7 +183,7 @@
                                 :key="i"
                                 v-for="(img, i) in imageList"
                             >
-                                <div class="col-xl-2 col-md-6 mb-4 "></div>
+                                <div class="col-xl-2"></div>
                                 <div class="col-xl-8 col-md-6 mb-4 ">
                                     <div
                                         class="card border-left-warning shadow h-100 py-2"
@@ -236,7 +236,7 @@
                                 <!-- Pending Requests Card Example -->
                                 <!-- 가운데 평가지 -->
 
-                                <div class="col-xl-2 col-md-6 mb-4 "></div>
+                                <div class="col-xl-2"></div>
                                 <div class="col-xl-8 col-md-6 mb-4 ">
                                     <div
                                         class="card border-left-warning shadow h-100 py-2"
@@ -253,7 +253,7 @@
                                                             <h3>
                                                                 <input
                                                                     type="text"
-                                                                    style="width: 600px;"
+                                                                    style="width: 100%;"
                                                                     placeholder="해당 섹션의 제목을 적어주세요"
                                                                 />
                                                             </h3>
@@ -263,7 +263,7 @@
                                                     <h5>
                                                         <textarea
                                                             name=""
-                                                            width="100%"
+                                                            style="width: 100%"
                                                             rows="10"
                                                             placeholder="해당 섹션에 대한 설명을 적어주세요."
                                                         ></textarea>
@@ -287,7 +287,7 @@
                                 <!-- Pending Requests Card Example -->
                                 <!-- 가운데 평가지 -->
 
-                                <div class="col-xl-2 col-md-6 mb-4 "></div>
+                                <div class="col-xl-2"></div>
                                 <div class="col-xl-8 col-md-6 mb-4 ">
                                     <div
                                         class="card border-left-warning shadow h-100 py-2"
@@ -304,7 +304,7 @@
                                                             {{ eval_order }}
                                                             <input
                                                                 type="text"
-                                                                style="width: 600px;"
+                                                                style="width: 85%;"
                                                                 placeholder="질문 내용을 적어주세요"
                                                             />
                                                         </div>

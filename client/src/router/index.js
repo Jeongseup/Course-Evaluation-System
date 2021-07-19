@@ -1,8 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-
 import TemplateSide from '../views/TemplateSide.vue'
-
 import QuestionTable from '../views/QuestionTable.vue'
 import ClassTable from '../views/ClassTable.vue'
 import EvalTable from '../views/EvalTable.vue'

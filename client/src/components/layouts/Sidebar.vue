@@ -21,7 +21,9 @@
                 <!-- <router-link to="/list" style="text-decoration: none;"> -->
 
                 <font-awesome-icon icon="home" />
-                <span> HOME</span>
+                <router-link to="/list" style="text-decoration: none;">
+                    <span style="color:white"> HOME</span>
+                </router-link>
             </a>
         </li>
 
@@ -32,8 +34,9 @@
         <li class="nav-item">
             <a class="nav-link collapsed">
                 <font-awesome-icon icon="chalkboard-teacher" />
-
-                <span> 과정등록</span>
+                <router-link to="/classtable" style="text-decoration: none;">
+                    <span style="color:white"> 과정등록</span>
+                </router-link>
             </a>
         </li>
 
@@ -46,8 +49,9 @@
                 <!-- <router-link to="/questiontable" style="text-decoration: none;"> -->
 
                 <font-awesome-icon icon="edit" />
-
-                <span> 평가지 생성</span>
+                <router-link to="/evaltable" style="text-decoration: none;">
+                    <span style="color:white"> 평가지 생성</span>
+                </router-link>
             </a>
         </li>
 
@@ -58,7 +62,9 @@
         <li class="nav-item">
             <a class="nav-link collapsed" href="#">
                 <font-awesome-icon icon="clipboard-list" />
-                <span> 평가 리스트</span>
+                <router-link to="/list" style="text-decoration: none;">
+                    <span style="color:white"> 평가 리스트</span>
+                </router-link>
             </a>
         </li>
 
@@ -69,7 +75,9 @@
         <li class="nav-item">
             <a class="nav-link collapsed" href="#">
                 <font-awesome-icon icon="list-alt" />
-                <span> 평가지 결과</span>
+                <router-link to="/sidetest" style="text-decoration: none;">
+                    <span style="color:white"> 평가지 결과</span>
+                </router-link>
             </a>
         </li>
 
