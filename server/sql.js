@@ -21,4 +21,16 @@ module.exports = {
     updatePerson: {
         query: "update t_person set ? where id = ?",
     },
+
+    insertUserEvaluation: {
+        query: `insert into t_user_eval set ?`
+    },
+
+    insertQuestion: {
+        query: `insert into t_questions set ?`
+    },
+
+    questionList: {
+        query: `select * from t_questions where class_id=?`
+    }
 };

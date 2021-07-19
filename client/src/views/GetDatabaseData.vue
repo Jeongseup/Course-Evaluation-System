@@ -22,10 +22,8 @@ export default {
     methods: {
         //  async $api function argument (url, method, data)
         // 'http://localhost:3000 + /api/getList
-
         async getTable() {
             this.list = await this.$api('/api/getUserTable', 'get', {})
-
             console.log(this.list)
         }
     }

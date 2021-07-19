@@ -5,265 +5,45 @@
             <!-- body 바로 아래에 추가 스티커 -->
             <div class="menu-toggle rounded">
                 <!-- 질문추가 -->
-
-                <div><font-awesome-icon icon="file-signature" /></div>
+                <div>
+                    <font-awesome-icon
+                        icon="file-signature"
+                        @click="addQuetion('Q')"
+                    />
+                </div>
                 <!-- 섹션추가 -->
                 <div><font-awesome-icon icon="file-import" /></div>
                 <!-- 이미지추가 -->
-                <div><font-awesome-icon icon="images" /></div>
+                <!-- <div><font-awesome-icon icon="images" /></div> -->
+                <div style="clear: none">
+                    <div @click="$refs.file.click()">
+                        <font-awesome-icon icon="images" />
+                    </div>
+                    <input
+                        type="file"
+                        @change="fileSelect"
+                        ref="file"
+                        style="display: none"
+                        accept=".jpg, .png"
+                    />
+                </div>
+
                 <!-- 저장 -->
-                <div><font-awesome-icon icon="save" /></div>
+                <div>
+                    <font-awesome-icon icon="save" @click="saveQuestion" />
+                </div>
             </div>
             <!-- 스티커 끝 -->
 
             <!-- Page Wrapper -->
             <div id="wrapper">
                 <!-- Sidebar -->
-                <ul
-                    class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
-                    id="accordionSidebar"
-                >
-                    <!-- Sidebar - Brand -->
-                    <a
-                        class="sidebar-brand d-flex align-items-center justify-content-center"
-                        href="index.html"
-                    >
-                        <div class="sidebar-brand-icon rotate-n-15">
-                            <i class="fas fa-laugh-wink"></i>
-                        </div>
-                        <div class="sidebar-brand-text mx-3">강사의 품격</div>
-                    </a>
-
-                    <!-- Divider -->
-                    <hr class="sidebar-divider my-0" />
-
-                    <!-- Nav Item - Dashboard -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            <i class="fas fa-home"></i>
-                            <span>HOME</span>
-                        </a>
-                    </li>
-
-                    <!-- Divider -->
-                    <hr class="sidebar-divider" />
-
-                    <!-- Nav Item - Pages Collapse Menu -->
-                    <li class="nav-item">
-                        <a
-                            class="nav-link collapsed"
-                            href="#"
-                            data-toggle="collapse"
-                            data-target="#collapseTwo"
-                            aria-expanded="true"
-                            aria-controls="collapseTwo"
-                        >
-                            <i class="fas fa-chalkboard-teacher"></i>
-                            <!-- <router-link
-                                                            to="/test"
-                                                            style="text-decoration: none;"
-                                                        > -->
-                            <router-link
-                                to="/classtable"
-                                style="text-decoration: none;"
-                            >
-                                <p style="color:white">과정등록</p>
-                            </router-link>
-                        </a>
-                    </li>
-
-                    <!-- Divider -->
-                    <hr class="sidebar-divider" />
-
-                    <!-- Nav Item - Utilities Collapse Menu -->
-                    <li class="nav-item">
-                        <a
-                            class="nav-link collapsed"
-                            href="#"
-                            data-toggle="collapse"
-                            data-target="#collapseUtilities"
-                            aria-expanded="true"
-                            aria-controls="collapseUtilities"
-                        >
-                            <i class="far fa-edit"></i>
-                            <span>평가지 생성</span>
-                        </a>
-                    </li>
-
-                    <!-- Divider -->
-                    <hr class="sidebar-divider" />
-
-                    <!-- Nav Item - Pages Collapse Menu -->
-                    <li class="nav-item active">
-                        <a
-                            class="nav-link"
-                            href="#"
-                            data-toggle="collapse"
-                            data-target="#collapsePages"
-                            aria-expanded="true"
-                            aria-controls="collapsePages"
-                        >
-                            <router-link
-                                to="/side"
-                                style="text-decoration: none;"
-                            >
-                                <i class="far fa-list-alt"></i>
-
-                                <span style="color:white">평가지 결과</span>
-                            </router-link>
-                        </a>
-                        <div
-                            id="collapsePages"
-                            class="collapse show"
-                            aria-labelledby="headingPages"
-                            data-parent="#accordionSidebar"
-                        ></div>
-                    </li>
-
-                    <!-- Divider -->
-                    <hr class="sidebar-divider d-none d-md-block" />
-                </ul>
                 <!-- End of Sidebar -->
 
                 <!-- Content Wrapper -->
                 <div id="content-wrapper" class="d-flex flex-column">
                     <!-- Main Content -->
                     <div id="content">
-                        <!-- Topbar -->
-                        <nav
-                            class="
-              navbar navbar-expand navbar-light
-              bg-white
-              topbar
-              mb-4
-              static-top
-              shadow
-            "
-                        >
-                            <!-- Sidebar Toggle (Topbar) -->
-                            <button
-                                id="sidebarToggleTop"
-                                class="btn btn-link d-md-none rounded-circle mr-3"
-                            >
-                                <i class="fa fa-bars"></i>
-                            </button>
-
-                            <!-- Topbar Search -->
-                            <form
-                                class="
-                d-none d-sm-inline-block
-                form-inline
-                mr-auto
-                ml-md-3
-                my-2 my-md-0
-                mw-100
-                navbar-search
-              "
-                            >
-                                <div class="input-group">
-                                    평가지 설문지 (question_table)
-                                </div>
-                            </form>
-
-                            <!-- Topbar Navbar -->
-                            <ul class="navbar-nav ml-auto">
-                                <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                                <li
-                                    class="nav-item dropdown no-arrow d-sm-none"
-                                >
-                                    <a
-                                        class="nav-link dropdown-toggle"
-                                        href="#"
-                                        id="searchDropdown"
-                                        role="button"
-                                        data-toggle="dropdown"
-                                        aria-haspopup="true"
-                                        aria-expanded="false"
-                                    >
-                                        <i class="fas fa-search fa-fw"></i>
-                                    </a>
-                                    <!-- Dropdown - Messages -->
-                                    <div
-                                        class="
-                    dropdown-menu dropdown-menu-right
-                    p-3
-                    shadow
-                    animated--grow-in
-                  "
-                                        aria-labelledby="searchDropdown"
-                                    >
-                                        <form
-                                            class="form-inline mr-auto w-100 navbar-search"
-                                        >
-                                            <div class="input-group">
-                                                <input
-                                                    type="text"
-                                                    class="form-control bg-light border-0 small"
-                                                    placeholder="Search for..."
-                                                    aria-label="Search"
-                                                    aria-describedby="basic-addon2"
-                                                />
-                                                <div class="input-group-append">
-                                                    <button
-                                                        class="btn btn-primary"
-                                                        type="button"
-                                                    >
-                                                        <i
-                                                            class="fas fa-search fa-sm"
-                                                        ></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </li>
-
-                                <!-- Nav Item - Messages -->
-                                <li class="nav-item dropdown no-arrow mx-1">
-                                    <a
-                                        class="nav-link dropdown-toggle"
-                                        href="#"
-                                        id="messagesDropdown"
-                                        role="button"
-                                        data-toggle="dropdown"
-                                        aria-haspopup="true"
-                                        aria-expanded="false"
-                                    >
-                                        <i class="fas fa-envelope fa-fw"></i>
-                                        <!-- Counter - Messages -->
-                                        <span
-                                            class="badge badge-danger badge-counter"
-                                            >7</span
-                                        >
-                                    </a>
-                                </li>
-
-                                <div
-                                    class="topbar-divider d-none d-sm-block"
-                                ></div>
-
-                                <!-- Nav Item - User Information -->
-                                <li class="nav-item dropdown no-arrow">
-                                    <a
-                                        class="nav-link dropdown-toggle"
-                                        href="#"
-                                        id="userDropdown"
-                                        role="button"
-                                        data-toggle="dropdown"
-                                        aria-haspopup="true"
-                                        aria-expanded="false"
-                                    >
-                                        <span
-                                            class="mr-2 d-none d-lg-inline text-gray-600 small"
-                                            >장태진</span
-                                        >
-                                        <i class="fas fa-user-tie"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                        <!-- End of Topbar -->
-
                         <div class="card-header py-3">
                             <div style="margin:30px;">
                                 <!-- Button trigger modal -->
@@ -321,8 +101,8 @@
                                                                 <div
                                                                     class="col-xl-3 col-md-6 mb-4"
                                                                     :key="i"
-                                                                    v-for="(a,
-                                                                    i) in studentName"
+                                                                    v-for="(student,
+                                                                    i) in students"
                                                                 >
                                                                     <div
                                                                         class="card border-left-primary shadow h-100 py-2"
@@ -345,11 +125,16 @@
                                                                                         class="h5 mb-0 font-weight-bold text-gray-800"
                                                                                     >
                                                                                         {{
-                                                                                            a
+                                                                                            student.name
                                                                                         }}
                                                                                         <input
                                                                                             type="checkbox"
-                                                                                            checked
+                                                                                            :value="
+                                                                                                student.email
+                                                                                            "
+                                                                                            v-model="
+                                                                                                checkedStudents
+                                                                                            "
                                                                                         />
                                                                                     </div>
                                                                                 </div>
@@ -380,6 +165,7 @@
                                                 <button
                                                     type="button"
                                                     class="btn btn-primary"
+                                                    @click="sendEvalution"
                                                 >
                                                     확인
                                                 </button>
@@ -399,29 +185,70 @@
                                 강사명: {{ class_teacher_key }}
                             </div>
                             <div style="margin:10px;">
-                                개강 : <input type="date" /> 종강 :
+                                설문 응답 종료 일 :
                                 <input type="date" />
                             </div>
 
                             <!-- Illustrations -->
-                            <div class="card shadow mb-4 rounded">
-                                <!-- <div class="img-rounded"> -->
-                                <img src="../assets/cup.jpg" alt="..." />
-                                <!-- <div style="width:50%; height:100px;">
+                            <div
+                                class="row"
+                                :key="i"
+                                v-for="(img, i) in imageList"
+                            >
+                                <div class="col-xl-2"></div>
+                                <div class="col-xl-8 col-md-6 mb-4 ">
+                                    <div
+                                        class="card border-left-warning shadow h-100 py-2"
+                                    >
+                                        <div class="card-body">
+                                            <div
+                                                class="row no-gutters align-items-center"
+                                            >
+                                                <div class="col mr-2">
+                                                    <div
+                                                        class="text-lg font-weight-bold text-warning text-uppercase mb-1 text-center"
+                                                    >
+                                                        <ul class="img-items">
+                                                            <li>
+                                                                <div
+                                                                    style="position: relative"
+                                                                >
+                                                                    <img
+                                                                        :src="
+                                                                            img.src
+                                                                        "
+                                                                        style="height: auto; width: 800px;"
+                                                                    />
+                                                                    <span
+                                                                        class="del-mark"
+                                                                        @click="
+                                                                            deleteImg(
+                                                                                i
+                                                                            )
+                                                                        "
+                                                                        >X</span
+                                                                    >
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                        <!-- <div style="width:50%; height:100px;">
                                         <img src="./img/sky.jpg" alt="..." />
                                     </div> -->
-                                <!-- </div> -->
+                                                        <!-- </div> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
-                            <button type="button" class="btn  btn-sm btn-dark">
-                                + 질문추가
-                            </button>
                             <!-- Content Row -->
                             <div class="row">
                                 <!-- Pending Requests Card Example -->
                                 <!-- 가운데 평가지 -->
 
-                                <div class="col-xl-2 col-md-6 mb-4 "></div>
+                                <div class="col-xl-2"></div>
                                 <div class="col-xl-8 col-md-6 mb-4 ">
                                     <div
                                         class="card border-left-warning shadow h-100 py-2"
@@ -436,19 +263,22 @@
                                                     >
                                                         <div>
                                                             <h3>
-                                                                {{ title }}
+                                                                <input
+                                                                    type="text"
+                                                                    style="width: 100%;"
+                                                                    placeholder="해당 섹션의 제목을 적어주세요"
+                                                                />
                                                             </h3>
                                                         </div>
                                                     </div>
                                                     <hr />
                                                     <h5>
-                                                        본 설문조사는 강의
-                                                        내용을 평가하고 더 나은
-                                                        수업을준비하기 위한
-                                                        자료로만 쓰여집니다. 각
-                                                        항문에 대한
-                                                        만족도(1=낮음, 5=높음)에
-                                                        표시해 주십시오.
+                                                        <textarea
+                                                            name=""
+                                                            style="width: 100%"
+                                                            rows="10"
+                                                            placeholder="해당 섹션에 대한 설명을 적어주세요."
+                                                        ></textarea>
                                                     </h5>
                                                 </div>
                                                 <div class="col-auto">
@@ -463,18 +293,25 @@
                                     <!--노랑이 끝-->
                                 </div>
                             </div>
-                            ㅇ,ㅇ?
                             <!-- Dropdown Card Example -->
                             <div class="row">
                                 <!-- Pending Requests Card Example -->
                                 <!-- 가운데 평가지 -->
 
-                                <div class="col-xl-2 col-md-6 mb-4 "></div>
-                                <div class="col-xl-8 col-md-6 mb-4 ">
+                                <div
+                                    class="col-xl-8 col-md-6 mb-4"
+                                    @click="setCurrentNo(i)"
+                                    :key="i"
+                                    v-for="(item, i) in questions"
+                                >
                                     <div
+                                        v-if="item.type == 'Q'"
                                         class="card border-left-warning shadow h-100 py-2"
                                     >
-                                        <div class="card-body">
+                                        <div
+                                            class="card-body"
+                                            :class="{ active: item.isSelected }"
+                                        >
                                             <div
                                                 class="row no-gutters align-items-center"
                                             >
@@ -483,7 +320,13 @@
                                                         class="text-lg font-weight-bold text-warning text-uppercase mb-1"
                                                     >
                                                         <div>
-                                                            {{ eval_order }}
+                                                            <input
+                                                                type="text"
+                                                                style="width:100%;"
+                                                                v-model="
+                                                                    item.content
+                                                                "
+                                                            />
                                                         </div>
                                                         <i
                                                             class="fas fa-trash-alt"
@@ -584,25 +427,52 @@
                                         </div>
                                         <!-- Dropdown Card Example -->
                                     </div>
+                                    <div
+                                        v-else-if="item.type == 'D'"
+                                        class="card border-left-warning shadow h-100 py-2"
+                                    >
+                                        <div
+                                            class="card-body"
+                                            :class="{ active: item.isSelected }"
+                                        >
+                                            <div
+                                                class="row no-gutters align-items-center"
+                                            >
+                                                <div class="col mr-2">
+                                                    <div
+                                                        class="text-lg font-weight-bold text-warning text-uppercase mb-1"
+                                                    >
+                                                        <div>
+                                                            설명
+                                                        </div>
+                                                        <i
+                                                            class="fas fa-trash-alt"
+                                                        ></i>
+                                                    </div>
+                                                    <hr />
+                                                    <div
+                                                        class="h5 mb-0 font-weight-bold text-gray-800 m-5"
+                                                    >
+                                                        {{ item.content }}
+                                                    </div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <!-- <i
+                                                        class="fas fa-comments fa-2x text-gray-300"
+                                                    ></i> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Dropdown Card Example -->
+                                    </div>
                                     <!--노랑이 끝-->
                                 </div>
-                                ㅇ,ㅇ?
                             </div>
                             <!-- Dropdown Card Example -->
                         </div>
                     </div>
 
                     <!-- End of Main Content -->
-
-                    <!-- Footer -->
-                    <footer class="sticky-footer bg-white">
-                        <div class="container my-auto">
-                            <div class="copyright text-center my-auto">
-                                <span>Copyright &copy; Your Website 2020</span>
-                            </div>
-                        </div>
-                    </footer>
-                    <!-- End of Footer -->
                 </div>
                 <!-- End of Content Wrapper -->
             </div>
@@ -612,50 +482,6 @@
             <a class="scroll-to-top rounded" href="#page-top">
                 <i class="fas fa-angle-up"></i>
             </a>
-
-            <!-- Logout Modal-->
-            <div
-                class="modal fade"
-                id="logoutModal"
-                tabindex="-1"
-                role="dialog"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-            >
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">
-                                Ready to Leave?
-                            </h5>
-                            <button
-                                class="close"
-                                type="button"
-                                data-dismiss="modal"
-                                aria-label="Close"
-                            >
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            Select "Logout" below if you are ready to end your
-                            current session.
-                        </div>
-                        <div class="modal-footer">
-                            <button
-                                class="btn btn-secondary"
-                                type="button"
-                                data-dismiss="modal"
-                            >
-                                Cancel
-                            </button>
-                            <a class="btn btn-primary" href="login.html"
-                                >Logout</a
-                            >
-                        </div>
-                    </div>
-                </div>
-            </div>
         </body>
     </div>
 </template>
@@ -665,6 +491,9 @@ export default {
     components: {},
     data() {
         return {
+            files: null,
+            imageList: [],
+
             course_name: '2021블록체인비즈니스과정',
             class_name: 'Vue.js',
             class_teacher_key: '고승원',
@@ -672,15 +501,103 @@ export default {
             title: '2주차 강의 평가',
             modal2: false,
             // modal1: false
-            studentName: ['장태진', '태진장', '태진태', '진태진', '태진태진']
+            studentName: ['장태진', '태진장', '태진태', '진태진', '태진태진'],
+            students: [],
+            checkedStudents: [],
+            questions: [
+                {
+                    type: 'Q',
+                    content: '강사 속도는 적절했나요?',
+                    isSelected: false
+                },
+                {
+                    type: 'D',
+                    content: '다음은 강사에 대한 평가 질문입니다.',
+                    isSelected: false
+                },
+                {
+                    type: 'Q',
+                    content: '강사의 교수법은 적절했나요?',
+                    isSelected: false
+                },
+                {
+                    type: 'Q',
+                    content: '강사는 적절한 예제를 제시했나요?',
+                    isSelected: false
+                }
+            ],
+            selectedIndex: -1
         }
     },
     setup() {},
-    created() {},
+    created() {
+        //  함수 데이터 가져오기
+        this.students = [
+            { email: 'jang@gmail.com', name: '장태진' },
+            { email: 'jang2@gmail.com', name: '태진장' },
+            { email: 'jang3@gmail.com', name: '태진태' },
+            { email: 'jang4@gmail.com', name: '진태진' },
+            { email: 'jang5@gmail.com', name: '태진태진' }
+        ]
+
+        const checkedStudents = []
+        for (const student of this.students) {
+            checkedStudents.push(student.email)
+        }
+
+        this.checkedStudents = checkedStudents
+    },
     mounted() {},
     unmounted() {},
     methods: {
         // eval_value_key -> :value="1",  :value="2"  ,:value="3"  ,:value="4"  ,:value="5"
+        async sendEvalution() {
+            console.log(this.checkedStudents)
+            //  axios.post('/api/sendEvaluation', {param: [this.checkedStudents]})
+            const r = await this.$api('/api/sendEvaluation', 'post', {
+                param: [this.checkedStudents]
+            })
+
+            console.log(r)
+        },
+        setCurrentNo(idx) {
+            this.selectedIndex = idx
+            this.questions.forEach(item => {
+                item.isSelected = false
+            })
+            this.questions[idx].isSelected = true
+            console.log(this.questions[idx])
+        },
+        addQuetion(type) {
+            this.questions.splice(this.selectedIndex + 1, 0, {
+                type: type,
+                content: ''
+            })
+        },
+        async saveQuestion() {
+            const r = await this.$api('/api/saveQuestion', 'post', {
+                param: [this.questions]
+            })
+
+            console.log(r)
+
+
+        async fileSelect(e) {
+            const r = await this.$upload('/api/uploadFile', e.target.files[0])
+            console.log(r)
+            this.imageList.push({
+                src: `http://localhost:3000/static/${r.filename}`,
+                filename: r.filename
+            })
+        },
+        async deleteImg(idx) {
+            var filename = this.imageList[idx].filename
+            const r = await this.$delete('/api/deleteFile?filename=' + filename)
+            console.log(r)
+            this.imageList = this.imageList.filter(
+                img => img.filename !== filename
+            )
+        }
     }
 }
 </script>
@@ -705,7 +622,6 @@ div {
     border-radius: 8px;
     padding: 20px;
 }
-
 .menu-toggle {
     position: fixed;
     right: 15px;
@@ -718,12 +634,31 @@ div {
     line-height: 50px;
     z-index: 999;
 }
-
 .menu-toggle:focus,
 .menu-toggle:hover {
     color: #fff;
 }
-.menu-toggle:hover {
+.menu-toggle > div:hover {
     background: #343a40;
+}
+
+.active {
+    border: 2px solid red;
+
+.del-mark {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: white;
+    z-index: 9999;
+    cursor: pointer;
+    background-color: #343a40;
+}
+
+.img-items > li {
+    list-style-type: none;
+    float: center;
+    text-align: center;
+    margin-right: 10px;
 }
 </style>

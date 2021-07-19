@@ -120,6 +120,47 @@ fs.watchFile(__dirname + "/sql.js", (curr, prev) => {
 // vue의 createPerson이 작동
 // 일반적으로 그냥 post만 쓰기도 함 app.get 대신 그냥 post로 실행
 // alias는 sql.js 내에 있는 하나가 잡힌다
+app.post("/api/sendEvaluation", async (req, res) => {
+    // alias라는 변수에 createPerson이 입력
+    console.log(req.body.param);
+
+    console.log('/api/sendEvaluation')
+
+    try {
+
+        for(const email of req.body.param[0]) {
+            await sys.db('insertUserEvaluation', {'email':email})
+        }
+
+        res.status(200).send('Ok');
+    } catch (err) {
+        res.status(500).send({
+            error: err,
+        });
+    }
+});
+
+app.post("/api/saveQuestion", async (req, res) => {
+    // alias라는 변수에 createPerson이 입력
+    console.log(req.body.param);
+
+    console.log('/api/saveQuestion')
+
+    try {
+
+        for(const question of req.body.param[0]) {
+            await sys.db('insertQuestion', {type:question.type, content:question.content, class_id:1})
+        }
+
+        res.status(200).send('Ok');
+    } catch (err) {
+        res.status(500).send({
+            error: err,
+        });
+    }
+});
+
+
 app.post("/api/:alias", async (req, res) => {
     // alias라는 변수에 createPerson이 입력
     console.log(req.params.alias);

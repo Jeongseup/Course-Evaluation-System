@@ -9,160 +9,13 @@
 
             <div class="wrapper">
                 <!-- Sidebar -->
-                <ul
-                    class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
-                >
-                    <!-- Sidebar - Brand -->
-                    <a
-                        class="sidebar-brand d-flex align-items-center justify-content-center"
-                        href="index.html"
-                    >
-                        <div class="sidebar-brand-icon rotate-n-15">
-                            <font-awesome-icon icon="laugh-wink" />
-                        </div>
-                        <div class="sidebar-brand-text mx-3">강사의 품격</div>
-                    </a>
 
-                    <!-- Divider -->
-                    <hr class="sidebar-divider my-0" />
-
-                    <!-- Nav Item - Dashboard -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            <font-awesome-icon icon="home" />
-                            <span> HOME</span>
-                        </a>
-                    </li>
-
-                    <!-- Divider -->
-                    <hr class="sidebar-divider" />
-
-                    <!-- Nav Item - Pages Collapse Menu -->
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" href="#">
-                            <!-- data-toggle="collapse"
-                            data-target="#collapseUtilities"
-                            aria-expanded="true"
-                            aria-controls="collapseUtilities" -->
-                            <font-awesome-icon icon="chalkboard-teacher" />
-
-                            <span> 과정등록</span>
-                        </a>
-                    </li>
-
-                    <!-- Divider -->
-                    <hr class="sidebar-divider" />
-
-                    <!-- Nav Item - Utilities Collapse Menu -->
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" href="#">
-                            <font-awesome-icon icon="edit" />
-                            <span> 평가지 생성</span>
-                        </a>
-                    </li>
-
-                    <!-- Divider -->
-                    <hr class="sidebar-divider" />
-
-                    <!-- Nav Item - Pages Collapse Menu -->
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" href="#">
-                            <font-awesome-icon icon="clipboard-list" />
-                            <span> 평가 리스트</span>
-                        </a>
-                    </li>
-
-                    <!-- Divider -->
-                    <hr class="sidebar-divider" />
-
-                    <!-- Nav Item - Pages Collapse Menu -->
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" href="#">
-                            <font-awesome-icon icon="list-alt" />
-                            <span> 평가지 결과</span>
-                        </a>
-                    </li>
-
-                    <!-- Divider -->
-                    <hr class="sidebar-divider d-none d-md-block" />
-                </ul>
                 <!-- End of Sidebar -->
 
                 <!-- Content Wrapper -->
                 <div class="d-flex flex-column content-wrapper">
                     <!-- Main Content -->
                     <div class="content">
-                        <!-- Topbar -->
-                        <nav
-                            class="
-              navbar navbar-expand navbar-light
-              bg-white
-              topbar
-              mb-4
-              static-top
-              shadow
-            "
-                        >
-                            <!-- Topbar Search -->
-                            <form
-                                class="
-                d-none d-sm-inline-block
-                form-inline
-                mr-auto
-                ml-md-3
-                my-2 my-md-0
-                mw-100
-                navbar-search
-              "
-                            >
-                                <div class="input-group">평가지 결과</div>
-                            </form>
-
-                            <!-- Topbar Navbar -->
-                            <ul class="navbar-nav ml-auto">
-                                <!-- Nav Item - Messages -->
-                                <li class="nav-item dropdown no-arrow mx-1">
-                                    <a
-                                        class="nav-link dropdown-toggle"
-                                        href="#"
-                                        role="button"
-                                        data-toggle="dropdown"
-                                        aria-haspopup="true"
-                                        aria-expanded="false"
-                                    >
-                                        <font-awesome-icon icon="envelope" />
-                                        <!-- Counter - Messages -->
-                                        <span
-                                            class="badge badge-danger badge-counter"
-                                            >7</span
-                                        >
-                                    </a>
-                                </li>
-
-                                <div
-                                    class="topbar-divider d-none d-sm-block"
-                                ></div>
-
-                                <!-- Nav Item - User Information -->
-                                <li class="nav-item dropdown no-arrow">
-                                    <a
-                                        class="nav-link dropdown-toggle"
-                                        href="#"
-                                        role="button"
-                                        data-toggle="dropdown"
-                                        aria-haspopup="true"
-                                        aria-expanded="false"
-                                    >
-                                        <span
-                                            class="mr-2 d-none d-lg-inline text-gray-600 small"
-                                            >장태진</span
-                                        >
-                                        <font-awesome-icon icon="user-tie" />
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-
                         <!-- DataTales Example -->
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
@@ -446,7 +299,6 @@ export default {
 
             barColor: ['success', 'danger', 'warning', 'primary', 'info'],
             barColor1: 'bg-primary',
-
             result: [
                 {
                     resultName: '서버에서 받아온 질문 1   ',
@@ -506,7 +358,6 @@ export default {
     line-height: 45px;
     z-index: 999;
 }
-
 .scroll:focus,
 .scroll:hover {
     color: #fff;
