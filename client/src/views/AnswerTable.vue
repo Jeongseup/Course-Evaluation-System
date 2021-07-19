@@ -4,20 +4,8 @@
         <body id="page-top">
             <!-- body 바로 아래에 추가 스티커 -->
             <div class="menu-toggle rounded">
-                <!-- 질문추가 -->
                 <div>
-                    <font-awesome-icon
-                        icon="file-signature"
-                        @click="addQuetion('Q')"
-                    />
-                </div>
-                <!-- 섹션추가 -->
-                <div><font-awesome-icon icon="file-import" /></div>
-                <!-- 이미지추가 -->
-                <div><font-awesome-icon icon="images" /></div>
-                <!-- 저장 -->
-                <div>
-                    <font-awesome-icon icon="save" @click="saveQuestion" />
+                    <font-awesome-icon icon="save" @click="saveAnswer" />
                 </div>
             </div>
             <!-- 스티커 끝 -->
@@ -33,135 +21,6 @@
                     <!-- Main Content -->
                     <div id="content">
                         <div class="card-header py-3">
-                            <div style="margin:30px;">
-                                <!-- Button trigger modal -->
-                                <button
-                                    href="#"
-                                    type="button"
-                                    class="btn btn-warning btn-icon-split  btn float-right"
-                                    data-toggle="modal"
-                                    data-target="#staticBackdrop"
-                                >
-                                    완료 및 전송
-                                </button>
-                                <!-- Modal -->
-                                <div
-                                    class="modal fade"
-                                    id="staticBackdrop"
-                                    data-backdrop="static"
-                                    tabindex="-1"
-                                    role="dialog"
-                                    aria-labelledby="staticBackdropLabel"
-                                    aria-hidden="true"
-                                >
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5
-                                                    class="modal-title"
-                                                    id="staticBackdropLabel"
-                                                >
-                                                    수강생 선택
-                                                </h5>
-                                                <button
-                                                    type="button"
-                                                    class="close"
-                                                    data-dismiss="modal"
-                                                    aria-label="Close"
-                                                >
-                                                    <span aria-hidden="true"
-                                                        >&times;</span
-                                                    >
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <!-- 수강생들이 들어갈 공간 -->
-                                                <div class="card shadow mb-4">
-                                                    <div
-                                                        class="card-header py-3"
-                                                    >
-                                                        <h6
-                                                            class="m-0 font-weight-bold text-primary"
-                                                        >
-                                                            <!-- 우측으로 생성 -->
-                                                            <div class="row">
-                                                                <!-- 수강생 -->
-                                                                <div
-                                                                    class="col-xl-3 col-md-6 mb-4"
-                                                                    :key="i"
-                                                                    v-for="(student,
-                                                                    i) in students"
-                                                                >
-                                                                    <div
-                                                                        class="card border-left-primary shadow h-100 py-2"
-                                                                    >
-                                                                        <div
-                                                                            class="card-body"
-                                                                        >
-                                                                            <div
-                                                                                class="row no-gutters align-items-center"
-                                                                            >
-                                                                                <div
-                                                                                    class="col mr-2"
-                                                                                >
-                                                                                    <div
-                                                                                        class="text-xs font-weight-bold text-primary text-uppercase mb-1"
-                                                                                    >
-                                                                                        수강생
-                                                                                    </div>
-                                                                                    <div
-                                                                                        class="h5 mb-0 font-weight-bold text-gray-800"
-                                                                                    >
-                                                                                        {{
-                                                                                            student.name
-                                                                                        }}
-                                                                                        <input
-                                                                                            type="checkbox"
-                                                                                            :value="
-                                                                                                student.email
-                                                                                            "
-                                                                                            v-model="
-                                                                                                checkedStudents
-                                                                                            "
-                                                                                        />
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div
-                                                                                    class="col-auto"
-                                                                                >
-                                                                                    <i
-                                                                                        class="fas fa-user-edit fa-2x text-gray-300"
-                                                                                    ></i>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </h6>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button
-                                                    type="button"
-                                                    class="btn btn-secondary"
-                                                    data-dismiss="modal"
-                                                >
-                                                    닫기
-                                                </button>
-                                                <button
-                                                    type="button"
-                                                    class="btn btn-primary"
-                                                    @click="sendEvalution"
-                                                >
-                                                    확인
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <!--class_table, course_table이용하여, 강좌명 class_name / course_name /class_teacher_key / start_date and end_date-->
                             <div style="margin:5px;">
                                 강좌명: {{ course_name }}
@@ -187,9 +46,6 @@
                                 <!-- </div> -->
                             </div>
 
-                            <button type="button" class="btn  btn-sm btn-dark">
-                                + 질문추가
-                            </button>
                             <!-- Content Row -->
                             <div class="row">
                                 <!-- Pending Requests Card Example -->
@@ -252,10 +108,7 @@
                                         v-if="item.type == 'Q'"
                                         class="card border-left-warning shadow h-100 py-2"
                                     >
-                                        <div
-                                            class="card-body"
-                                            :class="{ active: item.isSelected }"
-                                        >
+                                        <div class="card-body">
                                             <div
                                                 class="row no-gutters align-items-center"
                                             >
@@ -264,13 +117,7 @@
                                                         class="text-lg font-weight-bold text-warning text-uppercase mb-1"
                                                     >
                                                         <div>
-                                                            <input
-                                                                type="text"
-                                                                style="width:100%;"
-                                                                v-model="
-                                                                    item.content
-                                                                "
-                                                            />
+                                                            {{ item.content }}
                                                         </div>
                                                         <i
                                                             class="fas fa-trash-alt"
@@ -375,10 +222,7 @@
                                         v-else-if="item.type == 'D'"
                                         class="card border-left-warning shadow h-100 py-2"
                                     >
-                                        <div
-                                            class="card-body"
-                                            :class="{ active: item.isSelected }"
-                                        >
+                                        <div class="card-body">
                                             <div
                                                 class="row no-gutters align-items-center"
                                             >
@@ -494,88 +338,26 @@ export default {
             class_teacher_key: '고승원',
             eval_order: '설문지 설명 :',
             title: '2주차 강의 평가',
-            modal2: false,
             // modal1: false
-            studentName: ['장태진', '태진장', '태진태', '진태진', '태진태진'],
-            students: [],
-            checkedStudents: [],
-            questions: [
-                {
-                    type: 'Q',
-                    content: '강사 속도는 적절했나요?',
-                    isSelected: false
-                },
-                {
-                    type: 'D',
-                    content: '다음은 강사에 대한 평가 질문입니다.',
-                    isSelected: false
-                },
-                {
-                    type: 'Q',
-                    content: '강사의 교수법은 적절했나요?',
-                    isSelected: false
-                },
-                {
-                    type: 'Q',
-                    content: '강사는 적절한 예제를 제시했나요?',
-                    isSelected: false
-                }
-            ],
-            selectedIndex: -1
+            questions: [],
+            classId: 1
         }
     },
     setup() {},
-    created() {
-        //  함수 데이터 가져오기
-        this.students = [
-            { email: 'jang@gmail.com', name: '장태진' },
-            { email: 'jang2@gmail.com', name: '태진장' },
-            { email: 'jang3@gmail.com', name: '태진태' },
-            { email: 'jang4@gmail.com', name: '진태진' },
-            { email: 'jang5@gmail.com', name: '태진태진' }
-        ]
-
-        const checkedStudents = []
-        for (const student of this.students) {
-            checkedStudents.push(student.email)
-        }
-
-        this.checkedStudents = checkedStudents
+    created() {},
+    mounted() {
+        this.getList()
     },
-    mounted() {},
     unmounted() {},
     methods: {
-        // eval_value_key -> :value="1",  :value="2"  ,:value="3"  ,:value="4"  ,:value="5"
-        async sendEvalution() {
-            console.log(this.checkedStudents)
-            //  axios.post('/api/sendEvaluation', {param: [this.checkedStudents]})
-            const r = await this.$api('/api/sendEvaluation', 'post', {
-                param: [this.checkedStudents]
+        async getList() {
+            this.questions = await this.$api('/api/questionList', 'post', {
+                param: [this.classId]
             })
 
-            console.log(r)
+            console.log(this.questions)
         },
-        setCurrentNo(idx) {
-            this.selectedIndex = idx
-            this.questions.forEach(item => {
-                item.isSelected = false
-            })
-            this.questions[idx].isSelected = true
-            console.log(this.questions[idx])
-        },
-        addQuetion(type) {
-            this.questions.splice(this.selectedIndex + 1, 0, {
-                type: type,
-                content: ''
-            })
-        },
-        async saveQuestion() {
-            const r = await this.$api('/api/saveQuestion', 'post', {
-                param: [this.questions]
-            })
-
-            console.log(r)
-        }
+        async saveAnswer() {}
     }
 }
 </script>

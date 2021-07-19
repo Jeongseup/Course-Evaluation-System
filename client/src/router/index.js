@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import TemplateSide from '../views/TemplateSide.vue'
 
 import QuestionTable from '../views/QuestionTable.vue'
+import AnswerTable from '../views/AnswerTable.vue'
 import ClassTable from '../views/ClassTable.vue'
 import EvalTable from '../views/EvalTable.vue'
 import Login from '../views/Login.vue'
@@ -53,6 +54,11 @@ const routes = [
         path: '/questiontable',
         name: 'QuestionTable',
         component: QuestionTable
+    },
+    {
+        path: '/answertable',
+        name: 'AnswerTable',
+        component: AnswerTable
     },
     {
         path: '/',

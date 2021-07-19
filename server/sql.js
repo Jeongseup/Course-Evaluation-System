@@ -24,5 +24,13 @@ module.exports = {
 
     insertUserEvaluation: {
         query: `insert into t_user_eval set ?`
+    },
+
+    insertQuestion: {
+        query: `insert into t_questions set ?`
+    },
+
+    questionList: {
+        query: `select * from t_questions where class_id=?`
     }
 };
