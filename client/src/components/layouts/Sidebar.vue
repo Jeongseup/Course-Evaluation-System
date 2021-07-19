@@ -30,14 +30,7 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a
-                class="nav-link collapsed"
-                href="#"
-                data-toggle="collapse"
-                data-target="#collapseTwo"
-                aria-expanded="true"
-                aria-controls="collapseTwo"
-            >
+            <a class="nav-link collapsed" href="#">
                 <i class="fas fa-chalkboard-teacher"></i>
                 <router-link to="/classtable" style="text-decoration: none;">
                     <p style="color:white">과정등록</p>
@@ -50,14 +43,7 @@
 
         <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
-            <a
-                class="nav-link collapsed"
-                href="#"
-                data-toggle="collapse"
-                data-target="#collapseUtilities"
-                aria-expanded="true"
-                aria-controls="collapseUtilities"
-            >
+            <a class="nav-link collapsed" href="#">
                 <i class="far fa-edit"></i>
                 <router-link to="/questiontable" style="text-decoration: none;">
                     <p style="color:white">평가지 생성</p>
@@ -70,14 +56,7 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item active">
-            <a
-                class="nav-link"
-                href="#"
-                data-toggle="collapse"
-                data-target="#collapsePages"
-                aria-expanded="true"
-                aria-controls="collapsePages"
-            >
+            <a class="nav-link" href="#">
                 <router-link to="/sidetest" style="text-decoration: none;">
                     <i class="far fa-list-alt"></i>
 
