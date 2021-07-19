@@ -5,7 +5,12 @@
             <!-- body 바로 아래에 추가 스티커 -->
             <div class="menu-toggle rounded">
                 <!-- 질문추가 -->
-                <div><font-awesome-icon icon="file-signature" /></div>
+                <div>
+                    <font-awesome-icon
+                        icon="file-signature"
+                        @click="addQuetion('Q')"
+                    />
+                </div>
                 <!-- 섹션추가 -->
                 <div><font-awesome-icon icon="file-import" /></div>
                 <!-- 이미지추가 -->
@@ -230,18 +235,25 @@
                                     <!--노랑이 끝-->
                                 </div>
                             </div>
-                            ㅇ,ㅇ?
                             <!-- Dropdown Card Example -->
                             <div class="row">
                                 <!-- Pending Requests Card Example -->
                                 <!-- 가운데 평가지 -->
 
-                                <div class="col-xl-2 col-md-6 mb-4 "></div>
-                                <div class="col-xl-8 col-md-6 mb-4 ">
+                                <div
+                                    class="col-xl-8 col-md-6 mb-4"
+                                    @click="setCurrentNo(i)"
+                                    :key="i"
+                                    v-for="(item, i) in questions"
+                                >
                                     <div
+                                        v-if="item.type == 'Q'"
                                         class="card border-left-warning shadow h-100 py-2"
                                     >
-                                        <div class="card-body">
+                                        <div
+                                            class="card-body"
+                                            :class="{ active: item.isSelected }"
+                                        >
                                             <div
                                                 class="row no-gutters align-items-center"
                                             >
@@ -250,7 +262,13 @@
                                                         class="text-lg font-weight-bold text-warning text-uppercase mb-1"
                                                     >
                                                         <div>
-                                                            {{ eval_order }}
+                                                            <input
+                                                                type="text"
+                                                                style="width:100%;"
+                                                                v-model="
+                                                                    item.content
+                                                                "
+                                                            />
                                                         </div>
                                                         <i
                                                             class="fas fa-trash-alt"
@@ -351,9 +369,46 @@
                                         </div>
                                         <!-- Dropdown Card Example -->
                                     </div>
+                                    <div
+                                        v-else-if="item.type == 'D'"
+                                        class="card border-left-warning shadow h-100 py-2"
+                                    >
+                                        <div
+                                            class="card-body"
+                                            :class="{ active: item.isSelected }"
+                                        >
+                                            <div
+                                                class="row no-gutters align-items-center"
+                                            >
+                                                <div class="col mr-2">
+                                                    <div
+                                                        class="text-lg font-weight-bold text-warning text-uppercase mb-1"
+                                                    >
+                                                        <div>
+                                                            설명
+                                                        </div>
+                                                        <i
+                                                            class="fas fa-trash-alt"
+                                                        ></i>
+                                                    </div>
+                                                    <hr />
+                                                    <div
+                                                        class="h5 mb-0 font-weight-bold text-gray-800 m-5"
+                                                    >
+                                                        {{ item.content }}
+                                                    </div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <!-- <i
+                                                        class="fas fa-comments fa-2x text-gray-300"
+                                                    ></i> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Dropdown Card Example -->
+                                    </div>
                                     <!--노랑이 끝-->
                                 </div>
-                                ㅇ,ㅇ?
                             </div>
                             <!-- Dropdown Card Example -->
                         </div>
@@ -441,7 +496,30 @@ export default {
             // modal1: false
             studentName: ['장태진', '태진장', '태진태', '진태진', '태진태진'],
             students: [],
-            checkedStudents: []
+            checkedStudents: [],
+            questions: [
+                {
+                    type: 'Q',
+                    content: '강사 속도는 적절했나요?',
+                    isSelected: false
+                },
+                {
+                    type: 'D',
+                    content: '다음은 강사에 대한 평가 질문입니다.',
+                    isSelected: false
+                },
+                {
+                    type: 'Q',
+                    content: '강사의 교수법은 적절했나요?',
+                    isSelected: false
+                },
+                {
+                    type: 'Q',
+                    content: '강사는 적절한 예제를 제시했나요?',
+                    isSelected: false
+                }
+            ],
+            selectedIndex: -1
         }
     },
     setup() {},
@@ -474,6 +552,20 @@ export default {
             })
 
             console.log(r)
+        },
+        setCurrentNo(idx) {
+            this.selectedIndex = idx
+            this.questions.forEach(item => {
+                item.isSelected = false
+            })
+            this.questions[idx].isSelected = true
+            console.log(this.questions[idx])
+        },
+        addQuetion(type) {
+            this.questions.splice(this.selectedIndex + 1, 0, {
+                type: type,
+                content: ''
+            })
         }
     }
 }
@@ -519,5 +611,9 @@ div {
 }
 .menu-toggle:hover {
     background: #343a40;
+}
+
+.active {
+    border: 2px solid red;
 }
 </style>
