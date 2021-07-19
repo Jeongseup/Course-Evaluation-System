@@ -14,9 +14,41 @@ import './css/sb-admin-2.min.css'
 
 // fontawesome
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
+import {
+    faUserSecret,
+    faLaughWink,
+    faHome,
+    faChalkboardTeacher,
+    faEdit,
+    faListAlt,
+    faEnvelope,
+    faUserTie,
+    faUserEdit,
+    faBookReader,
+    faFileSignature,
+    faFileImport,
+    faImages,
+    faSave,
+    faAngleUp
+} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-library.add(faUserSecret)
+library.add(
+    faUserSecret,
+    faLaughWink,
+    faHome,
+    faChalkboardTeacher,
+    faEdit,
+    faListAlt,
+    faEnvelope,
+    faUserTie,
+    faUserEdit,
+    faBookReader,
+    faFileSignature,
+    faFileImport,
+    faImages,
+    faSave,
+    faAngleUp
+)
 
 const app = createApp(App)
 

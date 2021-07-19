@@ -1,6 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import TemplateSide from '../views/TemplateSide.vue'
+
+import Side from '../views/Side.vue'
+import QuestionTable from '../views/QuestionTable.vue'
+import ClassTable from '../views/ClassTable.vue'
+import EvalTable from '../views/EvalTable.vue'
+import Login from '../views/Login.vue'
 import GetDatabaseData from '../views/GetDatabaseData.vue'
 import GetMockserverData from '../views/GetMockserverData.vue'
 
@@ -21,9 +27,44 @@ const routes = [
         component: GetMockserverData
     },
     {
+        path: '/dbtest',
+        name: 'GetDatabaseData',
+        component: GetDatabaseData
+    },
+    {
+        path: '/mocktest',
+        name: 'GetMockserverData',
+        component: GetMockserverData
+    },
+    {
+        path: '/side',
+        name: 'Side',
+        component: Side
+    },
+    {
+        path: '/questiontable',
+        name: 'QuestionTable',
+        component: QuestionTable
+    },
+    {
         path: '/',
         name: 'Home',
         component: Home
+    },
+    {
+        path: '/classtable',
+        name: 'ClassTable',
+        component: ClassTable
+    },
+    {
+        path: '/evaltable',
+        name: 'EvalTable',
+        component: EvalTable
+    },
+    {
+        path: '/login',
+        name: 'Login',
+        component: Login
     },
     {
         path: '/about',

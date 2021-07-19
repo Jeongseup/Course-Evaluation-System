@@ -1,6 +1,10 @@
 <template>
     <div id="nav">
         <font-awesome-icon icon="user-secret" />
+    </div>
+
+    <div id="nav">
+        <font-awesome-icon icon="user-secret" />
         <router-link to="/"> Home</router-link> |
         <font-awesome-icon icon="user-secret" />
         <router-link to="/sidetest"> Template Test Page</router-link> |

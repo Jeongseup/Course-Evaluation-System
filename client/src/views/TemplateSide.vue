@@ -1,11 +1,8 @@
 <template>
     <div>
-        <div>
-            왜 여기서는 폰트 적용이 안되지?
-        </div>
-        <body id="page-top">
+        <body>
             <!-- Page Wrapper -->
-            <div id="wrapper">
+            <div class="wrapper">
                 <!-- Sidebar -->
                 <ul
                     class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
@@ -575,3 +572,18 @@ export default {
     methods: {}
 }
 </script>
+<style scoped>
+.wrapper {
+    display: flex;
+}
+
+.wrapper #content-wrapper {
+    background-color: #f8f9fc;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.wrapper #content-wrapper #content {
+    flex: 1 0 auto;
+}
+</style>
