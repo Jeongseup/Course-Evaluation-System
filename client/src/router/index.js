@@ -1,16 +1,28 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+
 import TemplateSide from '../views/TemplateSide.vue'
 
-import Side from '../views/Side.vue'
 import QuestionTable from '../views/QuestionTable.vue'
 import ClassTable from '../views/ClassTable.vue'
 import EvalTable from '../views/EvalTable.vue'
 import Login from '../views/Login.vue'
 import GetDatabaseData from '../views/GetDatabaseData.vue'
 import GetMockserverData from '../views/GetMockserverData.vue'
+import List from '../views/List.vue'
+import Test from '../views/Test.vue'
 
 const routes = [
+    {
+        path: '/test',
+        name: 'Test',
+        component: Test
+    },
+    {
+        path: '/list',
+        name: 'List',
+        component: List
+    },
     {
         path: '/sidetest',
         name: 'TemplateSide',
@@ -36,11 +48,7 @@ const routes = [
         name: 'GetMockserverData',
         component: GetMockserverData
     },
-    {
-        path: '/side',
-        name: 'Side',
-        component: Side
-    },
+
     {
         path: '/questiontable',
         name: 'QuestionTable',

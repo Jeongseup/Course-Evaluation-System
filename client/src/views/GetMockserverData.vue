@@ -22,7 +22,8 @@ export default {
         return {
             evaluationPaperList: [],
             url:
-                'https://021382de-6838-47cd-b6bb-3b0fc09fa7c4.mock.pstmn.io/getEvaluationPaperList'
+                // 'https://021382de-6838-47cd-b6bb-3b0fc09fa7c4.mock.pstmn.io/getEvaluationPaperList'
+                'https://ca6ec645-a4d6-4572-82a1-6768e39df010.mock.pstmn.io/getEvaluationPaperList'
         }
     },
     setup() {},
