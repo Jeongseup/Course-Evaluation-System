@@ -82,8 +82,8 @@
                                                                 <div
                                                                     class="col-xl-3 col-md-6 mb-4"
                                                                     :key="i"
-                                                                    v-for="(a,
-                                                                    i) in studentName"
+                                                                    v-for="(student,
+                                                                    i) in students"
                                                                 >
                                                                     <div
                                                                         class="card border-left-primary shadow h-100 py-2"
@@ -106,11 +106,16 @@
                                                                                         class="h5 mb-0 font-weight-bold text-gray-800"
                                                                                     >
                                                                                         {{
-                                                                                            a
+                                                                                            student.name
                                                                                         }}
                                                                                         <input
                                                                                             type="checkbox"
-                                                                                            checked
+                                                                                            :value="
+                                                                                                student.email
+                                                                                            "
+                                                                                            v-model="
+                                                                                                checkedStudents
+                                                                                            "
                                                                                         />
                                                                                     </div>
                                                                                 </div>
@@ -141,6 +146,7 @@
                                                 <button
                                                     type="button"
                                                     class="btn btn-primary"
+                                                    @click="sendEvalution"
                                                 >
                                                     확인
                                                 </button>
@@ -433,15 +439,42 @@ export default {
             title: '2주차 강의 평가',
             modal2: false,
             // modal1: false
-            studentName: ['장태진', '태진장', '태진태', '진태진', '태진태진']
+            studentName: ['장태진', '태진장', '태진태', '진태진', '태진태진'],
+            students: [],
+            checkedStudents: []
         }
     },
     setup() {},
-    created() {},
+    created() {
+        //  함수 데이터 가져오기
+        this.students = [
+            { email: 'jang@gmail.com', name: '장태진' },
+            { email: 'jang2@gmail.com', name: '태진장' },
+            { email: 'jang3@gmail.com', name: '태진태' },
+            { email: 'jang4@gmail.com', name: '진태진' },
+            { email: 'jang5@gmail.com', name: '태진태진' }
+        ]
+
+        const checkedStudents = []
+        for (const student of this.students) {
+            checkedStudents.push(student.email)
+        }
+
+        this.checkedStudents = checkedStudents
+    },
     mounted() {},
     unmounted() {},
     methods: {
         // eval_value_key -> :value="1",  :value="2"  ,:value="3"  ,:value="4"  ,:value="5"
+        async sendEvalution() {
+            console.log(this.checkedStudents)
+            //  axios.post('/api/sendEvaluation', {param: [this.checkedStudents]})
+            const r = await this.$api('/api/sendEvaluation', 'post', {
+                param: [this.checkedStudents]
+            })
+
+            console.log(r)
+        }
     }
 }
 </script>
