@@ -64,16 +64,13 @@
 </template>
 
 <script>
-import Sidebar from '@/components/layouts/Sidebar'
-export default {
-    components: { sidebar: Sidebar }
-}
+export default {}
 </script>
 
 <style>
 /* googlefont */
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+/* @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css); */
+/* @import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css); */
 
 #app {
     font-family: 'Nanum Gothic Coding', 'Nanum Gothic', Avenir, sans-serif;
