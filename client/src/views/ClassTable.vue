@@ -1,5 +1,4 @@
 <template>
-    <!-- question_table 사용 eval_key , eval_oder, eval_contents, eval_type, eval_image -->
     <div>
         <!-- 컴포넌트 -->
         <div id="page-top">
@@ -11,9 +10,10 @@
                     <div id="content">
                         <topbar />
                         <!-- 컴포넌트 끝 -->
-                        <body>
+                        안녕하세요, {{ user.name }} 님!
+                        <body id="page-top">
                             <!-- Page Wrapper -->
-                            <div>
+                            <div id="wrapper">
                                 <!-- Content Wrapper -->
                                 <div
                                     id="content-wrapper"
@@ -45,14 +45,37 @@
                                                     <div
                                                         class="card"
                                                         style="width: 18rem;"
+                                                        :key="course.course_id"
+                                                        v-for="course in courseList"
                                                     >
                                                         <div class="card-body">
                                                             <h5
                                                                 class="card-title"
                                                             >
-                                                                2021년 혁신성장
-                                                                블록체인반
+                                                                {{
+                                                                    course.name
+                                                                }}
                                                             </h5>
+                                                            <h6>
+                                                                기간 :
+                                                                {{
+                                                                    course.start_date
+                                                                }}
+                                                                ~
+                                                                {{
+                                                                    course.end_date
+                                                                }}
+                                                                <br />
+                                                                장소 :
+                                                                {{
+                                                                    course.place
+                                                                }}
+                                                                <br />
+                                                                설명 :
+                                                                {{
+                                                                    course.information
+                                                                }}
+                                                            </h6>
                                                             <div
                                                                 class="d-flex justify-content-between align-items-center"
                                                             >
@@ -63,17 +86,14 @@
                                                                     <button
                                                                         type="button"
                                                                         class="btn  btn-sm btn-dark"
+                                                                        style="[text-decoration: none; color:white;]"
+                                                                        @click="
+                                                                            goToCourse(
+                                                                                course.course_id
+                                                                            )
+                                                                        "
                                                                     >
-                                                                        <router-link
-                                                                            to="/evaltable"
-                                                                            style="text-decoration: none;"
-                                                                        >
-                                                                            <p
-                                                                                style="color:white;"
-                                                                            >
-                                                                                들어가기
-                                                                            </p>
-                                                                        </router-link>
+                                                                        들어가기
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -107,13 +127,34 @@ export default {
     components: { sidebar: Sidebar, topbar: Topbar },
     data() {
         return {
-            sampleData: ''
+            courseList: []
+        }
+    },
+    computed: {
+        user() {
+            return this.$store.state.user
         }
     },
     setup() {},
-    created() {},
+    created() {
+        this.getCourseList()
+    },
     mounted() {},
     unmounted() {},
-    methods: {}
+    methods: {
+        async getCourseList() {
+            this.courseList = await this.$api('/api/courseList', 'post', {
+                param: [this.user.email]
+            })
+
+            console.log(this.courseList)
+        },
+        goToCourse(courseId) {
+            this.$router.push({
+                path: '/evaltable',
+                query: { courseId: courseId }
+            })
+        }
+    }
 }
 </script>

@@ -80,19 +80,33 @@ export default {
             user_pw: ''
         }
     },
+    computed: {
+        user() {
+            return this.$store.state.user
+        }
+    },
     setup() {},
     created() {},
     mounted() {},
     unmounted() {},
     methods: {
         onSubmit() {
-            console.log(this.user_email)
-            console.log(this.user_pw)
+            var oUser = {}
+
+            oUser.email = this.user_email
+            oUser.user_pw = this.user_pw
+            oUser.name = '한경닷컴'
+
+            // 유저 확인
+            console.log(oUser)
+            this.$store.commit('user', oUser)
+
+            // 페이지 이동
             this.goToPage()
         },
         goToPage() {
             this.$router.push({
-                name: 'Home'
+                path: '/list'
             })
         }
     }

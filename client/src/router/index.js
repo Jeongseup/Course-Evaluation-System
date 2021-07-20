@@ -6,8 +6,7 @@ import AnswerTable from '../views/AnswerTable.vue'
 import ClassTable from '../views/ClassTable.vue'
 import EvalTable from '../views/EvalTable.vue'
 import Login from '../views/Login.vue'
-import GetDatabaseData from '../views/GetDatabaseData.vue'
-import GetMockserverData from '../views/GetMockserverData.vue'
+
 import List from '../views/List.vue'
 
 const routes = [
@@ -20,26 +19,6 @@ const routes = [
         path: '/sidetest',
         name: 'TemplateSide',
         component: TemplateSide
-    },
-    {
-        path: '/dbtest',
-        name: 'GetDatabaseData',
-        component: GetDatabaseData
-    },
-    {
-        path: '/mocktest',
-        name: 'GetMockserverData',
-        component: GetMockserverData
-    },
-    {
-        path: '/dbtest',
-        name: 'GetDatabaseData',
-        component: GetDatabaseData
-    },
-    {
-        path: '/mocktest',
-        name: 'GetMockserverData',
-        component: GetMockserverData
     },
 
     {
