@@ -8,8 +8,14 @@ import EvalTable from '../views/EvalTable.vue'
 import Login from '../views/Login.vue'
 
 import List from '../views/List.vue'
+import select from '../views/select.vue'
 
 const routes = [
+    {
+        path: '/select',
+        name: 'select',
+        component: select
+    },
     {
         path: '/list',
         name: 'List',
