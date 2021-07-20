@@ -19,42 +19,52 @@
                                                     <select
                                                         class="form-select m-3"
                                                         aria-label="Default select example"
+                                                        v-model="courseId"
+                                                        @click="
+                                                            getClassList(
+                                                                courseId
+                                                            )
+                                                        "
                                                     >
-                                                        <!-- eval_table -> class_key  -->
-                                                        <option selected
-                                                            >2021년 혁신성장
-                                                            블록체인반</option
+                                                        <option
+                                                            :key="i"
+                                                            :value="
+                                                                item.course_id
+                                                            "
+                                                            v-for="(item,
+                                                            i) in courseList"
                                                         >
-                                                        <option value="1"
-                                                            >2021년 혁신성장
-                                                            빅데이터반</option
-                                                        >
-                                                        <option value="2"
-                                                            >2021년 혁신성장
-                                                            VR기술반</option
-                                                        >
-                                                        <div>
-                                                            여기는 해당과정
-                                                            설명하는 곳입니다.
-                                                            블록체인 기술을
-                                                            이용한 .... 개발자
-                                                            양성을 위한
-                                                            프로젝트입니다.
-                                                        </div>
+                                                            현재 선택된 과정은
+                                                            {{ item.name }}
+                                                            입니다.
+                                                        </option>
                                                     </select>
 
                                                     <!-- eval_table -> eval_status  -->
                                                     <div
                                                         class="card m-3"
                                                         style="width: 18rem;"
+                                                        :key="i"
+                                                        v-for="(item,
+                                                        i) in classList"
                                                     >
-                                                        <div class="card-body">
+                                                        <div
+                                                            v-if="
+                                                                item.eval_status_id ==
+                                                                    1
+                                                            "
+                                                            class="card-body"
+                                                        >
                                                             <h5
                                                                 class="card-title"
                                                             >
-                                                                HTML
-                                                                <br />고승원
-                                                                강사
+                                                                강의명 :
+                                                                {{ item.name }}
+                                                                <br />
+                                                                강사명 :
+                                                                {{
+                                                                    item.teacher_name
+                                                                }}
                                                             </h5>
                                                             <div
                                                                 class="d-flex justify-content-between align-items-center"
@@ -66,35 +76,37 @@
                                                                     <button
                                                                         type="button"
                                                                         class="btn btn-success btn-lg"
+                                                                        style="[color:white; text-decoration:none; width:250px;]"
+                                                                        @click="
+                                                                            goToEvalCreatePage(
+                                                                                item.class_id
+                                                                            )
+                                                                        "
                                                                     >
-                                                                        <router-link
-                                                                            to="/questiontable"
-                                                                            style="text-decoration: none;"
-                                                                        >
-                                                                            <p
-                                                                                style="color:white;"
-                                                                            >
-                                                                                강의
-                                                                                평가지
-                                                                                생성
-                                                                            </p>
-                                                                        </router-link>
+                                                                        {{
+                                                                            item.eval_status_name
+                                                                        }}
                                                                     </button>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div
-                                                        class="card m-3"
-                                                        style="width: 18rem;"
-                                                    >
-                                                        <div class="card-body">
+                                                        <div
+                                                            v-else-if="
+                                                                item.eval_status_id ==
+                                                                    2
+                                                            "
+                                                            class="card-body"
+                                                        >
                                                             <h5
                                                                 class="card-title"
                                                             >
-                                                                HTML
-                                                                <br />고승원
-                                                                강사
+                                                                강의명 :
+                                                                {{ item.name }}
+                                                                <br />
+                                                                강사명 :
+                                                                {{
+                                                                    item.teacher_name
+                                                                }}
                                                             </h5>
                                                             <div
                                                                 class="d-flex justify-content-between align-items-center"
@@ -106,35 +118,37 @@
                                                                     <button
                                                                         type="button"
                                                                         class="btn btn-info btn-lg"
+                                                                        style="[color:white; text-decoration:none; width:250px;]"
+                                                                        @click="
+                                                                            goToEvalCreatePage(
+                                                                                item.class_id
+                                                                            )
+                                                                        "
                                                                     >
-                                                                        <router-link
-                                                                            to="/questiontable"
-                                                                            style="text-decoration: none;"
-                                                                        >
-                                                                            <p
-                                                                                style="color:white;"
-                                                                            >
-                                                                                강의
-                                                                                평가지
-                                                                                수정
-                                                                            </p>
-                                                                        </router-link>
+                                                                        {{
+                                                                            item.eval_status_name
+                                                                        }}
                                                                     </button>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div
-                                                        class="card m-3"
-                                                        style="width: 18rem;"
-                                                    >
-                                                        <div class="card-body">
+                                                        <div
+                                                            v-else-if="
+                                                                item.eval_status_id ==
+                                                                    3
+                                                            "
+                                                            class="card-body"
+                                                        >
                                                             <h5
                                                                 class="card-title"
                                                             >
-                                                                HTML
-                                                                <br />고승원
-                                                                강사
+                                                                강의명 :
+                                                                {{ item.name }}
+                                                                <br />
+                                                                강사명 :
+                                                                {{
+                                                                    item.teacher_name
+                                                                }}
                                                             </h5>
                                                             <div
                                                                 class="d-flex justify-content-between align-items-center"
@@ -146,32 +160,34 @@
                                                                     <button
                                                                         type="button"
                                                                         class="btn btn-danger btn-lg"
-                                                                        disabled="disabled"
+                                                                        style="[color:white; text-decoration:none; width:250px;]"
+                                                                        @click="
+                                                                            goToEvalCreatePage(
+                                                                                item.class_id
+                                                                            )
+                                                                        "
                                                                     >
-                                                                        <p
-                                                                            style="color:white;"
-                                                                        >
-                                                                            강의
-                                                                            평가지
-                                                                            진행중
-                                                                        </p>
+                                                                        {{
+                                                                            item.eval_status_name
+                                                                        }}
                                                                     </button>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <!-- eval_table -> eval_status  -->
-                                                    <div
-                                                        class="card m-3"
-                                                        style="width: 18rem;"
-                                                    >
-                                                        <div class="card-body">
+                                                        <div
+                                                            v-else
+                                                            class="card-body"
+                                                        >
                                                             <h5
                                                                 class="card-title"
                                                             >
-                                                                JavaScript
-                                                                <br />고승원
-                                                                강사
+                                                                강의명 :
+                                                                {{ item.name }}
+                                                                <br />
+                                                                강사명 :
+                                                                {{
+                                                                    item.teacher_name
+                                                                }}
                                                             </h5>
                                                             <div
                                                                 class="d-flex justify-content-between align-items-center"
@@ -183,18 +199,16 @@
                                                                     <button
                                                                         type="button"
                                                                         class="btn btn-primary btn-lg"
+                                                                        style="[color:white; text-decoration:none; width:250px;]"
+                                                                        @click="
+                                                                            goToEvalCreatePage(
+                                                                                item.class_id
+                                                                            )
+                                                                        "
                                                                     >
-                                                                        <router-link
-                                                                            to="/test"
-                                                                            style="text-decoration: none;"
-                                                                        >
-                                                                            <p
-                                                                                style="color:white;"
-                                                                            >
-                                                                                결과
-                                                                                조회
-                                                                            </p>
-                                                                        </router-link>
+                                                                        {{
+                                                                            item.eval_status_name
+                                                                        }}
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -208,9 +222,6 @@
                             </div>
                         </div>
                     </div>
-
-                    End of Main Content
-
                     <!-- Footer -->
                     <footer class="sticky-footer bg-white">
                         <div class="container my-auto">
@@ -229,50 +240,6 @@
             <a class="scroll-to-top rounded" href="#page-top">
                 <i class="fas fa-angle-up"></i>
             </a>
-
-            <!-- Logout Modal-->
-            <div
-                class="modal fade"
-                id="logoutModal"
-                tabindex="-1"
-                role="dialog"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-            >
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">
-                                Ready to Leave?
-                            </h5>
-                            <button
-                                class="close"
-                                type="button"
-                                data-dismiss="modal"
-                                aria-label="Close"
-                            >
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            Select "Logout" below if you are ready to end your
-                            current session.
-                        </div>
-                        <div class="modal-footer">
-                            <button
-                                class="btn btn-secondary"
-                                type="button"
-                                data-dismiss="modal"
-                            >
-                                Cancel
-                            </button>
-                            <a class="btn btn-primary" href="login.html"
-                                >Logout</a
-                            >
-                        </div>
-                    </div>
-                </div>
-            </div>
         </body>
     </div>
 </template>
@@ -282,13 +249,42 @@ export default {
     components: {},
     data() {
         return {
-            sampleData: ''
+            courseId: null,
+            courseList: [],
+            classList: []
+        }
+    },
+    computed: {
+        user() {
+            return this.$store.state.user
         }
     },
     setup() {},
-    created() {},
+    created() {
+        this.courseId = this.$route.query.courseId
+        // console.log(this.courseId)
+        this.getCourseList()
+        this.getClassList()
+    },
     mounted() {},
     unmounted() {},
-    methods: {}
+    methods: {
+        async getCourseList() {
+            this.courseList = await this.$api('/api/courseList', 'post', {
+                param: [this.user.email]
+            })
+        },
+        async getClassList() {
+            this.classList = await this.$api('/api/classList', 'post', {
+                param: [this.courseId]
+            })
+        },
+        goToEvalCreatePage(classId) {
+            this.$router.push({
+                path: '/questiontable',
+                query: { classId: classId, courseId: this.courseId }
+            })
+        }
+    }
 }
 </script>

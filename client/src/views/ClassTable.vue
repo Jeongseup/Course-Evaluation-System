@@ -1,6 +1,6 @@
 <template>
-    <!-- question_table 사용 eval_key , eval_oder, eval_contents, eval_type, eval_image -->
     <div>
+        안녕하세요, {{ user.name }} 님!
         <body id="page-top">
             <!-- Page Wrapper -->
             <div id="wrapper">
@@ -26,11 +26,23 @@
                                     </div>
 
                                     <!-- 과정추가_card -->
-                                    <div class="card" style="width: 18rem;">
+                                    <div
+                                        class="card"
+                                        style="width: 18rem;"
+                                        :key="course.course_id"
+                                        v-for="course in courseList"
+                                    >
                                         <div class="card-body">
                                             <h5 class="card-title">
-                                                2021년 혁신성장 블록체인반
+                                                {{ course.name }}
                                             </h5>
+                                            <h6>
+                                                기간 : {{ course.start_date }} ~
+                                                {{ course.end_date }} <br />
+                                                장소 : {{ course.place }} <br />
+                                                설명 :
+                                                {{ course.information }}
+                                            </h6>
                                             <div
                                                 class="d-flex justify-content-between align-items-center"
                                             >
@@ -41,17 +53,14 @@
                                                     <button
                                                         type="button"
                                                         class="btn  btn-sm btn-dark"
+                                                        style="[text-decoration: none; color:white;]"
+                                                        @click="
+                                                            goToCourse(
+                                                                course.course_id
+                                                            )
+                                                        "
                                                     >
-                                                        <router-link
-                                                            to="/evaltable"
-                                                            style="text-decoration: none;"
-                                                        >
-                                                            <p
-                                                                style="color:white;"
-                                                            >
-                                                                들어가기
-                                                            </p>
-                                                        </router-link>
+                                                        들어가기
                                                     </button>
                                                 </div>
                                             </div>
@@ -83,49 +92,7 @@
                 <i class="fas fa-angle-up"></i>
             </a>
 
-            <!-- Logout Modal-->
-            <div
-                class="modal fade"
-                id="logoutModal"
-                tabindex="-1"
-                role="dialog"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-            >
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">
-                                Ready to Leave?
-                            </h5>
-                            <button
-                                class="close"
-                                type="button"
-                                data-dismiss="modal"
-                                aria-label="Close"
-                            >
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            Select "Logout" below if you are ready to end your
-                            current session.
-                        </div>
-                        <div class="modal-footer">
-                            <button
-                                class="btn btn-secondary"
-                                type="button"
-                                data-dismiss="modal"
-                            >
-                                Cancel
-                            </button>
-                            <a class="btn btn-primary" href="login.html"
-                                >Logout</a
-                            >
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- Logout Modal -->
         </body>
     </div>
 </template>
@@ -136,13 +103,34 @@ export default {
     components: {},
     data() {
         return {
-            sampleData: ''
+            courseList: []
+        }
+    },
+    computed: {
+        user() {
+            return this.$store.state.user
         }
     },
     setup() {},
-    created() {},
+    created() {
+        this.getCourseList()
+    },
     mounted() {},
     unmounted() {},
-    methods: {}
+    methods: {
+        async getCourseList() {
+            this.courseList = await this.$api('/api/courseList', 'post', {
+                param: [this.user.email]
+            })
+
+            console.log(this.courseList)
+        },
+        goToCourse(courseId) {
+            this.$router.push({
+                path: '/evaltable',
+                query: { courseId: courseId }
+            })
+        }
+    }
 }
 </script>

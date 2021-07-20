@@ -1,490 +1,429 @@
 <template>
-    <!-- question_table 사용 eval_key , eval_oder, eval_contents, eval_type, eval_image -->
     <div>
-        <body id="page-top">
-            <!-- body 바로 아래에 추가 스티커 -->
-            <div class="menu-toggle rounded">
-                <!-- 질문추가 -->
-                <div>
-                    <font-awesome-icon
-                        icon="file-signature"
-                        @click="addQuetion('Q')"
-                    />
-                </div>
-                <!-- 섹션추가 -->
-                <div><font-awesome-icon icon="file-import" /></div>
-                <!-- 이미지추가 -->
-                <!-- <div><font-awesome-icon icon="images" /></div> -->
-                <div style="clear: none">
-                    <div @click="$refs.file.click()">
-                        <font-awesome-icon icon="images" />
-                    </div>
-                    <input
-                        type="file"
-                        @change="fileSelect"
-                        ref="file"
-                        style="display: none"
-                        accept=".jpg, .png"
-                    />
-                </div>
-
-                <!-- 저장 -->
-                <div>
-                    <font-awesome-icon icon="save" @click="saveQuestion" />
-                </div>
+        <div class="menu-toggle rounded">
+            <!-- 질문추가 -->
+            <div>
+                <font-awesome-icon
+                    icon="file-signature"
+                    @click="addQuestion('Q')"
+                />
             </div>
-            <!-- 스티커 끝 -->
+            <!-- 섹션추가 -->
+            <div>
+                <font-awesome-icon
+                    icon="file-import"
+                    @click="addDescription('D')"
+                />
+            </div>
+            <!-- 이미지추가 -->
+            <div><font-awesome-icon icon="images" /></div>
+            <!-- 저장 -->
+            <div>
+                <font-awesome-icon icon="save" @click="saveEvaluationPaper" />
+            </div>
+            <div><font-awesome-icon icon="file-import" /></div>
+            <!-- 이미지추가 -->
+            <!-- <div><font-awesome-icon icon="images" /></div> -->
+            <!-- <div style="clear: none"> -->
+            <!-- <div @click="$refs.file.click()"> -->
+            <!-- <font-awesome-icon icon="images" /> -->
+            <!-- </div> -->
+            <!-- <input -->
+            <!-- type="file" -->
+            <!-- @change="fileSelect" -->
+            <!-- ref="file" -->
+            <!-- style="display: none" -->
+            <!-- accept=".jpg, .png" -->
+            <!-- /> -->
+            <!-- </div> -->
+        </div>
+        <!-- 스티커 끝 -->
 
-            <!-- Page Wrapper -->
-            <div id="wrapper">
-                <!-- Sidebar -->
+        <!-- Page Wrapper -->
+        <div id="wrapper">
+            <!-- Sidebar -->
 
-                <!-- End of Sidebar -->
+            <!-- End of Sidebar -->
 
-                <!-- Content Wrapper -->
-                <div id="content-wrapper" class="d-flex flex-column">
-                    <!-- Main Content -->
-                    <div id="content">
-                        <div class="card-header py-3">
-                            <div style="margin:30px;">
-                                <!-- Button trigger modal -->
-                                <button
-                                    href="#"
-                                    type="button"
-                                    class="btn btn-warning btn-icon-split  btn float-right"
-                                    data-toggle="modal"
-                                    data-target="#staticBackdrop"
-                                >
-                                    완료 및 전송
-                                </button>
-                                <!-- Modal -->
-                                <div
-                                    class="modal fade"
-                                    id="staticBackdrop"
-                                    data-backdrop="static"
-                                    tabindex="-1"
-                                    role="dialog"
-                                    aria-labelledby="staticBackdropLabel"
-                                    aria-hidden="true"
-                                >
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5
-                                                    class="modal-title"
-                                                    id="staticBackdropLabel"
+            <!-- Content Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column">
+                <!-- Main Content -->
+                <div id="content">
+                    <div class="card-header py-3">
+                        <div style="margin:30px;">
+                            <!-- Button trigger modal -->
+                            <button
+                                href="#"
+                                type="button"
+                                class="btn btn-warning btn-icon-split  btn float-right"
+                                data-toggle="modal"
+                                data-target="#staticBackdrop"
+                            >
+                                완료 및 전송
+                            </button>
+                            <!-- Modal -->
+                            <div
+                                class="modal fade"
+                                id="staticBackdrop"
+                                data-backdrop="static"
+                                tabindex="-1"
+                                role="dialog"
+                                aria-labelledby="staticBackdropLabel"
+                                aria-hidden="true"
+                            >
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5
+                                                class="modal-title"
+                                                id="staticBackdropLabel"
+                                            >
+                                                수강생 선택
+                                            </h5>
+                                            <button
+                                                type="button"
+                                                class="close"
+                                                data-dismiss="modal"
+                                                aria-label="Close"
+                                            >
+                                                <span aria-hidden="true"
+                                                    >&times;</span
                                                 >
-                                                    수강생 선택
-                                                </h5>
-                                                <button
-                                                    type="button"
-                                                    class="close"
-                                                    data-dismiss="modal"
-                                                    aria-label="Close"
-                                                >
-                                                    <span aria-hidden="true"
-                                                        >&times;</span
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <!-- 수강생들이 들어갈 공간 -->
+                                            <div class="card shadow mb-4">
+                                                <div class="card-header py-3">
+                                                    <h6
+                                                        class="m-0 font-weight-bold text-primary"
                                                     >
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <!-- 수강생들이 들어갈 공간 -->
-                                                <div class="card shadow mb-4">
-                                                    <div
-                                                        class="card-header py-3"
-                                                    >
-                                                        <h6
-                                                            class="m-0 font-weight-bold text-primary"
-                                                        >
-                                                            <!-- 우측으로 생성 -->
-                                                            <div class="row">
-                                                                <!-- 수강생 -->
+                                                        <!-- 우측으로 생성 -->
+                                                        <div class="row">
+                                                            <!-- 수강생 -->
+                                                            <div
+                                                                class="col-xl-3 col-md-6 mb-4"
+                                                                :key="i"
+                                                                v-for="(student,
+                                                                i) in students"
+                                                            >
                                                                 <div
-                                                                    class="col-xl-3 col-md-6 mb-4"
-                                                                    :key="i"
-                                                                    v-for="(student,
-                                                                    i) in students"
+                                                                    class="card border-left-primary shadow h-100 py-2"
                                                                 >
                                                                     <div
-                                                                        class="card border-left-primary shadow h-100 py-2"
+                                                                        class="card-body"
                                                                     >
                                                                         <div
-                                                                            class="card-body"
+                                                                            class="row no-gutters align-items-center"
                                                                         >
                                                                             <div
-                                                                                class="row no-gutters align-items-center"
+                                                                                class="col mr-2"
                                                                             >
                                                                                 <div
-                                                                                    class="col mr-2"
+                                                                                    class="text-xs font-weight-bold text-primary text-uppercase mb-1"
                                                                                 >
-                                                                                    <div
-                                                                                        class="text-xs font-weight-bold text-primary text-uppercase mb-1"
-                                                                                    >
-                                                                                        수강생
-                                                                                    </div>
-                                                                                    <div
-                                                                                        class="h5 mb-0 font-weight-bold text-gray-800"
-                                                                                    >
-                                                                                        {{
-                                                                                            student.name
-                                                                                        }}
-                                                                                        <input
-                                                                                            type="checkbox"
-                                                                                            :value="
-                                                                                                student.email
-                                                                                            "
-                                                                                            v-model="
-                                                                                                checkedStudents
-                                                                                            "
-                                                                                        />
-                                                                                    </div>
+                                                                                    수강생
                                                                                 </div>
                                                                                 <div
-                                                                                    class="col-auto"
+                                                                                    class="h5 mb-0 font-weight-bold text-gray-800"
                                                                                 >
-                                                                                    <i
-                                                                                        class="fas fa-user-edit fa-2x text-gray-300"
-                                                                                    ></i>
+                                                                                    {{
+                                                                                        student.name
+                                                                                    }}
+                                                                                    <input
+                                                                                        type="checkbox"
+                                                                                        :value="
+                                                                                            student.user_email
+                                                                                        "
+                                                                                        v-model="
+                                                                                            checkedStudents
+                                                                                        "
+                                                                                    />
                                                                                 </div>
+                                                                            </div>
+                                                                            <div
+                                                                                class="col-auto"
+                                                                            >
+                                                                                <i
+                                                                                    class="fas fa-user-edit fa-2x text-gray-300"
+                                                                                ></i>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </h6>
-                                                    </div>
+                                                        </div>
+                                                    </h6>
                                                 </div>
                                             </div>
-                                            <div class="modal-footer">
-                                                <button
-                                                    type="button"
-                                                    class="btn btn-secondary"
-                                                    data-dismiss="modal"
-                                                >
-                                                    닫기
-                                                </button>
-                                                <button
-                                                    type="button"
-                                                    class="btn btn-primary"
-                                                    @click="sendEvalution"
-                                                >
-                                                    확인
-                                                </button>
-                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button
+                                                type="button"
+                                                class="btn btn-secondary"
+                                                data-dismiss="modal"
+                                            >
+                                                닫기
+                                            </button>
+                                            <button
+                                                type="button"
+                                                class="btn btn-primary"
+                                                @click="sendEvalution"
+                                            >
+                                                확인
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!--class_table, course_table이용하여, 강좌명 class_name / course_name /class_teacher_key / start_date and end_date-->
-                            <div style="margin:5px;">
-                                강좌명: {{ course_name }}
-                            </div>
-                            <div style="margin:5px;">
-                                수업명: {{ class_name }}
-                            </div>
-                            <div style="margin:5px;">
-                                강사명: {{ class_teacher_key }}
-                            </div>
-                            <div style="margin:10px;">
-                                설문 응답 종료 일 :
-                                <input type="date" />
-                            </div>
+                        </div>
 
-                            <!-- Illustrations -->
+                        <div style="margin:5px;">
+                            강좌명: {{ classInfo[0].course_name }}
+                        </div>
+                        <div style="margin:5px;">
+                            수업명: {{ classInfo[0].name }}
+                        </div>
+                        <div style="margin:5px;">
+                            강사명: {{ classInfo[0].teacher_name }}
+                        </div>
+                        <div style="margin:10px;">
+                            설문 응답 종료 일 :
+                            <input type="date" v-model="evalEndtime" />
+                        </div>
+
+                        <!-- Illustrations -->
+                        <!-- <div class="row" :key="i" v-for="(img, i) in imageList" > -->
+                        <div class="col-xl-2"></div>
+                        <div class="col-xl-8 col-md-6 mb-4 ">
                             <div
-                                class="row"
-                                :key="i"
-                                v-for="(img, i) in imageList"
+                                class="card border-left-warning shadow h-100 py-2"
                             >
-                                <div class="col-xl-2"></div>
-                                <div class="col-xl-8 col-md-6 mb-4 ">
+                                <div class="card-body">
                                     <div
-                                        class="card border-left-warning shadow h-100 py-2"
+                                        class="row no-gutters align-items-center"
                                     >
-                                        <div class="card-body">
+                                        <div class="col mr-2">
                                             <div
-                                                class="row no-gutters align-items-center"
+                                                class="text-lg font-weight-bold text-warning text-uppercase mb-1 text-center"
                                             >
-                                                <div class="col mr-2">
-                                                    <div
-                                                        class="text-lg font-weight-bold text-warning text-uppercase mb-1 text-center"
-                                                    >
-                                                        <ul class="img-items">
-                                                            <li>
-                                                                <div
-                                                                    style="position: relative"
-                                                                >
-                                                                    <img
-                                                                        :src="
-                                                                            img.src
-                                                                        "
-                                                                        style="height: auto; width: 800px;"
-                                                                    />
-                                                                    <span
-                                                                        class="del-mark"
-                                                                        @click="
-                                                                            deleteImg(
-                                                                                i
-                                                                            )
-                                                                        "
-                                                                        >X</span
-                                                                    >
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                        <!-- <div style="width:50%; height:100px;">
-                                        <img src="./img/sky.jpg" alt="..." />
-                                    </div> -->
-                                                        <!-- </div> -->
-                                                    </div>
+                                                <div>
+                                                    <h3>
+                                                        <input
+                                                            type="text"
+                                                            style="width: 100%;"
+                                                            placeholder="해당 섹션의 제목을 적어주세요"
+                                                            v-model="evalTitle"
+                                                        />
+                                                    </h3>
                                                 </div>
                                             </div>
+                                            <hr />
+                                            <h5>
+                                                <textarea
+                                                    name=""
+                                                    style="width: 100%"
+                                                    rows="10"
+                                                    placeholder="해당 섹션에 대한 설명을 적어주세요."
+                                                    v-model="evalDescription"
+                                                ></textarea>
+                                            </h5>
                                         </div>
+                                        <div class="col-auto"></div>
                                     </div>
                                 </div>
+                                <!-- Dropdown Card Example -->
                             </div>
-
-                            <!-- Content Row -->
-                            <div class="row">
-                                <!-- Pending Requests Card Example -->
-                                <!-- 가운데 평가지 -->
-
-                                <div class="col-xl-2"></div>
-                                <div class="col-xl-8 col-md-6 mb-4 ">
-                                    <div
-                                        class="card border-left-warning shadow h-100 py-2"
-                                    >
-                                        <div class="card-body">
-                                            <div
-                                                class="row no-gutters align-items-center"
-                                            >
-                                                <div class="col mr-2">
-                                                    <div
-                                                        class="text-lg font-weight-bold text-warning text-uppercase mb-1 text-center"
-                                                    >
-                                                        <div>
-                                                            <h3>
-                                                                <input
-                                                                    type="text"
-                                                                    style="width: 100%;"
-                                                                    placeholder="해당 섹션의 제목을 적어주세요"
-                                                                />
-                                                            </h3>
-                                                        </div>
-                                                    </div>
-                                                    <hr />
-                                                    <h5>
-                                                        <textarea
-                                                            name=""
-                                                            style="width: 100%"
-                                                            rows="10"
-                                                            placeholder="해당 섹션에 대한 설명을 적어주세요."
-                                                        ></textarea>
-                                                    </h5>
-                                                </div>
-                                                <div class="col-auto">
-                                                    <!-- <i
-                                                        class="fas fa-comments fa-2x text-gray-300"
-                                                    ></i> -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Dropdown Card Example -->
-                                    </div>
-                                    <!--노랑이 끝-->
-                                </div>
-                            </div>
-                            <!-- Dropdown Card Example -->
-                            <div class="row">
-                                <!-- Pending Requests Card Example -->
-                                <!-- 가운데 평가지 -->
-
-                                <div
-                                    class="col-xl-8 col-md-6 mb-4"
-                                    @click="setCurrentNo(i)"
-                                    :key="i"
-                                    v-for="(item, i) in questions"
-                                >
-                                    <div
-                                        v-if="item.type == 'Q'"
-                                        class="card border-left-warning shadow h-100 py-2"
-                                    >
-                                        <div
-                                            class="card-body"
-                                            :class="{ active: item.isSelected }"
-                                        >
-                                            <div
-                                                class="row no-gutters align-items-center"
-                                            >
-                                                <div class="col mr-2">
-                                                    <div
-                                                        class="text-lg font-weight-bold text-warning text-uppercase mb-1"
-                                                    >
-                                                        <div>
-                                                            <input
-                                                                type="text"
-                                                                style="width:100%;"
-                                                                v-model="
-                                                                    item.content
-                                                                "
-                                                            />
-                                                        </div>
-                                                        <i
-                                                            class="fas fa-trash-alt"
-                                                        ></i>
-                                                    </div>
-                                                    <hr />
-                                                    <div
-                                                        class="h5 mb-0 font-weight-bold text-gray-800 m-5"
-                                                    >
-                                                        <div
-                                                            class="form-check form-check-inline"
-                                                        >
-                                                            <input
-                                                                class="form-check-input"
-                                                                type="radio"
-                                                                name="inlineRadioOptions"
-                                                                id="inlineRadio1"
-                                                                :value="1"
-                                                            />
-                                                            <label
-                                                                class="form-check-label"
-                                                                for="inlineRadio1"
-                                                                >매우그렇다</label
-                                                            >
-                                                        </div>
-                                                        <div
-                                                            class="form-check form-check-inline"
-                                                        >
-                                                            <input
-                                                                class="form-check-input"
-                                                                type="radio"
-                                                                name="inlineRadioOptions"
-                                                                id="inlineRadio2"
-                                                                :value="2"
-                                                            />
-                                                            <label
-                                                                class="form-check-label"
-                                                                for="inlineRadio2"
-                                                                >그렇다</label
-                                                            >
-                                                        </div>
-                                                        <div
-                                                            class="form-check form-check-inline"
-                                                        >
-                                                            <input
-                                                                class="form-check-input"
-                                                                type="radio"
-                                                                name="inlineRadioOptions"
-                                                                id="inlineRadio2"
-                                                                :value="3"
-                                                            />
-                                                            <label
-                                                                class="form-check-label"
-                                                                for="inlineRadio2"
-                                                                >보통이다</label
-                                                            >
-                                                        </div>
-                                                        <div
-                                                            class="form-check form-check-inline"
-                                                        >
-                                                            <input
-                                                                class="form-check-input"
-                                                                type="radio"
-                                                                name="inlineRadioOptions"
-                                                                id="inlineRadio2"
-                                                                :value="4"
-                                                            />
-                                                            <label
-                                                                class="form-check-label"
-                                                                for="inlineRadio2"
-                                                                >그렇지않다</label
-                                                            >
-                                                        </div>
-                                                        <div
-                                                            class="form-check form-check-inline"
-                                                        >
-                                                            <input
-                                                                class="form-check-input"
-                                                                type="radio"
-                                                                name="inlineRadioOptions"
-                                                                id="inlineRadio2"
-                                                                :value="5"
-                                                            />
-                                                            <label
-                                                                class="form-check-label"
-                                                                for="inlineRadio2"
-                                                                >전혀그렇지않다</label
-                                                            >
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-auto">
-                                                    <!-- <i
-                                                        class="fas fa-comments fa-2x text-gray-300"
-                                                    ></i> -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Dropdown Card Example -->
-                                    </div>
-                                    <div
-                                        v-else-if="item.type == 'D'"
-                                        class="card border-left-warning shadow h-100 py-2"
-                                    >
-                                        <div
-                                            class="card-body"
-                                            :class="{ active: item.isSelected }"
-                                        >
-                                            <div
-                                                class="row no-gutters align-items-center"
-                                            >
-                                                <div class="col mr-2">
-                                                    <div
-                                                        class="text-lg font-weight-bold text-warning text-uppercase mb-1"
-                                                    >
-                                                        <div>
-                                                            설명
-                                                        </div>
-                                                        <i
-                                                            class="fas fa-trash-alt"
-                                                        ></i>
-                                                    </div>
-                                                    <hr />
-                                                    <div
-                                                        class="h5 mb-0 font-weight-bold text-gray-800 m-5"
-                                                    >
-                                                        {{ item.content }}
-                                                    </div>
-                                                </div>
-                                                <div class="col-auto">
-                                                    <!-- <i
-                                                        class="fas fa-comments fa-2x text-gray-300"
-                                                    ></i> -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Dropdown Card Example -->
-                                    </div>
-                                    <!--노랑이 끝-->
-                                </div>
-                            </div>
-                            <!-- Dropdown Card Example -->
+                            <!--노랑이 끝-->
                         </div>
                     </div>
+                    <!-- Dropdown Card Example -->
+                    <div class="row">
+                        <!-- Pending Requests Card Example -->
+                        <!-- 가운데 평가지 -->
 
-                    <!-- End of Main Content -->
+                        <div
+                            class="col-xl-8 col-md-6 mb-4"
+                            @click="setCurrentNo(i)"
+                            :key="i"
+                            v-for="(item, i) in questions"
+                        >
+                            <div
+                                v-if="item.type == 'Q'"
+                                class="card border-left-warning shadow h-100 py-2"
+                            >
+                                <div
+                                    class="card-body"
+                                    :class="{ active: item.isSelected }"
+                                >
+                                    <div
+                                        class="row no-gutters align-items-center"
+                                    >
+                                        <div class="col mr-2">
+                                            <div
+                                                class="text-lg font-weight-bold text-warning text-uppercase mb-1"
+                                            >
+                                                <div v-if="item.isSelected">
+                                                    <input
+                                                        type="text"
+                                                        style="width:100%;"
+                                                        v-model="item.content"
+                                                        placeholder="평가지 질문을 적는 공간입니다."
+                                                    />
+                                                </div>
+                                                <div v-else>
+                                                    {{ item.content }}
+                                                </div>
+                                                <i class="fas fa-trash-alt"></i>
+                                            </div>
+                                            <hr />
+                                            <div
+                                                class="h5 mb-0 font-weight-bold text-gray-800 m-5"
+                                            >
+                                                <div
+                                                    class="form-check form-check-inline"
+                                                >
+                                                    <input
+                                                        class="form-check-input"
+                                                        type="radio"
+                                                        name="inlineRadioOptions"
+                                                        id="inlineRadio1"
+                                                        :value="1"
+                                                    />
+                                                    <label
+                                                        class="form-check-label"
+                                                        for="inlineRadio1"
+                                                        >매우그렇다</label
+                                                    >
+                                                </div>
+                                                <div
+                                                    class="form-check form-check-inline"
+                                                >
+                                                    <input
+                                                        class="form-check-input"
+                                                        type="radio"
+                                                        name="inlineRadioOptions"
+                                                        id="inlineRadio2"
+                                                        :value="2"
+                                                    />
+                                                    <label
+                                                        class="form-check-label"
+                                                        for="inlineRadio2"
+                                                        >그렇다</label
+                                                    >
+                                                </div>
+                                                <div
+                                                    class="form-check form-check-inline"
+                                                >
+                                                    <input
+                                                        class="form-check-input"
+                                                        type="radio"
+                                                        name="inlineRadioOptions"
+                                                        id="inlineRadio2"
+                                                        :value="3"
+                                                    />
+                                                    <label
+                                                        class="form-check-label"
+                                                        for="inlineRadio2"
+                                                        >보통이다</label
+                                                    >
+                                                </div>
+                                                <div
+                                                    class="form-check form-check-inline"
+                                                >
+                                                    <input
+                                                        class="form-check-input"
+                                                        type="radio"
+                                                        name="inlineRadioOptions"
+                                                        id="inlineRadio2"
+                                                        :value="4"
+                                                    />
+                                                    <label
+                                                        class="form-check-label"
+                                                        for="inlineRadio2"
+                                                        >그렇지않다</label
+                                                    >
+                                                </div>
+                                                <div
+                                                    class="form-check form-check-inline"
+                                                >
+                                                    <input
+                                                        class="form-check-input"
+                                                        type="radio"
+                                                        name="inlineRadioOptions"
+                                                        id="inlineRadio2"
+                                                        :value="5"
+                                                    />
+                                                    <label
+                                                        class="form-check-label"
+                                                        for="inlineRadio2"
+                                                        >전혀그렇지않다</label
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto"></div>
+                                    </div>
+                                </div>
+                                <!-- Dropdown Card Example -->
+                            </div>
+                            <div
+                                v-else-if="item.type == 'D'"
+                                class="card border-left-warning shadow h-100 py-2"
+                            >
+                                <div
+                                    class="card-body"
+                                    :class="{ active: item.isSelected }"
+                                >
+                                    <div
+                                        class="row no-gutters align-items-center"
+                                    >
+                                        <div class="col mr-2">
+                                            <div
+                                                class="text-lg font-weight-bold text-warning text-uppercase mb-1"
+                                            >
+                                                <div>
+                                                    설명란
+                                                </div>
+                                                <i class="fas fa-trash-alt"></i>
+                                            </div>
+                                            <hr />
+                                            <div v-if="item.isSelected">
+                                                <input
+                                                    type="text"
+                                                    style="width:100%;"
+                                                    v-model="item.content"
+                                                    placeholder="설명을 적는 공간입니다."
+                                                />
+                                            </div>
+                                            <div
+                                                class="h5 mb-0 font-weight-bold text-gray-800 m-5"
+                                                v-else
+                                            >
+                                                {{ item.content }}
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <!-- <i
+                                                        class="fas fa-comments fa-2x text-gray-300"
+                                                    ></i> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Dropdown Card Example -->
+                            </div>
+                            <!--노랑이 끝-->
+                        </div>
+                    </div>
+                    <!-- Dropdown Card Example -->
                 </div>
-                <!-- End of Content Wrapper -->
             </div>
-            <!-- End of Page Wrapper -->
 
-            <!-- Scroll to Top Button-->
-            <a class="scroll-to-top rounded" href="#page-top">
-                <i class="fas fa-angle-up"></i>
-            </a>
-        </body>
+            <!-- End of Main Content -->
+        </div>
+        <!-- End of Content Wrapper -->
     </div>
+    <!-- End of Page Wrapper -->
 </template>
 <script>
 export default {
@@ -495,72 +434,73 @@ export default {
             files: null,
             imageList: [],
 
-            course_name: '2021블록체인비즈니스과정',
-            class_name: 'Vue.js',
-            class_teacher_key: '고승원',
-            eval_order: '설문지 설명 :',
-            title: '2주차 강의 평가',
-            modal2: false,
-            // modal1: false
-            studentName: ['장태진', '태진장', '태진태', '진태진', '태진태진'],
+            classInfo: [],
             students: [],
             checkedStudents: [],
-            questions: [
-                {
-                    type: 'Q',
-                    content: '강사 속도는 적절했나요?',
-                    isSelected: false
-                },
-                {
-                    type: 'D',
-                    content: '다음은 강사에 대한 평가 질문입니다.',
-                    isSelected: false
-                },
-                {
-                    type: 'Q',
-                    content: '강사의 교수법은 적절했나요?',
-                    isSelected: false
-                },
-                {
-                    type: 'Q',
-                    content: '강사는 적절한 예제를 제시했나요?',
-                    isSelected: false
-                }
-            ],
+            questions: [],
+            evalTitle: '',
+            evalDescription: '',
+            evalEndtime: null,
+            // questions: [
+            //     {
+            //         type: 'Q',
+            //         content: '강사 속도는 적절했나요?',
+            //         isSelected: false
+            //     },
+            //     {
+            //         type: 'D',
+            //         content: '다음은 강사에 대한 평가 질문입니다.',
+            //         isSelected: false
+            //     },
+            //     {
+            //         type: 'Q',
+            //         content: '강사의 교수법은 적절했나요?',
+            //         isSelected: false
+            //     },
+            //     {
+            //         type: 'Q',
+            //         content: '강사는 적절한 예제를 제시했나요?',
+            //         isSelected: false
+            //     }
+            // ],
             selectedIndex: -1
         }
     },
     setup() {},
     created() {
-        //  함수 데이터 가져오기
-        this.students = [
-            { email: 'jang@gmail.com', name: '장태진' },
-            { email: 'jang2@gmail.com', name: '태진장' },
-            { email: 'jang3@gmail.com', name: '태진태' },
-            { email: 'jang4@gmail.com', name: '진태진' },
-            { email: 'jang5@gmail.com', name: '태진태진' }
-        ]
+        this.classId = this.$route.query.classId
+        this.courseId = this.$route.query.courseId
+
+        this.getStudentList()
+        this.getClassInfo()
+    },
+    mounted() {
+        console.log(this.classInfo[0].course_name)
 
         const checkedStudents = []
         for (const student of this.students) {
-            checkedStudents.push(student.email)
+            checkedStudents.push(student.user_email)
         }
-
         this.checkedStudents = checkedStudents
+        console.log('default students', this.checkedStudents)
     },
-    mounted() {},
     unmounted() {},
     methods: {
-        // eval_value_key -> :value="1",  :value="2"  ,:value="3"  ,:value="4"  ,:value="5"
-        async sendEvalution() {
-            console.log(this.checkedStudents)
-            //  axios.post('/api/sendEvaluation', {param: [this.checkedStudents]})
-            const r = await this.$api('/api/sendEvaluation', 'post', {
-                param: [this.checkedStudents]
+        async getStudentList() {
+            this.students = await this.$api('/api/studentList', 'post', {
+                param: [this.courseId, this.classId]
             })
 
-            console.log(r)
+            // console.log(this.students)
         },
+
+        async getClassInfo() {
+            this.classInfo = await this.$api('/api/classInfo', 'post', {
+                param: [this.classId]
+            })
+            // console.log(this.classInfo)
+        },
+
         setCurrentNo(idx) {
             this.selectedIndex = idx
             this.questions.forEach(item => {
@@ -569,19 +509,45 @@ export default {
             this.questions[idx].isSelected = true
             console.log(this.questions[idx])
         },
-        addQuetion(type) {
+
+        addQuestion(type) {
             this.questions.splice(this.selectedIndex + 1, 0, {
                 type: type,
                 content: ''
             })
         },
-        async saveQuestion() {
-            const r = await this.$api('/api/saveQuestion', 'post', {
-                param: [this.questions]
+
+        addDescription(type) {
+            this.questions.splice(this.selectedIndex + 1, 0, {
+                type: type,
+                content: ''
+            })
+        },
+
+        async sendEvalution() {
+            console.log(this.checkedStudents)
+            const r = await this.$api('/api/sendEvalPaper', 'post', {
+                param: [this.checkedStudents]
             })
 
             console.log(r)
+        },
 
+        async saveEvaluationPaper() {
+            var oEvaluationPaper = {}
+            oEvaluationPaper.class_id = this.classId
+            oEvaluationPaper.title = this.evalTitle
+            oEvaluationPaper.information = this.evalDescription
+            oEvaluationPaper.end_time = this.evalEndtime
+
+            console.log(oEvaluationPaper)
+
+            const r = await this.$api('/api/saveEvaluationPaper', 'post', {
+                param: [oEvaluationPaper]
+            })
+
+            console.log(r)
+        },
 
         async fileSelect(e) {
             const r = await this.$upload('/api/uploadFile', e.target.files[0])
@@ -644,7 +610,9 @@ div {
 }
 
 .active {
-    border: 2px solid red;
+    border: 5px solid rgba(255, 0, 0, 0.918);
+    border-radius: 10px;
+}
 
 .del-mark {
     position: absolute;
