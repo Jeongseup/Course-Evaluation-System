@@ -51,7 +51,6 @@
                                                     />
                                                 </div>
                                             </div>
-
                                             <a
                                                 class="btn btn-primary btn-user btn-block"
                                                 @click="onSubmit"
@@ -130,15 +129,30 @@ export default {
             }
         },
 
+        // 학생이 접근하는 경우, 현재 설문조사가 가능한 지 확인한다.
+        async confirmAccess() {
+            console.log(this.user.email)
+            const res = await this.$api('/api/getStudentData', 'post', {
+                param: [this.user.email]
+            })
+
+            if (res[0].eval_abled === 1) {
+                this.$router.push({
+                    path: '/answertable',
+                    query: { eval_id: res[0].current_eval_id }
+                })
+            } else {
+                window.alert('죄송합니다, 현재 평가할 수 없는 상태입니다.')
+            }
+        },
+
         goToPage(userType) {
             if (userType === 1) {
                 this.$router.push({
                     path: '/list'
                 })
             } else if (userType === 3) {
-                this.$router.push({
-                    path: '/answertable'
-                })
+                this.confirmAccess()
             }
         }
     }

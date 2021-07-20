@@ -1,4 +1,16 @@
 module.exports = {
+    insertAnswer: {
+        query: "insert into t_answer set ?",
+    },
+
+    getEvaluationPaper: {
+        query: "select * from t_evaluation_paper where eval_id = ?",
+    },
+
+    getStudentData: {
+        query: "select * from t_student where user_email = ?",
+    },
+
     getUserData: {
         query: "select * from t_user where user_email = ?",
     },
@@ -55,7 +67,7 @@ module.exports = {
     },
 
     questionList: {
-        query: `select * from t_questions where class_id=?`,
+        query: `select * from t_question where class_id=?`,
     },
 
     getReportList: {

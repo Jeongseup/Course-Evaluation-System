@@ -229,6 +229,28 @@ app.post("/api/saveEvaluationInfo", async (req, res) => {
     }
 });
 
+// 학생 평가 응답저장 함수
+app.post("/api/saveAnswer", async (req, res) => {
+    console.log(req.body.param);
+
+    try {
+        for (const question of req.body.param[0]) {
+            await sys.db("insertAnswer", {
+                question_id: question.id,
+                answer_value: question.answer,
+                class_id: question.class_id,
+                user_email: question.user_email,
+            });
+        }
+
+        res.status(200).send("Ok");
+    } catch (err) {
+        res.status(500).send({
+            error: err,
+        });
+    }
+});
+
 app.post("/api/:alias", async (req, res) => {
     console.log("alias computed!");
     console.log(req.params.alias);
