@@ -8,7 +8,7 @@
                 <div id="content-wrapper" class="d-flex flex-column">
                     <!-- Main Content -->
                     <div id="content">
-                        <topbar />
+                        <topbar :userName="user.name" />
                         <!-- 컴포넌트 끝 -->
                         <body>
                             <a class="scroll rounded" href="#">
@@ -16,7 +16,6 @@
                             </a>
 
                             <!-- Page Wrapper -->
-
                             <div class="wrapper">
                                 <!-- Sidebar -->
                                 <!-- End of Sidebar -->
@@ -75,9 +74,10 @@
                                                                                     >
                                                                                         <option
                                                                                             value="0"
-                                                                                            >과정
-                                                                                            선택</option
                                                                                         >
+                                                                                            과정선택
+                                                                                        </option>
+
                                                                                         <option
                                                                                             :key="
                                                                                                 j
@@ -485,9 +485,9 @@
     </div>
 </template>
 <script>
-// ;<link href="css/sb-admin-2.min.css" rel="stylesheet" />
-import Sidebar from '../components/layouts/Sidebar.vue'
-import Topbar from '../components/layouts/Topbar.vue'
+import Sidebar from '../layouts/Sidebar.vue'
+import Topbar from '../layouts/Topbar.vue'
+
 export default {
     name: '',
     components: { sidebar: Sidebar, topbar: Topbar },
@@ -545,6 +545,11 @@ export default {
                 { classId: 3, classStart: 2106, classEnd: 2109 },
                 { classId: 7, classStart: 2104, classEnd: 2112 }
             ]
+        }
+    },
+    computed: {
+        user() {
+            return this.$store.state.user
         }
     },
     setup() {},

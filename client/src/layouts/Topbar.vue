@@ -40,18 +40,22 @@
                     aria-haspopup="true"
                     aria-expanded="false"
                 >
-                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"
-                        >장태진</span
-                    >
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                        {{ userName }}
+                    </span>
                     <font-awesome-icon icon="user-tie" />
                 </a>
             </li>
         </ul>
     </nav>
-
-    <!-- Main Content -->
-
-    <!-- <div id="content-wrapper" class="d-flex flex-column">
-        <div id="content"></div>
-    </div> -->
 </template>
+<script>
+export default {
+    props: {
+        userName: {
+            type: String,
+            default: '장태진'
+        }
+    }
+}
+</script>

@@ -147,25 +147,6 @@ const sys = {
     password = ...
 */
 
-// server test
-app.get("/test1", function (req, res) {
-    res.send("Hello world");
-});
-
-app.get("/test2", async (req, res) => {
-    res.send("Hello world");
-});
-
-app.get("/test3", async (req, res) => {
-    try {
-        res.send(await sys.db("evaluationPaperList"));
-    } catch (err) {
-        res.status(500).send({
-            error: err,
-        });
-    }
-});
-
 // post function for upload file
 app.post("/api/uploadFile", upload.single("attachment"), async (req, res) => {
     console.log(req.file);
@@ -189,68 +170,19 @@ app.delete("/api/deleteFile", async (req, res) => {
     });
 });
 
-// get function for get list
-app.get("/api/getUserTable", async (req, res) => {
-    try {
-        res.send(await sys.db("user"));
-    } catch (err) {
-        res.status(500).send({
-            error: err,
-        });
-    }
-});
-
-app.post("/api/sendEvaluation", async (req, res) => {
-    // alias라는 변수에 createPerson이 입력
-    console.log(req.params.alias);
-    console.log(req.body.param);
-
-    console.log("/api/sendEvaluation");
-
-    try {
-        for (const email of req.body.param[0]) {
-            await sys.db("insertUserEvaluation", { email: email });
-        }
-
-        res.status(200).send("Ok");
-    } catch (err) {
-        res.status(500).send({
-            error: err,
-        });
-    }
-});
-
-app.post("/api/sendEvaluation", async (req, res) => {
-    // alias라는 변수에 createPerson이 입력
-    console.log(req.body.param);
-
-    console.log("/api/sendEvaluation");
-
-    try {
-        for (const email of req.body.param[0]) {
-            await sys.db("insertUserEvaluation", { email: email });
-        }
-
-        res.status(200).send("Ok");
-    } catch (err) {
-        res.status(500).send({
-            error: err,
-        });
-    }
-});
-
+// 평가지 생성 페이지, 질문 리스트 저장
 app.post("/api/saveQuestion", async (req, res) => {
-    // alias라는 변수에 createPerson이 입력
     console.log(req.body.param);
-
     console.log("/api/saveQuestion");
 
     try {
         for (const question of req.body.param[0]) {
             await sys.db("insertQuestion", {
+                eval_id: question.eval_id,
+                class_id: question.class_id,
+                order: question.order,
                 type: question.type,
                 content: question.content,
-                class_id: 1,
             });
         }
 
@@ -262,18 +194,17 @@ app.post("/api/saveQuestion", async (req, res) => {
     }
 });
 
-// vue의 createPerson이 작동
-// 일반적으로 그냥 post만 쓰기도 함 app.get 대신 그냥 post로 실행
-// alias는 sql.js 내에 있는 하나가 잡힌다
-app.post("/api/sendEvaluation", async (req, res) => {
-    // alias라는 변수에 createPerson이 입력
-    console.log(req.body.param);
+// 평가지 생성 페이지 평가지 학생들에게 전송
+app.post("/api/sendEvaluationPaper", async (req, res) => {
+    console.log(req.body.param[0]);
+    console.log(req.body.param[1]);
 
-    console.log("/api/sendEvaluation");
+    const current_eval_id = req.body.param[1];
 
     try {
-        for (const email of req.body.param[0]) {
-            await sys.db("insertUserEvaluation", { email: email });
+        for (const user_email of req.body.param[0]) {
+            console.log(user_email);
+            await sys.db("updateStudentAbled", [current_eval_id, user_email]);
         }
 
         res.status(200).send("Ok");
@@ -284,21 +215,12 @@ app.post("/api/sendEvaluation", async (req, res) => {
     }
 });
 
-app.post("/api/saveQuestion", async (req, res) => {
-    // alias라는 변수에 createPerson이 입력
+// 평가지 정보 저장
+app.post("/api/saveEvaluationInfo", async (req, res) => {
     console.log(req.body.param);
 
-    console.log("/api/saveQuestion");
-
     try {
-        for (const question of req.body.param[0]) {
-            await sys.db("insertQuestion", {
-                type: question.type,
-                content: question.content,
-                class_id: 1,
-            });
-        }
-
+        await sys.db("insertEvaluationInfo", req.body.param[0]);
         res.status(200).send("Ok");
     } catch (err) {
         res.status(500).send({
@@ -308,7 +230,7 @@ app.post("/api/saveQuestion", async (req, res) => {
 });
 
 app.post("/api/:alias", async (req, res) => {
-    // alias라는 변수에 createPerson이 입력
+    console.log("alias computed!");
     console.log(req.params.alias);
     console.log(req.body.param);
 

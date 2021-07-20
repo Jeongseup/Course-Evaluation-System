@@ -8,9 +8,8 @@
                 <div id="content-wrapper" class="d-flex flex-column">
                     <!-- Main Content -->
                     <div id="content">
-                        <topbar />
+                        <topbar :userName="user.name" />
                         <!-- 컴포넌트 끝 -->
-                        안녕하세요, {{ user.name }} 님!
                         <body id="page-top">
                             <!-- Page Wrapper -->
                             <div id="wrapper">
@@ -30,6 +29,8 @@
                                                         class="card-header py-3"
                                                         style="margin:30px;  btn float-right;"
                                                     >
+                                                        이거 오른쪽으로 옮길 수
+                                                        있으려나?
                                                         <a
                                                             href="#"
                                                             class="btn btn-warning btn-icon-split "
@@ -44,7 +45,7 @@
                                                     <!-- 과정추가_card -->
                                                     <div
                                                         class="card"
-                                                        style="width: 18rem;"
+                                                        style="width: 18rem; flex: inline;"
                                                         :key="course.course_id"
                                                         v-for="course in courseList"
                                                     >
@@ -120,8 +121,8 @@
 </template>
 
 <script>
-import Sidebar from '../components/layouts/Sidebar.vue'
-import Topbar from '../components/layouts/Topbar.vue'
+import Sidebar from '../layouts/Sidebar.vue'
+import Topbar from '../layouts/Topbar.vue'
 export default {
     name: '',
     components: { sidebar: Sidebar, topbar: Topbar },

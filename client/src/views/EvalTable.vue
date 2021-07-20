@@ -240,8 +240,8 @@
     </div>
 </template>
 <script>
-import Sidebar from '../components/layouts/Sidebar.vue'
-import Topbar from '../components/layouts/Topbar.vue'
+import Sidebar from '../layouts/Sidebar.vue'
+import Topbar from '../layouts/Topbar.vue'
 export default {
     name: '',
     components: { sidebar: Sidebar, topbar: Topbar },

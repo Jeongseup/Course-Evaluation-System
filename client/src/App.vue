@@ -3,18 +3,18 @@
         <router-view />
     </div>
 </template>
-
 <script>
-export default {}
+export default {
+    computed: {
+        user() {
+            return this.$store.state.user
+        }
+    }
+}
 </script>
-
 <style>
-/* googlefont */
-/* @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css); */
-/* @import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css); */
-
 #app {
-    font-family: 'Nanum Gothic Coding', 'Nanum Gothic', Avenir, sans-serif;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;

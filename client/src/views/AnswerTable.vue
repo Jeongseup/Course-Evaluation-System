@@ -9,7 +9,7 @@
                 <div id="content-wrapper" class="d-flex flex-column">
                     <!-- Main Content -->
                     <div id="content">
-                        <topbar />
+                        <topbar :userName="user.name" />
                         <!-- 컴포넌트 끝 -->
                         <body>
                             <a class="scroll rounded" href="#">
@@ -130,7 +130,7 @@
                                             >
                                                 <!-- <div class="img-rounded"> -->
                                                 <img
-                                                    src="../assets/cup.jpg"
+                                                    src="../assets/images/cup.jpg"
                                                     alt="..."
                                                 />
                                                 <!-- <div style="width:50%; height:100px;">
@@ -413,8 +413,7 @@
     </div>
 </template>
 <script>
-// import Sidebar from '../components/layouts/Sidebar.vue'
-import Topbar from '../components/layouts/Topbar.vue'
+import Topbar from '../layouts/Topbar.vue'
 export default {
     name: '',
     components: { topbar: Topbar },
