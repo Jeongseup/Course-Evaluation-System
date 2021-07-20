@@ -25,30 +25,33 @@
                                                 <div
                                                     class="col-xl-3 col-lg-4 col-md-6"
                                                 >
-                                                    <select
-                                                        class="form-select m-3"
-                                                        aria-label="Default select example"
-                                                        v-model="courseId"
-                                                        @click="
-                                                            getClassList(
-                                                                courseId
-                                                            )
-                                                        "
-                                                    >
-                                                        <option
-                                                            :key="i"
-                                                            :value="
-                                                                item.course_id
+                                                    <div class="dropdown">
+                                                        <select
+                                                            name="one"
+                                                            class="dropdown-select"
+                                                            aria-label="Default select example"
+                                                            v-model="courseId"
+                                                            @click="
+                                                                getClassList(
+                                                                    courseId
+                                                                )
                                                             "
-                                                            v-for="(item,
-                                                            i) in courseList"
                                                         >
-                                                            현재 선택된 과정은
-                                                            {{ item.name }}
-                                                            입니다.
-                                                        </option>
-                                                    </select>
-
+                                                            <option
+                                                                :key="i"
+                                                                :value="
+                                                                    item.course_id
+                                                                "
+                                                                v-for="(item,
+                                                                i) in courseList"
+                                                            >
+                                                                현재 선택된
+                                                                과정은
+                                                                {{ item.name }}
+                                                                입니다.
+                                                            </option>
+                                                        </select>
+                                                    </div>
                                                     <!-- eval_table -> eval_status  -->
                                                     <div
                                                         class="card m-3"
@@ -245,7 +248,6 @@ import Topbar from '../components/layouts/Topbar.vue'
 export default {
     name: '',
     components: { sidebar: Sidebar, topbar: Topbar },
-
     data() {
         return {
             courseId: null,
@@ -293,12 +295,10 @@ export default {
     width: 400px;
     text-align: center;
 } */
-
 .container > .dropdown {
     /* margin: 0 20px; */
     vertical-align: top;
 }
-
 .dropdown {
     display: inline-block;
     position: relative;
@@ -328,7 +328,6 @@ export default {
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
 }
-
 .dropdown:before,
 .dropdown:after {
     content: '';
@@ -342,18 +341,15 @@ export default {
     border-color: #ffffff transparent;
     pointer-events: none;
 }
-
 .dropdown:before {
     border-bottom-style: solid;
     border-top: none;
 }
-
 .dropdown:after {
     margin-top: 7px;
     border-top-style: solid;
     border-bottom: none;
 }
-
 .dropdown-select {
     position: relative;
     width: 130%;
@@ -375,7 +371,6 @@ export default {
     border-radius: 0;
     -webkit-appearance: none;
 }
-
 .dropdown-select:focus {
     z-index: 3;
     width: 100%;
@@ -384,7 +379,6 @@ export default {
     outline: 2px solid;
     outline-offset: -2px;
 }
-
 .dropdown-select > option {
     margin: 3px;
     padding: 6px 8px;
@@ -393,23 +387,17 @@ export default {
     border-radius: 3px;
     cursor: pointer;
 }
-
 /* Fix for IE 8 putting the arrows behind the select element. */
-
 .lt-ie9 .dropdown {
     z-index: 1;
 }
-
 .lt-ie9 .dropdown-select {
     z-index: -1;
 }
-
 .lt-ie9 .dropdown-select:focus {
     z-index: 3;
 }
-
 /* Dirty fix for Firefox adding padding where it shouldn't. */
-
 @-moz-document url-prefix() {
     .dropdown-select {
         padding-left: 6px;
