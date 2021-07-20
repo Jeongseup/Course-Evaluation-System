@@ -245,6 +245,11 @@
                                             <div
                                                 class="row no-gutters align-items-center"
                                             >
+                                                <span
+                                                    class="del-mark"
+                                                    @click="deleteItem"
+                                                    >X</span
+                                                >
                                                 <div class="col mr-2">
                                                     <div
                                                         class="text-lg font-weight-bold text-warning text-uppercase mb-1 text-center"
@@ -436,7 +441,7 @@ export default {
         return {
             files: null,
             imageList: [],
-
+            sectionList: [],
             course_name: '2021블록체인비즈니스과정',
             class_name: 'Vue.js',
             class_teacher_key: '고승원',
@@ -469,7 +474,9 @@ export default {
             this.imageList = this.imageList.filter(
                 img => img.filename !== filename
             )
-        }
+        },
+
+        deleteSection() {}
     }
 }
 </script>

@@ -9,8 +9,14 @@ import GetDatabaseData from '../views/GetDatabaseData.vue'
 import GetMockserverData from '../views/GetMockserverData.vue'
 import List from '../views/List.vue'
 import Test from '../views/Test.vue'
+import DelectTest from '../views/DelectTest.vue'
 
 const routes = [
+    {
+        path: '/delecttest',
+        name: 'DelectTest',
+        component: DelectTest
+    },
     {
         path: '/test',
         name: 'Test',

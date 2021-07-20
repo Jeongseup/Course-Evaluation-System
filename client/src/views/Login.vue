@@ -81,6 +81,11 @@ export default {
         }
     },
     setup() {},
+    computed: {
+        user() {
+            return this.$store.state.user
+        }
+    },
     created() {},
     mounted() {},
     unmounted() {},
