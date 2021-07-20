@@ -198,6 +198,7 @@
                                                                                                             v-model="
                                                                                                                 checkedStudents
                                                                                                             "
+                                                                                                            checked
                                                                                                         />
                                                                                                     </td>
                                                                                                 </tr>
@@ -225,6 +226,7 @@
                                                                 <button
                                                                     type="button"
                                                                     class="btn btn-primary"
+                                                                    data-dismiss="modal"
                                                                     @click="
                                                                         sendEvalution
                                                                     "
@@ -334,6 +336,9 @@
                                                                 >
                                                                     <div
                                                                         class="text-lg font-weight-bold text-warning text-uppercase mb-1"
+                                                                        v-if="
+                                                                            item.isSelected
+                                                                        "
                                                                     >
                                                                         <div>
                                                                             질문
@@ -344,13 +349,26 @@
                                                                                     item.content
                                                                                 "
                                                                             />
-                                                                            <button>
+                                                                            <button
+                                                                                @click="
+                                                                                    deleteComponent()
+                                                                                "
+                                                                            >
                                                                                 <font-awesome-icon
                                                                                     icon="trash-alt"
                                                                                 />
                                                                             </button>
                                                                         </div>
                                                                     </div>
+                                                                    <div
+                                                                        class="text-lg font-weight-bold text-warning text-uppercase mb-1"
+                                                                        v-else
+                                                                    >
+                                                                        {{
+                                                                            item.content
+                                                                        }}
+                                                                    </div>
+
                                                                     <hr />
                                                                     <div
                                                                         class="h5 mb-0 font-weight-bold text-gray-800 m-5"
@@ -361,6 +379,7 @@
                                                                             <input
                                                                                 class="form-check-input"
                                                                                 type="radio"
+                                                                                disabled
                                                                                 name="inlineRadioOptions"
                                                                                 id="inlineRadio1"
                                                                                 :value="
@@ -379,6 +398,7 @@
                                                                             <input
                                                                                 class="form-check-input"
                                                                                 type="radio"
+                                                                                disabled
                                                                                 name="inlineRadioOptions"
                                                                                 id="inlineRadio2"
                                                                                 :value="
@@ -397,6 +417,7 @@
                                                                             <input
                                                                                 class="form-check-input"
                                                                                 type="radio"
+                                                                                disabled
                                                                                 name="inlineRadioOptions"
                                                                                 id="inlineRadio2"
                                                                                 :value="
@@ -415,6 +436,7 @@
                                                                             <input
                                                                                 class="form-check-input"
                                                                                 type="radio"
+                                                                                disabled
                                                                                 name="inlineRadioOptions"
                                                                                 id="inlineRadio2"
                                                                                 :value="
@@ -433,6 +455,7 @@
                                                                             <input
                                                                                 class="form-check-input"
                                                                                 type="radio"
+                                                                                disabled
                                                                                 name="inlineRadioOptions"
                                                                                 id="inlineRadio2"
                                                                                 :value="
@@ -472,30 +495,41 @@
                                                                 >
                                                                     <div
                                                                         class="text-lg font-weight-bold text-warning text-uppercase mb-1"
+                                                                        v-if="
+                                                                            item.isSelected
+                                                                        "
                                                                     >
                                                                         <div>
                                                                             섹션
                                                                             설명
-                                                                            <button>
+                                                                            <input
+                                                                                type="text"
+                                                                                style="width:87%;"
+                                                                                v-model="
+                                                                                    item.content
+                                                                                "
+                                                                            />
+                                                                            <button
+                                                                                class="buttonSection"
+                                                                                @click="
+                                                                                    deleteComponent()
+                                                                                "
+                                                                            >
                                                                                 <font-awesome-icon
                                                                                     icon="trash-alt"
                                                                                 />
                                                                             </button>
                                                                         </div>
                                                                     </div>
-                                                                    <hr />
                                                                     <div
-                                                                        class="h5 mb-0 font-weight-bold text-gray-800 m-5"
+                                                                        class="text-lg font-weight-bold text-warning text-uppercase mb-1"
+                                                                        v-else
                                                                     >
-                                                                        <textarea
-                                                                            name=""
-                                                                            style="width: 100%"
-                                                                            rows="5"
-                                                                            :placeholder="[
-                                                                                `${item.content}`
-                                                                            ]"
-                                                                        ></textarea>
+                                                                        {{
+                                                                            item.content
+                                                                        }}
                                                                     </div>
+                                                                    <hr />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -589,7 +623,6 @@ export default {
     mounted() {},
     unmounted() {},
     methods: {
-        // eval_value_key -> :value="1",  :value="2"  ,:value="3"  ,:value="4"  ,:value="5"
         async sendEvalution() {
             console.log(this.checkedStudents)
             //  axios.post('/api/sendEvaluation', {param: [this.checkedStudents]})
@@ -614,6 +647,10 @@ export default {
                 content: ''
             })
         },
+        deleteComponent() {
+            this.questions.splice(this.selectedIndex, 1)
+        },
+
         async saveQuestion() {
             const r = await this.$api('/api/saveQuestion', 'post', {
                 param: [this.questions]
@@ -643,6 +680,10 @@ export default {
 </script>
 
 <style scoped>
+.form-check-input {
+    width: 80px;
+}
+
 body {
     margin: 0;
 }
