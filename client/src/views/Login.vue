@@ -106,7 +106,7 @@ export default {
         },
         goToPage() {
             this.$router.push({
-                name: 'Home'
+                path: '/list'
             })
         }
     }

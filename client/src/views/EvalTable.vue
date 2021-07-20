@@ -1,16 +1,25 @@
 <template>
     <div>
-        <body id="page-top">
+        <!-- 컴포넌트 -->
+        <div id="page-top">
             <!-- Page Wrapper -->
             <div id="wrapper">
-                <!-- Content Wrapper -->
+                <sidebar />
                 <div id="content-wrapper" class="d-flex flex-column">
                     <!-- Main Content -->
                     <div id="content">
-                        <div class="container">
-                            <div class="row g-3">
-                                <div class="col-xl-3 col-lg-4 col-md-6">
-                                    <main class="mt-3">
+                        <topbar />
+                        <!-- 컴포넌트 끝 -->
+                        <body>
+                            <!-- Page Wrapper -->
+                            <div>
+                                <!-- Content Wrapper -->
+                                <div
+                                    id="content-wrapper"
+                                    class="d-flex flex-column"
+                                >
+                                    <!-- Main Content -->
+                                    <div id="content">
                                         <div class="container">
                                             <div class="row g-3">
                                                 <div
@@ -67,11 +76,10 @@
                                                                 }}
                                                             </h5>
                                                             <div
-                                                                class="d-flex justify-content-between align-items-center"
+                                                                class="row g-3"
                                                             >
                                                                 <div
-                                                                    class="d-grid gap-1 col-14 mx-auto"
-                                                                    role="group"
+                                                                    class="col-xl-3 col-lg-4 col-md-6"
                                                                 >
                                                                     <button
                                                                         type="button"
@@ -217,36 +225,27 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </main>
+                                    </div>
                                 </div>
+                                <!-- End of Content Wrapper -->
                             </div>
-                        </div>
+                            <!-- End of Page Wrapper -->
+                        </body>
+                        <!-- 컴포넌트 -->
                     </div>
-                    <!-- Footer -->
-                    <footer class="sticky-footer bg-white">
-                        <div class="container my-auto">
-                            <div class="copyright text-center my-auto">
-                                <span>Copyright &copy; Your Website 2020</span>
-                            </div>
-                        </div>
-                    </footer>
-                    <!-- End of Footer -->
                 </div>
-                <!-- End of Content Wrapper -->
             </div>
-            <!-- End of Page Wrapper -->
-
-            <!-- Scroll to Top Button-->
-            <a class="scroll-to-top rounded" href="#page-top">
-                <i class="fas fa-angle-up"></i>
-            </a>
-        </body>
+        </div>
+        <!-- 컴포넌트 끝 -->
     </div>
 </template>
 <script>
+import Sidebar from '../components/layouts/Sidebar.vue'
+import Topbar from '../components/layouts/Topbar.vue'
 export default {
     name: '',
-    components: {},
+    components: { sidebar: Sidebar, topbar: Topbar },
+
     data() {
         return {
             courseId: null,

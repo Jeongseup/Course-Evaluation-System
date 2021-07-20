@@ -4,7 +4,7 @@
         <!-- Sidebar - Brand -->
         <a
             class="sidebar-brand d-flex align-items-center justify-content-center"
-            href="index.html"
+            href="#"
         >
             <div class="sidebar-brand-icon rotate-n-15">
                 <font-awesome-icon icon="laugh-wink" />
