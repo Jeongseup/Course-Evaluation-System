@@ -62,11 +62,6 @@
                                     <div id="content">
                                         <div class="card-header py-3">
                                             <div style="margin:30px;">
-                                                <img
-                                                    src="../assets/images/cup.jpg"
-                                                    alt=""
-                                                    srcset=""
-                                                />
                                                 <!-- Button trigger modal -->
                                                 <button
                                                     href="#"
@@ -526,7 +521,6 @@
         </div>
         <!-- 컴포넌트 끝 -->
     </div>
-    <!-- End of Page Wrapper -->
 </template>
 <script>
 import Sidebar from '../components/layouts/Sidebar.vue'
@@ -538,8 +532,6 @@ export default {
         return {
             files: null,
             imageList: [],
-            classInfo: [],
-            students: [],
 
             course_name: '2021블록체인비즈니스과정',
             class_name: 'Vue.js',
@@ -549,10 +541,7 @@ export default {
             modal2: false,
             // modal1: false
             // studentName: ['장태진', '태진장', '태진태', '진태진', '태진태진'],
-            students: [
-                { name: '장태진', email: 'a@aa.com' },
-                { name: '태진태진', email: 'tetea@aa.com' }
-            ],
+            students: [],
             checkedStudents: [],
             questions: [
                 {
@@ -581,33 +570,34 @@ export default {
     },
     setup() {},
     created() {
-        this.classId = this.$route.query.classId
-        this.courseId = this.$route.query.courseId
-        this.getStudentList()
-        this.getClassInfo()
-    },
-    mounted() {
-        console.log(this.classInfo[0].course_name)
+        //  함수 데이터 가져오기
+        this.students = [
+            { email: 'jang@gmail.com', name: '장태진' },
+            { email: 'jang2@gmail.com', name: '태진장' },
+            { email: 'jang3@gmail.com', name: '태진태' },
+            { email: 'jang4@gmail.com', name: '진태진' },
+            { email: 'jang5@gmail.com', name: '태진태진' }
+        ]
+
         const checkedStudents = []
         for (const student of this.students) {
-            checkedStudents.push(student.user_email)
+            checkedStudents.push(student.email)
         }
+
         this.checkedStudents = checkedStudents
-        console.log('default students', this.checkedStudents)
     },
+    mounted() {},
     unmounted() {},
     methods: {
-        async getStudentList() {
-            this.students = await this.$api('/api/studentList', 'post', {
-                param: [this.courseId, this.classId]
+        // eval_value_key -> :value="1",  :value="2"  ,:value="3"  ,:value="4"  ,:value="5"
+        async sendEvalution() {
+            console.log(this.checkedStudents)
+            //  axios.post('/api/sendEvaluation', {param: [this.checkedStudents]})
+            const r = await this.$api('/api/sendEvaluation', 'post', {
+                param: [this.checkedStudents]
             })
-            // console.log(this.students)
-        },
-        async getClassInfo() {
-            this.classInfo = await this.$api('/api/classInfo', 'post', {
-                param: [this.classId]
-            })
-            // console.log(this.classInfo)
+
+            console.log(r)
         },
         setCurrentNo(idx) {
             this.selectedIndex = idx
@@ -617,53 +607,20 @@ export default {
             this.questions[idx].isSelected = true
             console.log(this.questions[idx])
         },
+
         addQuetion(type) {
             this.questions.splice(this.selectedIndex + 1, 0, {
                 type: type,
                 content: ''
             })
         },
-        addDescription(type) {
-            this.questions.splice(this.selectedIndex + 1, 0, {
-                type: type,
-                content: ''
+        async saveQuestion() {
+            const r = await this.$api('/api/saveQuestion', 'post', {
+                param: [this.questions]
             })
-        },
-        async sendEvalution() {
-            console.log(this.checkedStudents)
-            const r = await this.$api('/api/sendEvalPaper', 'post', {
-                param: [this.checkedStudents]
-            })
+
             console.log(r)
         },
-        async saveEvaluationPaper() {
-            var oEvaluationPaper = {}
-            oEvaluationPaper.class_id = this.classId
-            oEvaluationPaper.title = this.evalTitle
-            oEvaluationPaper.information = this.evalDescription
-            oEvaluationPaper.end_time = this.evalEndtime
-            console.log(oEvaluationPaper)
-            const r = await this.$api('/api/saveEvaluationPaper', 'post', {
-                param: [oEvaluationPaper]
-            })
-            console.log(r)
-        },
-
-        // async saveEvaluationPaper() {
-        //     var oEvaluationPaper = {}
-        //     oEvaluationPaper.class_id = this.classId
-        //     oEvaluationPaper.title = this.evalTitle
-        //     oEvaluationPaper.information = this.evalDescription
-        //     oEvaluationPaper.end_time = this.evalEndtime
-
-        //     console.log(oEvaluationPaper)
-
-        //     const r = await this.$api('/api/saveEvaluationPaper', 'post', {
-        //         param: [oEvaluationPaper]
-        //     })
-
-        //     console.log(r)
-        // },
 
         async fileSelect(e) {
             const r = await this.$upload('/api/uploadFile', e.target.files[0])
@@ -724,10 +681,11 @@ div {
 .menu-toggle > div:hover {
     background: #343a40;
 }
+
 .active {
-    border: 5px solid rgba(255, 0, 0, 0.918);
-    border-radius: 10px;
+    border: 2px solid red;
 }
+
 .del-mark {
     position: absolute;
     top: 5px;
@@ -737,6 +695,7 @@ div {
     cursor: pointer;
     background-color: #343a40;
 }
+
 .img-items > li {
     list-style-type: none;
     float: center;
