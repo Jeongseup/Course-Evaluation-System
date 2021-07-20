@@ -1,17 +1,15 @@
 <template>
     <div>
-        <div>
-            <h1>Here is Mockserver request test page.</h1>
-        </div>
-        <div>
-            {{ evaluationPaperList[0] }}
-        </div>
-        <div>
-            {{ evaluationPaperList[1] }}
-        </div>
-        <div>
-            {{ evaluationPaperList[2] }}
-        </div>
+        <h1>Here is Mockserver request test page.</h1>
+    </div>
+    <div>
+        {{ evaluationPaperList[0] }}
+    </div>
+    <div>
+        {{ evaluationPaperList[1] }}
+    </div>
+    <div>
+        {{ evaluationPaperList[2] }}
     </div>
 </template>
 

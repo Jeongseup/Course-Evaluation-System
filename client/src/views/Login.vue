@@ -11,7 +11,7 @@
                                 <div
                                     class="col-lg-6 d-none d-lg-block bg-login-image"
                                 >
-                                    <img src="../assets/sky.jpg" />
+                                    <img src="../assets/images/sky.jpg" />
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="p-5">
@@ -80,6 +80,11 @@ export default {
             user_pw: ''
         }
     },
+    computed: {
+        user() {
+            return this.$store.state.user
+        }
+    },
     setup() {},
     computed: {
         user() {
@@ -91,8 +96,17 @@ export default {
     unmounted() {},
     methods: {
         onSubmit() {
-            console.log(this.user_email)
-            console.log(this.user_pw)
+            var oUser = {}
+
+            oUser.email = this.user_email
+            oUser.user_pw = this.user_pw
+            oUser.name = '한경닷컴'
+
+            // 유저 확인
+            console.log(oUser)
+            this.$store.commit('user', oUser)
+
+            // 페이지 이동
             this.goToPage()
         },
         goToPage() {

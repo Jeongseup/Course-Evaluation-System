@@ -35,9 +35,6 @@
                                                             <div
                                                                 class="text-xs font-weight-bold text-primary text-uppercase mb-1"
                                                             >
-                                                                <font-awesome-icon
-                                                                    icon="user-edit"
-                                                                />
                                                                 강사명
                                                             </div>
                                                             <div
@@ -281,7 +278,6 @@
     </div>
 </template>
 <script>
-// ;<link href="css/sb-admin-2.min.css" rel="stylesheet" />
 export default {
     name: '',
     components: {},
@@ -295,6 +291,7 @@ export default {
             classEnd: '서버에서 받은 강의 종료일',
             average1: '서버에서 받은 평균(0~10)',
             average: 40,
+
             barColor: ['success', 'danger', 'warning', 'primary', 'info'],
             barColor1: 'bg-primary',
             result: [
@@ -328,16 +325,17 @@ export default {
     methods: {}
 }
 </script>
-
 <style scoped>
 .wrapper {
     display: flex;
 }
+
 .wrapper .content-wrapper {
     background-color: #f8f9fc;
     width: 100%;
     overflow-x: hidden;
 }
+
 .wrapper .content-wrapper .content {
     flex: 1 0 auto;
 }

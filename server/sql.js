@@ -1,22 +1,6 @@
 module.exports = {
-    list: {
-        query: "select * from t_person",
-    },
-
-    //insert into t_person set first_name='john3' ...
-    createPerson: {
-        query: "insert into t_person set ?",
-    },
-
-    //insert into t_person set first_name='john3' ...
-    deletePerson: {
-        query: "delete from t_person where id = ?",
-    },
-
-    // 첫 param이 첫 ?로,, 두 번째 param이 두번째 ?로 들어온다.
-    updatePerson: {
-        query: "update t_person set ? where id = ?",
-    },
+    // EvalTable page 사용자가 진행 중인 과정 데이터 전송
+    // key = user_email
     courseList: {
         query: "select * from t_course where user_email = ?",
     },
@@ -40,5 +24,33 @@ module.exports = {
     studentList: {
         query: `SELECT T2.* from t_class T1, t_student T2
       where T1.class_id = ? and T1.course_id = T2.course_id`,
+    },
+
+    // 코스별
+    //insert into t_person set first_name='john3' ...
+    createPerson: {
+        query: "insert into t_person set ?",
+    },
+
+    //insert into t_person set first_name='john3' ...
+    deletePerson: {
+        query: "delete from t_person where id = ?",
+    },
+
+    // 첫 param이 첫 ?로,, 두 번째 param이 두번째 ?로 들어온다.
+    updatePerson: {
+        query: "update t_person set ? where id = ?",
+    },
+
+    insertUserEvaluation: {
+        query: `insert into t_user_eval set ?`,
+    },
+
+    insertQuestion: {
+        query: `insert into t_questions set ?`,
+    },
+
+    questionList: {
+        query: `select * from t_questions where class_id=?`,
     },
 };

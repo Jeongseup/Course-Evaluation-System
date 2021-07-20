@@ -11,11 +11,11 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 // custom css
 import './assets/css/sb-admin-2.min.css'
-// import './assets/js/sb-admin-2'
 
 // fontawesome
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
+    faCalendarDay,
     faUserSecret,
     faLaughWink,
     faHome,
@@ -35,6 +35,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 library.add(
+    faCalendarDay,
     faUserSecret,
     faLaughWink,
     faHome,
