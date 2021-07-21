@@ -13,7 +13,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="staticBackdropLabel">
-                        응답 완료
+                        {{ title }}
                     </h5>
                     <button
                         type="button"
@@ -29,8 +29,7 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">
-                                응답이 모두 완료되었습니다. <br />
-                                응답해주셔서 감사합니다!
+                                {{ Message }}
                             </h6>
                         </div>
                     </div>
@@ -41,7 +40,7 @@
                             type="button"
                             class="btn btn-primary"
                             data-dismiss="modal"
-                            @click="saveAnswer"
+                            @click="confirm"
                         >
                             확인
                         </button>
@@ -53,9 +52,19 @@
 </template>
 <script>
 export default {
+    props: {
+        title: {
+            type: String,
+            default: '감사합니다'
+        },
+        Message: {
+            type: String,
+            default: '완료되었습니다.'
+        }
+    },
     methods: {
-        saveAnswer() {
-            this.$emit('callSaveAnswer')
+        confirm() {
+            this.$emit('callBack')
         }
     }
 }

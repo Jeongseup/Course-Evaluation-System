@@ -2,387 +2,91 @@
     <div id="content">
         <!-- 바디에 Angle up 스티커 추가 -->
         <angleupsticker />
-        <!-- Page Wrapper -->
-        <div class="wrapper">
-            <!-- Content Wrapper -->
-            <div class="d-flex flex-column content-wrapper">
-                <!-- Main Content -->
-                <div class="content">
-                    <!-- Topbar -->
+        <div class="content">
+            <!-- Topbar -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        <!-- Content Row -->
+                        <div class="row">
+                            <!-- Earnings (Monthly) Card Example -->
+                            <courselistcard :courseList="CompleteClassList" />
+                            <classlistcard :courseList="CompleteClassList" />
+                            <teacherlistcard :courseList="CompleteClassList" />
+                        </div>
+                    </h6>
+                </div>
+            </div>
+
+            <!-- Content Row -->
+            <div class="row">
+                <!-- Content Column -->
+                <div class="col-xl-12 col-lg-6 mb-4">
+                    <!-- Project Card Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">
-                                <!-- Content Row -->
-                                <div class="row">
-                                    <!-- Earnings (Monthly) Card Example -->
-                                    <div class="col-xl-3 col-md-6 mb-4">
-                                        <div
-                                            class="card border-left-primary shadow h-100 py-2"
-                                        >
-                                            <div class="card-body">
-                                                <div
-                                                    class="row no-gutters align-items-center"
-                                                >
-                                                    <div class="col mr-2">
-                                                        <div
-                                                            class="text-xs font-weight-bold text-primary text-uppercase mb-1"
-                                                        >
-                                                            <font-awesome-icon
-                                                                icon="chalkboard-teacher"
-                                                            />
-
-                                                            과정 이름
-                                                        </div>
-                                                        <div
-                                                            class="h5 mb-0 font-weight-bold text-gray-800"
-                                                        >
-                                                            <div
-                                                                class="dropdown"
-                                                            >
-                                                                <select
-                                                                    name="one"
-                                                                    class="dropdown-select"
-                                                                >
-                                                                    <option
-                                                                        value="0"
-                                                                    >
-                                                                        과정선택
-                                                                    </option>
-
-                                                                    <option
-                                                                        :key="j"
-                                                                        v-for="(a,
-                                                                        j) of courseNameList"
-                                                                        value=""
-                                                                        >{{
-                                                                            a.courseName
-                                                                        }}</option
-                                                                    >
-                                                                </select>
-                                                            </div>
-                                                            <!-- </section> -->
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Earnings (Monthly) Card Example -->
-                                    <div class="col-xl-3 col-md-6 mb-4">
-                                        <div
-                                            class="card border-left-primary shadow h-100 py-2"
-                                        >
-                                            <div class="card-body">
-                                                <div
-                                                    class="row no-gutters align-items-center"
-                                                >
-                                                    <div class="col mr-2">
-                                                        <div
-                                                            class="text-xs font-weight-bold text-primary text-uppercase mb-1"
-                                                        >
-                                                            <font-awesome-icon
-                                                                icon="file-signature"
-                                                            />
-
-                                                            강의 이름
-                                                        </div>
-                                                        <div
-                                                            class="h5 mb-0 font-weight-bold text-gray-800"
-                                                        >
-                                                            <div
-                                                                class="dropdown"
-                                                            >
-                                                                <select
-                                                                    name="one"
-                                                                    class="dropdown-select"
-                                                                >
-                                                                    <option
-                                                                        value=""
-                                                                        >강의
-                                                                        선택</option
-                                                                    >
-                                                                    <option
-                                                                        :key="j"
-                                                                        v-for="(a,
-                                                                        j) of classNameList"
-                                                                        value=""
-                                                                        >{{
-                                                                            a.className
-                                                                        }}</option
-                                                                    >
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Earnings (Monthly) Card Example -->
-                                    <div class="col-xl-3 col-md-6 mb-4">
-                                        <div
-                                            class="card border-left-primary shadow h-100 py-2"
-                                        >
-                                            <div class="card-body">
-                                                <div
-                                                    class="row no-gutters align-items-center"
-                                                >
-                                                    <div class="col mr-2">
-                                                        <div
-                                                            class="text-xs font-weight-bold text-primary text-uppercase mb-1"
-                                                        >
-                                                            <font-awesome-icon
-                                                                icon="user-edit"
-                                                            />
-                                                            강사 명
-                                                        </div>
-                                                        <div
-                                                            class="h5 mb-0 font-weight-bold text-gray-800"
-                                                        >
-                                                            <div
-                                                                class="dropdown"
-                                                            >
-                                                                <select
-                                                                    name="one"
-                                                                    class="dropdown-select"
-                                                                >
-                                                                    <option
-                                                                        value=""
-                                                                        >강사
-                                                                        선택</option
-                                                                    >
-                                                                    <option
-                                                                        :key="j"
-                                                                        v-for="(a,
-                                                                        j) of teacherNameList"
-                                                                        value=""
-                                                                        >{{
-                                                                            a.teacherName
-                                                                        }}</option
-                                                                    >
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Earnings (Monthly) Card Example -->
-                                    <div class="col-xl-3 col-md-6 mb-4">
-                                        <div
-                                            class="card border-left-primary shadow h-100 py-2"
-                                        >
-                                            <div class="card-body">
-                                                <div
-                                                    class="row no-gutters align-items-center"
-                                                >
-                                                    <div class="col mr-2">
-                                                        <div
-                                                            class="text-xs font-weight-bold text-primary text-uppercase mb-1"
-                                                        >
-                                                            <font-awesome-icon
-                                                                icon="calendar-day"
-                                                            />
-
-                                                            강의 시기
-                                                        </div>
-                                                        <div
-                                                            class="h5 mb-0 font-weight-bold text-gray-800"
-                                                        >
-                                                            <div
-                                                                class="dropdown"
-                                                            >
-                                                                <select
-                                                                    name="one"
-                                                                    class="dropdown-select"
-                                                                >
-                                                                    <option
-                                                                        value=""
-                                                                        >강의
-                                                                        시기
-                                                                        선택</option
-                                                                    >
-                                                                    <!-- 다시해야함 -->
-                                                                    <option
-                                                                        :key="j"
-                                                                        v-for="(a,
-                                                                        j) of dateList"
-                                                                        value=""
-                                                                        >{{
-                                                                            a.classStart
-                                                                        }}
-                                                                        ~
-                                                                        {{
-                                                                            a.classEnd
-                                                                        }}</option
-                                                                    >
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </h6>
-                        </div>
-                    </div>
-
-                    <!-- Content Row -->
-                    <div class="row">
-                        <!-- Content Column -->
-                        <div class="col-xl-12 col-lg-6 mb-4">
-                            <!-- Project Card Example -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <!-- Content Row -->
-                                    <div class="row">
-                                        <!-- Pending Requests Card Example -->
-                                        <!-- <div class="col-xl-4"></div> -->
-                                        <div
-                                            class="col-xl-12 col-lg-12 col-md-6 mb-4 "
-                                        >
+                            <!-- Content Row -->
+                            <div class="row">
+                                <!-- Pending Requests Card Example -->
+                                <!-- <div class="col-xl-4"></div> -->
+                                <div class="col-xl-12 col-lg-12 col-md-6 mb-4 ">
+                                    <div
+                                        class="card border-left-warning shadow h-100 py-2"
+                                    >
+                                        <div class="card-body">
                                             <div
-                                                class="card border-left-warning shadow h-100 py-2"
+                                                class="row no-gutters align-items-center"
                                             >
-                                                <div class="card-body">
+                                                <div class="col mr-2">
                                                     <div
-                                                        class="row no-gutters align-items-center"
+                                                        class="h5 mb-0 font-weight-bold text-gray-800"
                                                     >
-                                                        <div class="col mr-2">
-                                                            <div
-                                                                class="h5 mb-0 font-weight-bold text-gray-800"
-                                                            >
-                                                                <h1
-                                                                    style="text-align: center;"
-                                                                >
-                                                                    평가 리스트
-                                                                </h1>
-                                                                <!-- 평가 리스트 -->
-                                                            </div>
-                                                        </div>
-                                                        <div
-                                                            class="col-auto"
-                                                        ></div>
+                                                        <h2
+                                                            style="text-align: center;"
+                                                        >
+                                                            '{{ user.name }}'
+                                                            님의 평가 리스트
+                                                        </h2>
+                                                        <!-- 평가 리스트 -->
                                                     </div>
                                                 </div>
+                                                <div class="col-auto"></div>
                                             </div>
                                         </div>
-                                        <!-- 카드 끝-->
-                                    </div>
-                                    <!-- Content Row end -->
-                                </div>
-
-                                <!-- DataTales Example -->
-                                <div class="card shadow mb-4">
-                                    <div class="card-header py-3">
-                                        <h6
-                                            class="m-0 font-weight-bold text-primary"
-                                        >
-                                            평가 리스트
-                                        </h6>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table
-                                                class="table table-bordered"
-                                                id="dataTable"
-                                                width="100%"
-                                                cellspacing="0"
-                                            >
-                                                <thead>
-                                                    <tr>
-                                                        <th>
-                                                            과정 이름
-                                                        </th>
-                                                        <th>
-                                                            강의 이름
-                                                        </th>
-                                                        <th>
-                                                            강사 이름
-                                                        </th>
-                                                        <th>
-                                                            강의 기간
-                                                        </th>
-                                                        <th>
-                                                            선택
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-                                                <tfoot>
-                                                    <tr>
-                                                        <th>
-                                                            과정 이름
-                                                        </th>
-                                                        <th>
-                                                            강의 이름
-                                                        </th>
-                                                        <th>
-                                                            강사 이름
-                                                        </th>
-                                                        <th>
-                                                            강의 기간
-                                                        </th>
-                                                        <th>
-                                                            선택
-                                                        </th>
-                                                    </tr>
-                                                </tfoot>
-                                                <tbody>
-                                                    <tr
-                                                        :key="i"
-                                                        v-for="(a,
-                                                        i) of listPageData"
-                                                    >
-                                                        <td>
-                                                            {{ a.courseName }}
-                                                        </td>
-                                                        <td>
-                                                            {{ a.className }}
-                                                        </td>
-                                                        <td>
-                                                            {{ a.teacherName }}
-                                                        </td>
-                                                        <td>
-                                                            {{ a.classStart }}
-                                                            ~
-                                                            {{ a.classEnd }}
-                                                        </td>
-                                                        <td>
-                                                            <button>
-                                                                선택
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
                                     </div>
                                 </div>
-
-                                <!-- 항목별 평가 있는 공간 -->
+                                <!-- 카드 끝-->
                             </div>
+                            <!-- Content Row end -->
                         </div>
+                        <!-- DataTales Example -->
+                        <!-- 테이블 -->
+                        <tablelistcard :courseList="CompleteClassList" />
                     </div>
                 </div>
-                <!-- End of Main Content -->
             </div>
         </div>
     </div>
 </template>
 <script>
 import AngleUpSticker from '../components/AngleUpSticker.vue'
+import CourseListCard from '../components/CourseListCard.vue'
+import ClassListCard from '../components/ClassListCard.vue'
+import TeacherListCard from '../components/TeacherListCard.vue'
+import TableListCard from '../components/TableListCard.vue'
+
 export default {
     name: '',
     components: {
-        angleupsticker: AngleUpSticker
+        angleupsticker: AngleUpSticker,
+        courselistcard: CourseListCard,
+        classlistcard: ClassListCard,
+        teacherlistcard: TeacherListCard,
+        tablelistcard: TableListCard
     },
     data() {
         return {
+            CompleteClassList: [],
             listPageData: [
                 {
                     teacherName: 'a',
@@ -444,14 +148,14 @@ export default {
     setup() {},
     created() {},
     mounted() {
-        this.getCourseInfo()
+        this.getCompleteClassList()
     },
     unmounted() {},
     methods: {
         // list page에서 완료된 평가지 가져오기
         // key = [user_email]
         // getCompleteClassList
-        async getCourseInfo() {
+        async getCompleteClassList() {
             console.log(this.user.email)
             this.CompleteClassList = await this.$api(
                 '/api/getCompleteClassList',

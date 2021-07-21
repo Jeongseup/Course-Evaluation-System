@@ -1,11 +1,14 @@
 <template>
     <div id="wrapper">
-        <sidebar />
+        <sidebar v-if="bShow != 0 ? false : true" />
         <div id="content-wrapper" class="d-flex flex-column">
             <!-- Main Content -->
-            <topbar :userName="user.name" />
+            <topbar
+                :userName="user.name"
+                v-if="bShow == 2 ? true : bShow == 1 ? false : true"
+            />
             <div id="content">
-                <router-view />
+                <router-view @change-path="changePath" />
             </div>
         </div>
     </div>
@@ -18,6 +21,26 @@ export default {
     computed: {
         user() {
             return this.$store.state.user
+        }
+    },
+    data() {
+        return {
+            bShow: 0
+        }
+    },
+    mounted() {},
+    methods: {
+        changePath(path) {
+            // console.log(path)
+            // console.log('user', this.user.type)
+            if (path === '/') {
+                this.bShow = 1
+            } else if (this.user.type === 3) {
+                this.bShow = 2
+            } else {
+                this.bShow = 0
+            }
+            console.log('path', this.bShow)
         }
     }
 }

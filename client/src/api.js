@@ -4,7 +4,9 @@ axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8'
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*'
 
 export default {
-    mounted() {},
+    mounted() {
+        this.$emit('change-path', this.$route.path)
+    },
     methods: {
         async $api(url, method, data) {
             return (

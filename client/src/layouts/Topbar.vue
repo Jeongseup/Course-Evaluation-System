@@ -39,6 +39,7 @@
                     data-toggle="dropdown"
                     aria-haspopup="true"
                     aria-expanded="false"
+                    @click="Logout"
                 >
                     <span class="mr-2 d-none d-lg-inline text-gray-600 small">
                         {{ userName }}
@@ -55,6 +56,15 @@ export default {
         userName: {
             type: String,
             default: '장태진'
+        }
+    },
+    methods: {
+        Logout() {
+            window.alert('Logout')
+            this.$store.commit('user', {})
+            this.$router.push({
+                path: '/'
+            })
         }
     }
 }
