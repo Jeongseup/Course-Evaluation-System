@@ -64,8 +64,12 @@ module.exports = {
     },
     // 유저가 담당한 모든 코스 정보 가져오기
     // key = [user_email]
+    // getCourseList: {
+    //     query: "select * from t_course where user_email = ?",
+    // },
     getCourseList: {
-        query: "select * from t_course where user_email = ?",
+        query: `select name, course_id, date_format(start_date, '%Y-%m-%d') as start_date , date_format(end_date , '%Y-%m-%d') as end_date , information, place, user_email 
+        from t_course where user_email = ?`,
     },
     // 코스별 정보 가져오기
     // key = [course_id]
