@@ -146,32 +146,9 @@ const sys = {
     user = ...
     password = ...
 */
-
-// post function for upload file
-app.post("/api/uploadFile", upload.single("attachment"), async (req, res) => {
-    console.log(req.file);
-    return res.status(200).json(req.file);
-});
-
-// delete function for uploaded file
-app.delete("/api/deleteFile", async (req, res) => {
-    const filePath = path.join(__dirname, "uploads", req.query.filename);
-    console.log(path);
-    fs.unlink(filePath, (err) => {
-        if (err) {
-            console.error(err);
-            res.status(400).json({
-                type: "E",
-                msg: "파일을 삭제할 수 없습니다. 다시 시도하세요.",
-            });
-        }
-
-        res.status(200).json({ type: "S", msg: "성공적으로 삭제되었습니다." });
-    });
-});
-
 // 평가지 생성 페이지, 질문 리스트 저장
 app.post("/api/saveQuestion", async (req, res) => {
+    console.log(req);
     console.log(req.body.param);
     console.log("/api/saveQuestion");
 
@@ -255,18 +232,18 @@ app.post("/api/saveAnswer", async (req, res) => {
 });
 
 // 평가지 정보 저장
-app.post("/api/getClassInfo", async (req, res) => {
-    console.log(req.body.param[0]);
+// app.post("/api/getClassInfo", async (req, res) => {
+//     console.log(req.body.param[0]);
 
-    try {
-        await sys.db("getClassInfo", req.body.param[0]);
-        res.status(200).send("Ok");
-    } catch (err) {
-        res.status(500).send({
-            error: err,
-        });
-    }
-});
+//     try {
+//         await sys.db("getClassInfo", req.body.param[0]);
+//         res.status(200).send("Ok");
+//     } catch (err) {
+//         res.status(500).send({
+//             error: err,
+//         });
+//     }
+// });
 
 app.post("/api/:alias", async (req, res) => {
     console.log("alias computed!");

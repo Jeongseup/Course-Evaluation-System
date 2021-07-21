@@ -548,14 +548,20 @@ export default {
     },
     unmounted() {},
     methods: {
+        // list page에서 완료된 평가지 가져오기
+        // key = [user_email]
+        // getCompleteClassList
         async getCourseInfo() {
             console.log(this.user.email)
+            this.CompleteClassList = await this.$api(
+                '/api/getCompleteClassList',
+                'post',
+                {
+                    param: [this.user.email]
+                }
+            )
 
-            this.CourseInfo = await this.$api('/api/getCourseInfo', 'post', {
-                param: [this.user.email]
-            })
-
-            console.table(this.CourseInfo)
+            console.table(this.CompleteClassList)
         }
     }
 }
