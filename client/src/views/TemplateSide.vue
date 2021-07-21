@@ -379,11 +379,8 @@
     </div>
 </template>
 <script>
-// ;<link href="css/sb-admin-2.min.css" rel="stylesheet" />
-// import Sidebar from '@/components/layouts/Sidebar'
-import Sidebar from '../components/layouts/Sidebar.vue'
-import Topbar from '../components/layouts/Topbar.vue'
-// import Topbar from '@/components/layouts/Topbar'
+import Sidebar from '../layouts/Sidebar.vue'
+import Topbar from '../layouts/Topbar.vue'
 
 export default {
     components: { sidebar: Sidebar, topbar: Topbar },

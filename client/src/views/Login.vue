@@ -23,7 +23,7 @@
                                                     id="exampleInputEmail"
                                                     aria-describedby="emailHelp"
                                                     placeholder="Enter Email Address..."
-                                                    v-model="user_email"
+                                                    v-model="input_email"
                                                 />
                                             </div>
                                             <div class="form-group">
@@ -32,7 +32,7 @@
                                                     class="form-control form-control-user"
                                                     id="exampleInputPassword"
                                                     placeholder="Password"
-                                                    v-model="user_pw"
+                                                    v-model="input_pw"
                                                 />
                                             </div>
                                             <div class="form-group">
@@ -46,10 +46,10 @@
                                                     />
                                                 </div>
                                             </div>
-
                                             <a
                                                 class="btn btn-primary btn-user btn-block"
                                                 @click="onSubmit"
+                                                @keyup.enter="onSubmit"
                                             >
                                                 Login
                                             </a>
@@ -71,8 +71,8 @@ export default {
     components: {},
     data() {
         return {
-            user_email: '',
-            user_pw: ''
+            input_email: '',
+            input_pw: ''
         }
     },
     computed: {
@@ -85,24 +85,70 @@ export default {
     mounted() {},
     unmounted() {},
     methods: {
-        onSubmit() {
-            var oUser = {}
+        async onSubmit() {
+            // 접근 유저 아이디 확인
+            console.log('사용자가 입력한 ID', this.input_email)
 
-            oUser.email = this.user_email
-            oUser.user_pw = this.user_pw
-            oUser.name = '한경닷컴'
-
-            // 유저 확인
-            console.log(oUser)
-            this.$store.commit('user', oUser)
-
-            // 페이지 이동
-            this.goToPage()
-        },
-        goToPage() {
-            this.$router.push({
-                path: '/list'
+            // DB에 요청
+            const res = await this.$api('/api/getUserData', 'post', {
+                param: [this.input_email]
             })
+
+            console.log(res)
+
+            if (res[0] == null) {
+                // DB에 저장되지 않은 사용자 접근
+                window.alert('사용자 정보를 잘못 입력하셨습니다.')
+            } else {
+                // 비밀번호 확인
+                if (this.input_pw !== res[0].password) {
+                    window.alert('비밀번호를 잘못 입력하셨습니다.')
+                } else {
+                    // DB에 저장된 사용자 접근
+                    // console.log(res[0])
+                    const oUser = {}
+
+                    oUser.type = res[0].user_type_id
+                    oUser.email = res[0].user_email
+                    oUser.password = res[0].password
+                    oUser.name = res[0].name
+                    oUser.tel = res[0].tel
+
+                    // 저장된 유저 정보확인
+                    // console.log(oUser)
+                    this.$store.commit('user', oUser)
+                    // 페이지 이동
+                    window.alert(`어서오세요, ${oUser.name} 님`)
+                    this.goToPage(oUser.type)
+                }
+            }
+        },
+
+        // 학생이 접근하는 경우, 현재 설문조사가 가능한 지 확인한다.
+        async confirmAccess() {
+            console.log(this.user.email)
+            const res = await this.$api('/api/getStudentData', 'post', {
+                param: [this.user.email]
+            })
+
+            if (res[0].eval_abled === 1) {
+                this.$router.push({
+                    path: '/answertable',
+                    query: { eval_id: res[0].current_eval_id }
+                })
+            } else {
+                window.alert('죄송합니다, 현재 평가할 수 없는 상태입니다.')
+            }
+        },
+
+        goToPage(userType) {
+            if (userType === 1) {
+                this.$router.push({
+                    path: '/list'
+                })
+            } else if (userType === 3) {
+                this.confirmAccess()
+            }
         }
     }
 }
