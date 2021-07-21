@@ -25,226 +25,206 @@
                                                 <div
                                                     class="col-xl-3 col-lg-4 col-md-6"
                                                 >
-                                                    <main class="mt-3">
-                                                        <div class="container">
+                                                    <div class="dropdown">
+                                                        <select
+                                                            name="one"
+                                                            class="dropdown-select"
+                                                            aria-label="Default select example"
+                                                            v-model="courseId"
+                                                            @click="
+                                                                getClassList(
+                                                                    courseId
+                                                                )
+                                                            "
+                                                        >
+                                                            <option
+                                                                :key="i"
+                                                                :value="
+                                                                    item.course_id
+                                                                "
+                                                                v-for="(item,
+                                                                i) in courseList"
+                                                            >
+                                                                현재 선택된
+                                                                과정은
+                                                                {{ item.name }}
+                                                                입니다.
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                    <!-- eval_table -> eval_status  -->
+                                                    <div
+                                                        class="card m-3"
+                                                        style="width: 18rem;"
+                                                        :key="i"
+                                                        v-for="(item,
+                                                        i) in classList"
+                                                    >
+                                                        <div
+                                                            v-if="
+                                                                item.eval_status_id ==
+                                                                    1
+                                                            "
+                                                            class="card-body"
+                                                        >
+                                                            <h5
+                                                                class="card-title"
+                                                            >
+                                                                강의명 :
+                                                                {{ item.name }}
+                                                                <br />
+                                                                강사명 :
+                                                                {{
+                                                                    item.teacher_name
+                                                                }}
+                                                            </h5>
                                                             <div
                                                                 class="row g-3"
                                                             >
                                                                 <div
                                                                     class="col-xl-3 col-lg-4 col-md-6"
                                                                 >
-                                                                    <div
-                                                                        class="dropdown"
+                                                                    <button
+                                                                        type="button"
+                                                                        class="btn btn-success btn-lg"
+                                                                        style="[color:white; text-decoration:none; width:250px;]"
+                                                                        @click="
+                                                                            goToEvalCreatePage(
+                                                                                item.class_id
+                                                                            )
+                                                                        "
                                                                     >
-                                                                        <select
-                                                                            name="one"
-                                                                            class="dropdown-select"
-                                                                        >
-                                                                            <!-- eval_table -> class_key  -->
-                                                                            <option
-                                                                                selected
-                                                                                >2021년
-                                                                                혁신성장
-                                                                                블록체인반</option
-                                                                            >
-                                                                            <option
-                                                                                value="1"
-                                                                                >2021년
-                                                                                혁신성장
-                                                                                빅데이터반</option
-                                                                            >
-                                                                            <option
-                                                                                value="2"
-                                                                                >2021년
-                                                                                혁신성장
-                                                                                VR기술반</option
-                                                                            >
-                                                                            <div>
-                                                                                여기는
-                                                                                해당과정
-                                                                                설명하는
-                                                                                곳입니다.
-                                                                                블록체인
-                                                                                기술을
-                                                                                이용한
-                                                                                ....
-                                                                                개발자
-                                                                                양성을
-                                                                                위한
-                                                                                프로젝트입니다.
-                                                                            </div>
-                                                                        </select>
-                                                                    </div>
-
-                                                                    <!-- eval_table -> eval_status  -->
-                                                                    <div
-                                                                        class="card m-3"
-                                                                        style="width: 18rem;"
-                                                                    >
-                                                                        <div
-                                                                            class="card-body"
-                                                                        >
-                                                                            <h5
-                                                                                class="card-title"
-                                                                            >
-                                                                                HTML
-                                                                                <br />고승원
-                                                                                강사
-                                                                            </h5>
-                                                                            <div
-                                                                                class="d-flex justify-content-between align-items-center"
-                                                                            >
-                                                                                <div
-                                                                                    class="d-grid gap-1 col-14 mx-auto"
-                                                                                    role="group"
-                                                                                >
-                                                                                    <button
-                                                                                        type="button"
-                                                                                        class="btn btn-success btn-lg"
-                                                                                    >
-                                                                                        <router-link
-                                                                                            to="/questiontable"
-                                                                                            style="text-decoration: none;"
-                                                                                        >
-                                                                                            <p
-                                                                                                style="color:white;"
-                                                                                            >
-                                                                                                강의
-                                                                                                평가지
-                                                                                                생성
-                                                                                            </p>
-                                                                                        </router-link>
-                                                                                    </button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div
-                                                                        class="card m-3"
-                                                                        style="width: 18rem;"
-                                                                    >
-                                                                        <div
-                                                                            class="card-body"
-                                                                        >
-                                                                            <h5
-                                                                                class="card-title"
-                                                                            >
-                                                                                HTML
-                                                                                <br />고승원
-                                                                                강사
-                                                                            </h5>
-                                                                            <div
-                                                                                class="d-flex justify-content-between align-items-center"
-                                                                            >
-                                                                                <div
-                                                                                    class="d-grid gap-1 col-14 mx-auto"
-                                                                                    role="group"
-                                                                                >
-                                                                                    <button
-                                                                                        type="button"
-                                                                                        class="btn btn-info btn-lg"
-                                                                                    >
-                                                                                        <router-link
-                                                                                            to="/questiontable"
-                                                                                            style="text-decoration: none;"
-                                                                                        >
-                                                                                            <p
-                                                                                                style="color:white;"
-                                                                                            >
-                                                                                                강의
-                                                                                                평가지
-                                                                                                수정
-                                                                                            </p>
-                                                                                        </router-link>
-                                                                                    </button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div
-                                                                        class="card m-3"
-                                                                        style="width: 18rem;"
-                                                                    >
-                                                                        <div
-                                                                            class="card-body"
-                                                                        >
-                                                                            <h5
-                                                                                class="card-title"
-                                                                            >
-                                                                                HTML
-                                                                                <br />고승원
-                                                                                강사
-                                                                            </h5>
-                                                                            <div
-                                                                                class="d-flex justify-content-between align-items-center"
-                                                                            >
-                                                                                <div
-                                                                                    class="d-grid gap-1 col-14 mx-auto"
-                                                                                    role="group"
-                                                                                >
-                                                                                    <button
-                                                                                        type="button"
-                                                                                        class="btn btn-danger btn-lg"
-                                                                                        disabled="disabled"
-                                                                                    >
-                                                                                        <p
-                                                                                            style="color:white;"
-                                                                                        >
-                                                                                            강의
-                                                                                            평가지
-                                                                                            진행중
-                                                                                        </p>
-                                                                                    </button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!-- eval_table -> eval_status  -->
-                                                                    <div
-                                                                        class="card m-3"
-                                                                        style="width: 18rem;"
-                                                                    >
-                                                                        <div
-                                                                            class="card-body"
-                                                                        >
-                                                                            <h5
-                                                                                class="card-title"
-                                                                            >
-                                                                                JavaScript
-                                                                                <br />고승원
-                                                                                강사
-                                                                            </h5>
-                                                                            <div
-                                                                                class="d-flex justify-content-between align-items-center"
-                                                                            >
-                                                                                <div
-                                                                                    class="d-grid gap-1 col-14 mx-auto"
-                                                                                    role="group"
-                                                                                >
-                                                                                    <button
-                                                                                        type="button"
-                                                                                        class="btn btn-primary btn-lg"
-                                                                                    >
-                                                                                        <router-link
-                                                                                            to="/test"
-                                                                                            style="text-decoration: none;"
-                                                                                        >
-                                                                                            <p
-                                                                                                style="color:white;"
-                                                                                            >
-                                                                                                결과
-                                                                                                조회
-                                                                                            </p>
-                                                                                        </router-link>
-                                                                                    </button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
+                                                                        {{
+                                                                            item.eval_status_name
+                                                                        }}
+                                                                    </button>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </main>
+                                                        <div
+                                                            v-else-if="
+                                                                item.eval_status_id ==
+                                                                    2
+                                                            "
+                                                            class="card-body"
+                                                        >
+                                                            <h5
+                                                                class="card-title"
+                                                            >
+                                                                강의명 :
+                                                                {{ item.name }}
+                                                                <br />
+                                                                강사명 :
+                                                                {{
+                                                                    item.teacher_name
+                                                                }}
+                                                            </h5>
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center"
+                                                            >
+                                                                <div
+                                                                    class="d-grid gap-1 col-14 mx-auto"
+                                                                    role="group"
+                                                                >
+                                                                    <button
+                                                                        type="button"
+                                                                        class="btn btn-info btn-lg"
+                                                                        style="[color:white; text-decoration:none; width:250px;]"
+                                                                        @click="
+                                                                            goToEvalCreatePage(
+                                                                                item.class_id
+                                                                            )
+                                                                        "
+                                                                    >
+                                                                        {{
+                                                                            item.eval_status_name
+                                                                        }}
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            v-else-if="
+                                                                item.eval_status_id ==
+                                                                    3
+                                                            "
+                                                            class="card-body"
+                                                        >
+                                                            <h5
+                                                                class="card-title"
+                                                            >
+                                                                강의명 :
+                                                                {{ item.name }}
+                                                                <br />
+                                                                강사명 :
+                                                                {{
+                                                                    item.teacher_name
+                                                                }}
+                                                            </h5>
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center"
+                                                            >
+                                                                <div
+                                                                    class="d-grid gap-1 col-14 mx-auto"
+                                                                    role="group"
+                                                                >
+                                                                    <button
+                                                                        type="button"
+                                                                        class="btn btn-danger btn-lg"
+                                                                        style="[color:white; text-decoration:none; width:250px;]"
+                                                                        @click="
+                                                                            goToEvalCreatePage(
+                                                                                item.class_id
+                                                                            )
+                                                                        "
+                                                                    >
+                                                                        {{
+                                                                            item.eval_status_name
+                                                                        }}
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            v-else
+                                                            class="card-body"
+                                                        >
+                                                            <h5
+                                                                class="card-title"
+                                                            >
+                                                                강의명 :
+                                                                {{ item.name }}
+                                                                <br />
+                                                                강사명 :
+                                                                {{
+                                                                    item.teacher_name
+                                                                }}
+                                                            </h5>
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center"
+                                                            >
+                                                                <div
+                                                                    class="d-grid gap-1 col-14 mx-auto"
+                                                                    role="group"
+                                                                >
+                                                                    <button
+                                                                        type="button"
+                                                                        class="btn btn-primary btn-lg"
+                                                                        style="[color:white; text-decoration:none; width:250px;]"
+                                                                        @click="
+                                                                            goToEvalCreatePage(
+                                                                                item.class_id
+                                                                            )
+                                                                        "
+                                                                    >
+                                                                        {{
+                                                                            item.eval_status_name
+                                                                        }}
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -268,18 +248,45 @@ import Topbar from '../components/layouts/Topbar.vue'
 export default {
     name: '',
     components: { sidebar: Sidebar, topbar: Topbar },
-
     data() {
         return {
-            sampleData: ''
-            // 평가 진행사항 데이터 받아서 화면에 노출시킬지
+            courseId: null,
+            courseList: [],
+            classList: []
+        }
+    },
+    computed: {
+        user() {
+            return this.$store.state.user
         }
     },
     setup() {},
-    created() {},
+    created() {
+        this.courseId = this.$route.query.courseId
+        // console.log(this.courseId)
+        this.getCourseList()
+        this.getClassList()
+    },
     mounted() {},
     unmounted() {},
-    methods: {}
+    methods: {
+        async getCourseList() {
+            this.courseList = await this.$api('/api/courseList', 'post', {
+                param: [this.user.email]
+            })
+        },
+        async getClassList() {
+            this.classList = await this.$api('/api/classList', 'post', {
+                param: [this.courseId]
+            })
+        },
+        goToEvalCreatePage(classId) {
+            this.$router.push({
+                path: '/questiontable',
+                query: { classId: classId, courseId: this.courseId }
+            })
+        }
+    }
 }
 </script>
 <style scoped>
@@ -288,12 +295,10 @@ export default {
     width: 400px;
     text-align: center;
 } */
-
 .container > .dropdown {
     /* margin: 0 20px; */
     vertical-align: top;
 }
-
 .dropdown {
     display: inline-block;
     position: relative;
@@ -323,7 +328,6 @@ export default {
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
 }
-
 .dropdown:before,
 .dropdown:after {
     content: '';
@@ -337,18 +341,15 @@ export default {
     border-color: #ffffff transparent;
     pointer-events: none;
 }
-
 .dropdown:before {
     border-bottom-style: solid;
     border-top: none;
 }
-
 .dropdown:after {
     margin-top: 7px;
     border-top-style: solid;
     border-bottom: none;
 }
-
 .dropdown-select {
     position: relative;
     width: 130%;
@@ -370,7 +371,6 @@ export default {
     border-radius: 0;
     -webkit-appearance: none;
 }
-
 .dropdown-select:focus {
     z-index: 3;
     width: 100%;
@@ -379,7 +379,6 @@ export default {
     outline: 2px solid;
     outline-offset: -2px;
 }
-
 .dropdown-select > option {
     margin: 3px;
     padding: 6px 8px;
@@ -388,23 +387,17 @@ export default {
     border-radius: 3px;
     cursor: pointer;
 }
-
 /* Fix for IE 8 putting the arrows behind the select element. */
-
 .lt-ie9 .dropdown {
     z-index: 1;
 }
-
 .lt-ie9 .dropdown-select {
     z-index: -1;
 }
-
 .lt-ie9 .dropdown-select:focus {
     z-index: 3;
 }
-
 /* Dirty fix for Firefox adding padding where it shouldn't. */
-
 @-moz-document url-prefix() {
     .dropdown-select {
         padding-left: 6px;

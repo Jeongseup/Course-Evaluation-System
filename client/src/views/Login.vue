@@ -1,19 +1,14 @@
 <template>
-    <div class="bg-gradient-primary ">
-        <div class="container">
+    <div class="bg-gradient-image ">
+        <div class="fullPage">
             <!-- Outer Row -->
-            <div class="row justify-content-center">
-                <div class="col-xl-10 col-lg-12 col-md-9">
-                    <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="row justify-content-center ">
+                <div class="col-xl-4 col-lg-5 col-md-5 upMargin">
+                    <div class="card o-hidden border-0 shadow-lg my-3 seeBg">
                         <div class="card-body p-0">
                             <!-- Nested Row within Card Body -->
-                            <div class="row">
-                                <div
-                                    class="col-lg-6 d-none d-lg-block bg-login-image"
-                                >
-                                    <img src="../assets/sky.jpg" />
-                                </div>
-                                <div class="col-lg-6">
+                            <div>
+                                <div>
                                     <div class="p-5">
                                         <div class="text-center">
                                             <h1 class="h4 text-gray-900 mb-4">
@@ -112,3 +107,30 @@ export default {
     }
 }
 </script>
+<style scoped>
+.bg-gradient-image {
+    /* background-color: #4e73df; */
+    /* background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%); */
+    background-size: cover;
+    /* background-image: url('../assets/one.jpg'); */
+    background-image: linear-gradient(
+        to top,
+        lightgrey 0%,
+        lightgrey 1%,
+        #e0e0e0 26%,
+        #efefef 48%,
+        #d9d9d9 75%,
+        #bcbcbc 100%
+    );
+}
+.seeBg {
+    background-color: white;
+}
+
+.upMargin {
+    margin-top: 20vh;
+}
+.fullPage {
+    height: 100vh;
+}
+</style>

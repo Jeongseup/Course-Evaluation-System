@@ -41,11 +41,79 @@
                                     />
                                 </div>
 
+                                <!-- 모달 -->
+
+                                <!-- Button trigger modal -->
                                 <!-- 저장 -->
-                                <div @click="saveQuestion" title="저장">
+                                <div
+                                    @click="saveQuestion"
+                                    title="저장"
+                                    href="#"
+                                    type="button"
+                                    data-toggle="modal"
+                                    data-target="#staticBackdrop1"
+                                >
                                     <font-awesome-icon icon="save" />
                                 </div>
+                                <!-- Button trigger modal -->
                             </div>
+
+                            <!-- Modal -->
+                            <div
+                                class="modal fade"
+                                id="staticBackdrop1"
+                                data-backdrop="static"
+                                tabindex="-1"
+                                role="dialog"
+                                aria-labelledby="staticBackdropLabel1"
+                                aria-hidden="true"
+                            >
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5
+                                                class="modal-title"
+                                                id="staticBackdropLabel1"
+                                            >
+                                                저장 완료
+                                            </h5>
+                                            <button
+                                                type="button"
+                                                class="close"
+                                                data-dismiss="modal"
+                                                aria-label="Close"
+                                            >
+                                                <span aria-hidden="true"
+                                                    >&times;</span
+                                                >
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <!-- 수강생들이 들어갈 공간 -->
+                                            <div class="card shadow mb-4">
+                                                <div class="card-header py-3">
+                                                    <h6
+                                                        class="m-0 font-weight-bold text-primary"
+                                                    >
+                                                        작성한 설문지를
+                                                        저장했습니다
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button
+                                                type="button"
+                                                class="btn btn-primary"
+                                                data-dismiss="modal"
+                                            >
+                                                확인
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <!-- 스티커 끝 -->
 
                             <!-- Page Wrapper -->
