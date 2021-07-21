@@ -7,9 +7,9 @@
         <div class="card border-bottom-primary shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
-                    <h6 style="color:blue" class="col mr-7">
+                    <h4 style="color:blue" class="col mr-7">
                         과정명: {{ course.name }}
-                    </h6>
+                    </h4>
 
                     <h6>
                         기간 :

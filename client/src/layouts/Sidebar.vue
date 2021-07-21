@@ -16,7 +16,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" href="/list">
+            <a class="nav-link" href="/home">
                 <!-- <router-link to="/list" style="text-decoration: none;"> -->
                 <font-awesome-icon icon="home" />
                 <span style="color:white"> HOME</span>
@@ -30,7 +30,7 @@
             <a class="nav-link collapsed" href="/coursetable">
                 <font-awesome-icon icon="chalkboard-teacher" />
 
-                <span style="color:white"> 과정등록</span>
+                <span style="color:white"> 과정조회</span>
             </a>
         </li>
 
@@ -43,7 +43,19 @@
 
                 <font-awesome-icon icon="edit" />
 
-                <span style="color:white"> 평가지 생성</span>
+                <span style="color:white"> 평가지 관리</span>
+            </a>
+        </li>
+        <!-- Divider -->
+        <hr class="sidebar-divider" />
+        <!-- Nav Item - Utilities Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/evaltable">
+                <!-- <router-link to="/questiontable" style="text-decoration: none;"> -->
+
+                <font-awesome-icon icon="edit" />
+
+                <span style="color:white"> 수강생 조회</span>
             </a>
         </li>
 
@@ -54,7 +66,7 @@
             <a class="nav-link collapsed" href="/list">
                 <font-awesome-icon icon="clipboard-list" />
 
-                <span style="color:white"> 평가 리스트</span>
+                <span style="color:white"> 평가 완료 리스트</span>
             </a>
         </li>
 

@@ -22,12 +22,13 @@
                                 <!-- Button trigger modal -->
                                 <div
                                     @click="saveAnswer"
+                                    title="응답 제출"
                                     href="#"
                                     type="button"
                                     data-toggle="modal"
                                     data-target="#staticBackdrop"
                                 >
-                                    <font-awesome-icon icon="save" />
+                                    <font-awesome-icon icon="file-upload" />
                                 </div>
                                 <!-- Button trigger modal -->
                             </div>
@@ -51,16 +52,6 @@
                                             >
                                                 응답 완료
                                             </h5>
-                                            <button
-                                                type="button"
-                                                class="close"
-                                                data-dismiss="modal"
-                                                aria-label="Close"
-                                            >
-                                                <span aria-hidden="true"
-                                                    >&times;</span
-                                                >
-                                            </button>
                                         </div>
                                         <div class="modal-body">
                                             <!-- 수강생들이 들어갈 공간 -->
@@ -71,7 +62,7 @@
                                                     >
                                                         응답이 모두
                                                         완료되었습니다. <br />
-                                                        읍답해주셔서 감사합니다!
+                                                        응답해주셔서 감사합니다!
                                                     </h6>
                                                 </div>
                                             </div>
@@ -80,15 +71,11 @@
                                             <a
                                                 href="/"
                                                 style="text-decoration: none;"
+                                                type="button"
+                                                class="btn btn-primary"
+                                                @click="sendEvalution"
                                             >
-                                                <button
-                                                    type="button"
-                                                    class="btn btn-primary"
-                                                    data-dismiss="modal"
-                                                    @click="sendEvalution"
-                                                >
-                                                    확인
-                                                </button>
+                                                확인
                                             </a>
                                         </div>
                                     </div>
@@ -128,15 +115,7 @@
                                                     />
                                                 </div>
                                             </div>
-                                            <div style="margin:10px;">
-                                                설문 응답 시작 :
-                                                {{
-                                                    evaluationInfo[0].start_time
-                                                }}
-                                                <br />
-                                                설문 응답 종료 :
-                                                {{ evaluationInfo[0].end_time }}
-                                            </div>
+
                                             <div class="row">
                                                 <!-- 가운데 평가지 -->
                                                 <div
@@ -441,6 +420,10 @@ export default {
             await this.$api('/api/saveAnswer', 'post', {
                 param: [this.questions.filter(q => q.type === 'Q')]
             })
+        },
+
+        sendEvalution() {
+            console.log('안녕')
         }
     }
 }

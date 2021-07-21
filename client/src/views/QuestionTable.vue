@@ -45,10 +45,14 @@
                                 </div>
                                 <!-- 저장 버튼 -->
                                 <div
+                                    title="저장"
+                                    href="#"
+                                    type="button"
+                                    data-toggle="modal"
+                                    data-target="#staticBackdrop1"
                                     @click="
                                         ;[saveEvaluationInfo(), saveQuestion()]
                                     "
-                                    title="저장"
                                 >
                                     <font-awesome-icon icon="save" />
                                 </div>
