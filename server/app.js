@@ -170,7 +170,6 @@ app.post("/api/saveQuestion", async (req, res) => {
         });
     }
 });
-
 // 평가지 생성 페이지 평가지 학생들에게 전송
 app.post("/api/sendEvaluationPaper", async (req, res) => {
     console.log(req.body.param[0]);
@@ -183,6 +182,7 @@ app.post("/api/sendEvaluationPaper", async (req, res) => {
             console.log(user_email);
             await sys.db("updateStudentAbled", [current_eval_id, user_email]);
         }
+        await sys.db("updateEvaluationStatus", [3, req.body.param[0].class_id]);
 
         res.status(200).send("Ok");
     } catch (err) {
@@ -193,11 +193,11 @@ app.post("/api/sendEvaluationPaper", async (req, res) => {
 });
 
 // 평가지 정보 저장
-app.post("/api/saveEvaluationInfo", async (req, res) => {
+app.post("/api/saveEvaluationPaper", async (req, res) => {
     console.log(req.body.param);
 
     try {
-        await sys.db("insertEvaluationInfo", req.body.param[0]);
+        await sys.db("insertEvaluationPaper", req.body.param[0]);
         res.status(200).send("Ok");
     } catch (err) {
         res.status(500).send({
@@ -221,9 +221,22 @@ app.post("/api/saveAnswer", async (req, res) => {
             });
         }
 
-        // 응답한 학생
+        // 응답한 학생 비활성화
         await sys.db("updateStudent", req.body.param[1]);
         res.status(200).send("Ok");
+
+        // check count 조회
+        const check = await sys.db("checkEvaluationPaper", [
+            req.body.param[0].class_id,
+            req.body.param[0].class_id,
+        ]);
+        if (check[0].eval_count == check[0].student_count) {
+            // 업데이트
+            await sys.db("updateEvaluationStatus", [
+                4,
+                req.body.param[0].class_id,
+            ]);
+        }
     } catch (err) {
         res.status(500).send({
             error: err,

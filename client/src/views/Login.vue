@@ -90,7 +90,7 @@ export default {
             console.log('사용자가 입력한 ID', this.input_email)
 
             // DB에 요청
-            const res = await this.$api('/api/getUserData', 'post', {
+            const res = await this.$api('/api/getUser', 'post', {
                 param: [this.input_email]
             })
 
@@ -124,10 +124,20 @@ export default {
             }
         },
 
+        goToPage(userType) {
+            if (userType === 1) {
+                this.$router.push({
+                    path: '/list'
+                })
+            } else if (userType === 3) {
+                this.confirmAccess()
+            }
+        },
+
         // 학생이 접근하는 경우, 현재 설문조사가 가능한 지 확인한다.
         async confirmAccess() {
             console.log(this.user.email)
-            const res = await this.$api('/api/getStudentData', 'post', {
+            const res = await this.$api('/api/getStudent', 'post', {
                 param: [this.user.email]
             })
 
@@ -141,16 +151,6 @@ export default {
                 })
             } else {
                 window.alert('죄송합니다, 현재 평가할 수 없는 상태입니다.')
-            }
-        },
-
-        goToPage(userType) {
-            if (userType === 1) {
-                this.$router.push({
-                    path: '/home'
-                })
-            } else if (userType === 3) {
-                this.confirmAccess()
             }
         }
     }

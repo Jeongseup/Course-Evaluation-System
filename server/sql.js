@@ -51,10 +51,11 @@ module.exports = {
     getStudent: {
         query: "select * from t_student where user_email = ?",
     },
-    // 한 클래스의 데이터 가져오기
+    // 한 클래스의 데이터 + 강사 데이터 가져오기
     // key = [class_id]
     getClass: {
-        query: "select * from t_class where class_id = ?",
+        query: `select T3.name as course_name, T1.*, T2.name as teacher_name from t_class T1, t_teacher T2, t_course T3
+        where T1.class_id = 4 and T1.class_id = T2.class_id and T1.course_id = T3.course_id `,
     },
     // 한 유저의 데이터 가져오기
     // key = [user_email]
@@ -72,7 +73,6 @@ module.exports = {
         query: `select T1.*, T2.eval_status_name, T3.name as teacher_name from t_class T1, t_eval_status_types T2, t_teacher T3
         where T1.course_id = ? and T1.eval_status_id = T2.eval_status_id and T1.class_id  = T3.class_id `,
     },
-
     // 평가지 생성버튼 눌렀을 때, 해당 수업의 기본 정보 가져오기
     // key = [course_id, class_id]
     getClassInfo: {
@@ -84,6 +84,11 @@ module.exports = {
     getStudentList: {
         query: `SELECT T2.* from t_class T1, t_student T2
         where T1.class_id = ? and T1.course_id = T2.course_id`,
+    },
+    // 전체 학생 리스트 가져오기
+    getAllStudentList: {
+        query: `select T1.name as student_name, T2.name as course_name from t_student T1, t_course T2
+        where T1.course_id = T2.course_id`,
     },
     // 해당 수업의 평가지 리스트 가져오기
     /// key = [class_id]
@@ -109,5 +114,13 @@ module.exports = {
         FROM t_answer T1, t_eval_values T2
         WHERE T1.class_id = ? AND T1.class_id = T2.class_id
         GROUP BY T1.class_id, T1.question_id, T1.answer_value`,
+    },
+    checkEvaluationPaper: {
+        query: `SELECT count(DISTINCT(user_email)) AS eval_count, (SELECT count(*) FROM t_student WHERE current_eval_id = ?) AS student_count FROM t_answer WHERE class_id = ?`,
+    },
+    updateEvaluationStatus: {
+        query: `update t_class
+        SET eval_status_id = ?
+        where class_id = ?`,
     },
 };
