@@ -39,50 +39,22 @@
                                                 <div
                                                     class="custom-control custom-checkbox small"
                                                 >
-                                                    Welcome Back!
-                                                </h1>
+                                                    <input
+                                                        type="checkbox"
+                                                        class="custom-control-input"
+                                                        id="customCheck"
+                                                    />
+                                                </div>
                                             </div>
-                                            <form class="user">
-                                                <div class="form-group">
-                                                    <input
-                                                        type="email"
-                                                        class="form-control form-control-user"
-                                                        id="exampleInputEmail"
-                                                        aria-describedby="emailHelp"
-                                                        placeholder="Enter Email Address..."
-                                                        v-model="input_email"
-                                                    />
-                                                </div>
-                                                <div class="form-group">
-                                                    <input
-                                                        type="password"
-                                                        class="form-control form-control-user"
-                                                        id="exampleInputPassword"
-                                                        placeholder="Password"
-                                                        v-model="input_pw"
-                                                    />
-                                                </div>
-                                                <div class="form-group">
-                                                    <div
-                                                        class="custom-control custom-checkbox small"
-                                                    >
-                                                        <input
-                                                            type="checkbox"
-                                                            class="custom-control-input"
-                                                            id="customCheck"
-                                                        />
-                                                    </div>
-                                                </div>
-                                                <a
-                                                    class="btn btn-primary btn-user btn-block"
-                                                    @click="onSubmit"
-                                                    @keyup.enter="onSubmit"
-                                                >
-                                                    Login
-                                                </a>
-                                            </form>
-                                            <hr />
-                                        </div>
+                                            <a
+                                                class="btn btn-primary btn-user btn-block"
+                                                @click="onSubmit"
+                                                @keyup.enter="onSubmit"
+                                            >
+                                                Login
+                                            </a>
+                                        </form>
+                                        <hr />
                                     </div>
                                 </div>
                             </div>
@@ -90,7 +62,7 @@
                     </div>
                 </div>
             </div>
-        </body>
+        </div>
     </div>
 </template>
 <script>
@@ -197,9 +169,5 @@ export default {
 }
 .fullPage {
     height: 100vh;
-}
-
-.border-top-primary {
-    border-top: 0.25rem solid #4e73df !important;
 }
 </style>

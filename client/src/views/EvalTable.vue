@@ -82,10 +82,9 @@
 import Sidebar from '../layouts/Sidebar.vue'
 import Topbar from '../layouts/Topbar.vue'
 import ClassCard from '../components/ClassCard.vue'
-
 export default {
     name: '',
-    components: { sidebar: Sidebar, topbar: Topbar },
+    components: { sidebar: Sidebar, topbar: Topbar, classcard: ClassCard },
     data() {
         return {
             courseId: null,
