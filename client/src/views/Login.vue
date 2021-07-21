@@ -32,6 +32,7 @@
                                                     class="form-control form-control-user"
                                                     id="exampleInputPassword"
                                                     placeholder="Password"
+                                                    @keyup.enter="onSubmit"
                                                     v-model="input_pw"
                                                 />
                                             </div>
@@ -49,7 +50,6 @@
                                             <a
                                                 class="btn btn-primary btn-user btn-block"
                                                 @click="onSubmit"
-                                                @keyup.enter="onSubmit"
                                             >
                                                 Login
                                             </a>
@@ -134,7 +134,10 @@ export default {
             if (res[0].eval_abled === 1) {
                 this.$router.push({
                     path: '/answertable',
-                    query: { eval_id: res[0].current_eval_id }
+                    query: {
+                        eval_id: res[0].current_eval_id,
+                        user_email: this.user.email
+                    }
                 })
             } else {
                 window.alert('죄송합니다, 현재 평가할 수 없는 상태입니다.')

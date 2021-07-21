@@ -234,15 +234,32 @@ app.post("/api/saveAnswer", async (req, res) => {
     console.log(req.body.param);
 
     try {
-        for (const question of req.body.param[0]) {
+        // 학생의 응답 DB에 저장
+        for (const answer of req.body.param[0]) {
             await sys.db("insertAnswer", {
-                question_id: question.id,
-                answer_value: question.answer,
-                class_id: question.class_id,
-                user_email: question.user_email,
+                question_id: answer.question_id,
+                answer_value: answer.answer,
+                class_id: answer.class_id,
+                user_email: answer.user_email,
             });
         }
 
+        // 응답한 학생
+        await sys.db("updateStudent", req.body.param[1]);
+        res.status(200).send("Ok");
+    } catch (err) {
+        res.status(500).send({
+            error: err,
+        });
+    }
+});
+
+// 평가지 정보 저장
+app.post("/api/getClassInfo", async (req, res) => {
+    console.log(req.body.param[0]);
+
+    try {
+        await sys.db("getClassInfo", req.body.param[0]);
         res.status(200).send("Ok");
     } catch (err) {
         res.status(500).send({

@@ -1,6 +1,12 @@
 module.exports = {
+    // 학생이 평가지 응답 시 실행되는 SQL
     insertAnswer: {
         query: "insert into t_answer set ?",
+    },
+    updateStudent: {
+        query: `update t_student
+        SET eval_abled = false, current_eval_id = null
+        where user_email = ?`,
     },
 
     getEvaluationPaper: {
@@ -21,6 +27,13 @@ module.exports = {
         query: "select * from t_course where user_email = ?",
     },
 
+    getCourseInfo: {
+        query: `SELECT T1.course_id ,T1.name as course_name, 
+        T2.class_id, T2.name as class_name, T2.start_date, T2.end_date,
+        T3.name as teacher_name
+        from t_course T1, t_class T2, t_teacher T3
+        where T1.user_email = ? and T1.course_id  = T2.course_id and T2.class_id = T3.class_id`,
+    },
     // 코스별 정보 조회
     // key = course_id
     classList: {
@@ -30,9 +43,9 @@ module.exports = {
 
     // 평가지 생성버튼 눌렀을 때, 해당 수업의 기본 정보 가져오기
     // key = class_id
-    classInfo: {
+    getClassInfo: {
         query: `SELECT T1.*, T2.name as course_name, T3.name  as teacher_name from t_class T1, t_course T2, t_teacher T3
-        where T1.course_id  = 1 and T1.course_id = T2.course_id and T1.class_id = 1 and T1.class_id = T3.class_id`,
+        where T1.course_id  = ? and T1.course_id = T2.course_id and T1.class_id = ? and T1.class_id = T3.class_id`,
     },
 
     // 해당 수업 학생 정보 가져오기

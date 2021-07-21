@@ -54,7 +54,14 @@
             <a class="nav-link collapsed" href="/list">
                 <font-awesome-icon icon="clipboard-list" />
 
-                <span style="color:white"> 평가 리스트</span>
+        <!-- Divider -->
+        <hr class="sidebar-divider" />
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/sidetest">
+                <font-awesome-icon icon="list-alt" />
+
+                <span style="color:white"> 평가지 결과</span>
             </a>
         </li>
 

@@ -104,11 +104,11 @@ export default {
         }
     },
     methods: {
-        goToEvalCreatePage(classId, courseId) {
-            console.log(classId, courseId)
+        goToEvalCreatePage(classId) {
+            console.log(classId, this.courseId)
             this.$router.push({
                 path: '/questiontable',
-                query: { classId: classId, courseId: courseId }
+                query: { classId: classId, courseId: this.courseId }
             })
         }
     }
