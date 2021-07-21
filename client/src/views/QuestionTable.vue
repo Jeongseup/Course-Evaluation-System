@@ -11,19 +11,7 @@
             <div @click="addQuestion('D')" title="섹션 추가">
                 <font-awesome-icon icon="file-import" />
             </div>
-            <!-- 이미지 추가 버튼 -->
-            <div style="clear: none" title="이미지 추가">
-                <div @click="$refs.file.click()">
-                    <font-awesome-icon icon="images" />
-                </div>
-                <input
-                    type="file"
-                    @change="fileSelect"
-                    ref="file"
-                    style="display: none"
-                    accept=".jpg, .png"
-                />
-            </div>
+
             <!-- 저장 버튼 -->
             <div
                 @click="saveEvaluationPaper(), saveQuestion()"
@@ -671,7 +659,7 @@ div {
     right: 15px;
     top: 35vh;
     width: 50px;
-    height: 200px;
+    height: 150px;
     text-align: center;
     color: #fff;
     background: rgba(52, 58, 64, 0.5);
