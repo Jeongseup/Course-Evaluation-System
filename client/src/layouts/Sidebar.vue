@@ -77,12 +77,6 @@
 </template>
 <script>
 export default {
-    methods: {
-        goToListPage() {
-            this.$router.push({
-                path: '/list'
-            })
-        }
-    }
+    methods: {}
 }
 </script>
