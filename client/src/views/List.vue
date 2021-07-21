@@ -555,7 +555,7 @@ export default {
                 param: [this.user.email]
             })
 
-            console.log(this.CourseInfo)
+            console.table(this.CourseInfo)
         }
     }
 }

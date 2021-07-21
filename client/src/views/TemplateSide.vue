@@ -427,10 +427,30 @@ export default {
         }
     },
     setup() {},
-    created() {},
+    created() {
+        this.classId = 1
+        this.getClassData()
+        this.getAnswerList()
+    },
     mounted() {},
     unmounted() {},
-    methods: {}
+    methods: {
+        async getClassData() {
+            const res = await this.$api('/api/getClassData', 'post', {
+                param: [this.classId]
+            })
+
+            console.table(res)
+        },
+
+        async getAnswerList() {
+            const res = await this.$api('/api/getAnswerList', 'post', {
+                param: [this.classId, this.classId]
+            })
+
+            console.table(res)
+        }
+    }
 }
 </script>
 

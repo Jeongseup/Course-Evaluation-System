@@ -17,6 +17,10 @@ module.exports = {
         query: "select * from t_student where user_email = ?",
     },
 
+    getClassData: {
+        query: "select * from t_class where class_id = ?",
+    },
+
     getUserData: {
         query: "select * from t_user where user_email = ?",
     },
@@ -83,11 +87,12 @@ module.exports = {
         query: `select * from t_question where class_id=?`,
     },
 
-    getReportList: {
-        query: `SELECT T1.question_id, T1.answer_value, count(*) AS count, ((SELECT (CASE WHEN T1.answer_value = 1 THEN value_1 WHEN T1.answer_value = 2 THEN value_2 WHEN T1.answer_value = 3 THEN value_3 WHEN T1.answer_value = 4 THEN value_4 ELSE value_5 END) FROM t_eval_values WHERE class_id = 1) * count(*)) AS value_point 
+    getAnswerList: {
+        query: `SELECT T1.question_id, T1.answer_value, count(*) AS count, 
+        ((SELECT (CASE WHEN T1.answer_value = 1 THEN value_1 WHEN T1.answer_value = 2 THEN value_2 WHEN T1.answer_value = 3 THEN value_3 WHEN T1.answer_value = 4 THEN value_4 ELSE value_5 END) 
+        FROM t_eval_values WHERE class_id = 1) * count(*)) AS value_point 
         FROM t_answer T1, t_eval_values T2
         WHERE T1.class_id = 1 AND T1.class_id = T2.class_id
-        GROUP BY T1.class_id, T1.question_id, T1.answer_value
-        `,
+        GROUP BY T1.class_id, T1.question_id, T1.answer_value`,
     },
 };
