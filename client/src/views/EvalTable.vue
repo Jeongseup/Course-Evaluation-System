@@ -260,8 +260,10 @@
     </div>
 </template>
 <script>
-import Sidebar from '../components/layouts/Sidebar.vue'
-import Topbar from '../components/layouts/Topbar.vue'
+import Sidebar from '../layouts/Sidebar.vue'
+import Topbar from '../layouts/Topbar.vue'
+import ClassCard from '../components/ClassCard.vue'
+
 export default {
     name: '',
     components: { sidebar: Sidebar, topbar: Topbar },
@@ -295,12 +297,6 @@ export default {
         async getClassList() {
             this.classList = await this.$api('/api/classList', 'post', {
                 param: [this.courseId]
-            })
-        },
-        goToEvalCreatePage(classId) {
-            this.$router.push({
-                path: '/questiontable',
-                query: { classId: classId, courseId: this.courseId }
             })
         }
     }

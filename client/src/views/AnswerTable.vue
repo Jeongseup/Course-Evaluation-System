@@ -1,5 +1,4 @@
 <template>
-    <!-- question_table 사용 eval_key , eval_oder, eval_contents, eval_type, eval_image -->
     <div>
         <!-- 컴포넌트 -->
         <div id="page-top">
@@ -9,7 +8,7 @@
                 <div id="content-wrapper" class="d-flex flex-column">
                     <!-- Main Content -->
                     <div id="content">
-                        <topbar />
+                        <topbar :userName="user.name" />
                         <!-- 컴포넌트 끝 -->
                         <body>
                             <a class="scroll rounded" href="#">
@@ -96,11 +95,7 @@
 
                             <!-- Page Wrapper -->
                             <div id="wrapper">
-                                <!-- Sidebar -->
-
-                                <!-- End of Sidebar -->
-
-                                <!-- Content Wrapper -->
+                                <!-- 설문지 부분 -->
                                 <div
                                     id="content-wrapper"
                                     class="d-flex flex-column"
@@ -108,111 +103,42 @@
                                     <!-- Main Content -->
                                     <div id="content">
                                         <div class="card-header py-3">
-                                            <!--class_table, course_table이용하여, 강좌명 class_name / course_name /class_teacher_key / start_date and end_date-->
-                                            <div style="margin:5px;">
-                                                강좌명: {{ course_name }}
-                                            </div>
-                                            <div style="margin:5px;">
-                                                수업명: {{ class_name }}
-                                            </div>
-                                            <div style="margin:5px;">
-                                                강사명: {{ class_teacher_key }}
-                                            </div>
-                                            <div style="margin:10px;">
-                                                개강 :
-                                                <input type="date" /> 종강 :
-                                                <input type="date" />
-                                            </div>
-
-                                            <!-- Illustrations -->
                                             <div
-                                                class="card shadow mb-4 rounded"
+                                                class="text-lg font-weight-bold text-warning text-uppercase mb-1 text-center"
                                             >
-                                                <!-- <div class="img-rounded"> -->
-                                                <img
-                                                    src="../assets/cup.jpg"
-                                                    alt="..."
-                                                />
-                                                <!-- <div style="width:50%; height:100px;">
-                                        <img src="./img/sky.jpg" alt="..." />
-                                    </div> -->
-                                                <!-- </div> -->
-                                            </div>
-
-                                            <!-- Content Row -->
-                                            <div class="row">
-                                                <!-- Pending Requests Card Example -->
-                                                <!-- 가운데 평가지 -->
-
+                                                <h1>
+                                                    {{
+                                                        evaluationInfo[0].title
+                                                    }}
+                                                </h1>
+                                                <h5>
+                                                    {{
+                                                        evaluationInfo[0]
+                                                            .information
+                                                    }}
+                                                </h5>
                                                 <div
-                                                    class="col-xl-2 col-md-6 mb-4 "
-                                                ></div>
-                                                <div
-                                                    class="col-xl-8 col-md-6 mb-4 "
+                                                    class="card shadow mb-4 rounded"
                                                 >
-                                                    <div
-                                                        class="card border-left-warning shadow h-100 py-2"
-                                                    >
-                                                        <div class="card-body">
-                                                            <div
-                                                                class="row no-gutters align-items-center"
-                                                            >
-                                                                <div
-                                                                    class="col mr-2"
-                                                                >
-                                                                    <div
-                                                                        class="text-lg font-weight-bold text-warning text-uppercase mb-1 text-center"
-                                                                    >
-                                                                        <div>
-                                                                            <h3>
-                                                                                {{
-                                                                                    title
-                                                                                }}
-                                                                            </h3>
-                                                                        </div>
-                                                                    </div>
-                                                                    <hr />
-                                                                    <h5>
-                                                                        본
-                                                                        설문조사는
-                                                                        강의
-                                                                        내용을
-                                                                        평가하고
-                                                                        더 나은
-                                                                        수업을준비하기
-                                                                        위한
-                                                                        자료로만
-                                                                        쓰여집니다.
-                                                                        각
-                                                                        항문에
-                                                                        대한
-                                                                        만족도(1=낮음,
-                                                                        5=높음)에
-                                                                        표시해
-                                                                        주십시오.
-                                                                    </h5>
-                                                                </div>
-                                                                <div
-                                                                    class="col-auto"
-                                                                >
-                                                                    <!-- <i
-                                                        class="fas fa-comments fa-2x text-gray-300"
-                                                    ></i> -->
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- Dropdown Card Example -->
-                                                    </div>
-                                                    <!--노랑이 끝-->
+                                                    <img
+                                                        src="../assets/images/cup.jpg"
+                                                        alt="..."
+                                                    />
                                                 </div>
                                             </div>
-                                            <!-- Dropdown Card Example -->
+                                            <div style="margin:10px;">
+                                                설문 응답 시작 :
+                                                {{
+                                                    evaluationInfo[0].start_time
+                                                }}
+                                                <br />
+                                                설문 응답 종료 :
+                                                {{ evaluationInfo[0].end_time }}
+                                            </div>
                                             <div class="row">
-                                                <!-- Pending Requests Card Example -->
                                                 <!-- 가운데 평가지 -->
-
                                                 <div
-                                                    class="col-xl-8 col-md-6 mb-4"
+                                                    class="col-xl-12 col-lg-9 col-md-6 mb-4"
                                                     @click="setCurrentNo(i)"
                                                     :key="i"
                                                     v-for="(item,
@@ -222,7 +148,13 @@
                                                         v-if="item.type == 'Q'"
                                                         class="card border-left-warning shadow h-100 py-2"
                                                     >
-                                                        <div class="card-body">
+                                                        <div
+                                                            class="card-body"
+                                                            :class="{
+                                                                active:
+                                                                    item.isSelected
+                                                            }"
+                                                        >
                                                             <div
                                                                 class="row no-gutters align-items-center"
                                                             >
@@ -231,16 +163,39 @@
                                                                 >
                                                                     <div
                                                                         class="text-lg font-weight-bold text-warning text-uppercase mb-1"
+                                                                        v-if="
+                                                                            item.isSelected
+                                                                        "
                                                                     >
                                                                         <div>
-                                                                            {{
-                                                                                item.content
-                                                                            }}
+                                                                            질문
+                                                                            <input
+                                                                                type="text"
+                                                                                style="width:91%;"
+                                                                                v-model="
+                                                                                    item.content
+                                                                                "
+                                                                            />
+                                                                            <button
+                                                                                @click="
+                                                                                    deleteQuestion()
+                                                                                "
+                                                                            >
+                                                                                <font-awesome-icon
+                                                                                    icon="trash-alt"
+                                                                                />
+                                                                            </button>
                                                                         </div>
-                                                                        <i
-                                                                            class="fas fa-trash-alt"
-                                                                        ></i>
                                                                     </div>
+                                                                    <div
+                                                                        class="text-lg font-weight-bold text-warning text-uppercase mb-1"
+                                                                        v-else
+                                                                    >
+                                                                        {{
+                                                                            item.content
+                                                                        }}
+                                                                    </div>
+
                                                                     <hr />
                                                                     <div
                                                                         class="h5 mb-0 font-weight-bold text-gray-800 m-5"
@@ -248,105 +203,107 @@
                                                                         <div
                                                                             class="form-check form-check-inline"
                                                                         >
-                                                                            <input
-                                                                                class="form-check-input"
-                                                                                type="radio"
-                                                                                name="inlineRadioOptions"
-                                                                                id="inlineRadio1"
-                                                                                :value="
-                                                                                    1
-                                                                                "
-                                                                            />
                                                                             <label
                                                                                 class="form-check-label"
                                                                                 for="inlineRadio1"
-                                                                                >매우그렇다</label
+                                                                            >
+                                                                                <input
+                                                                                    class="form-check-input"
+                                                                                    type="radio"
+                                                                                    name="inlineRadioOptions"
+                                                                                    id="inlineRadio1"
+                                                                                    :value="
+                                                                                        1
+                                                                                    "
+                                                                                />
+                                                                                매우
+                                                                                그렇다</label
                                                                             >
                                                                         </div>
                                                                         <div
                                                                             class="form-check form-check-inline"
                                                                         >
-                                                                            <input
-                                                                                class="form-check-input"
-                                                                                type="radio"
-                                                                                name="inlineRadioOptions"
-                                                                                id="inlineRadio2"
-                                                                                :value="
-                                                                                    2
-                                                                                "
-                                                                            />
                                                                             <label
                                                                                 class="form-check-label"
                                                                                 for="inlineRadio2"
-                                                                                >그렇다</label
+                                                                            >
+                                                                                <input
+                                                                                    class="form-check-input"
+                                                                                    type="radio"
+                                                                                    name="inlineRadioOptions"
+                                                                                    id="inlineRadio2"
+                                                                                    :value="
+                                                                                        2
+                                                                                    "
+                                                                                />
+                                                                                그렇다</label
                                                                             >
                                                                         </div>
                                                                         <div
                                                                             class="form-check form-check-inline"
                                                                         >
-                                                                            <input
-                                                                                class="form-check-input"
-                                                                                type="radio"
-                                                                                name="inlineRadioOptions"
-                                                                                id="inlineRadio2"
-                                                                                :value="
-                                                                                    3
-                                                                                "
-                                                                            />
                                                                             <label
                                                                                 class="form-check-label"
                                                                                 for="inlineRadio2"
-                                                                                >보통이다</label
+                                                                            >
+                                                                                <input
+                                                                                    class="form-check-input"
+                                                                                    type="radio"
+                                                                                    name="inlineRadioOptions"
+                                                                                    id="inlineRadio2"
+                                                                                    :value="
+                                                                                        3
+                                                                                    "
+                                                                                />
+                                                                                보통이다</label
                                                                             >
                                                                         </div>
                                                                         <div
                                                                             class="form-check form-check-inline"
                                                                         >
-                                                                            <input
-                                                                                class="form-check-input"
-                                                                                type="radio"
-                                                                                name="inlineRadioOptions"
-                                                                                id="inlineRadio2"
-                                                                                :value="
-                                                                                    4
-                                                                                "
-                                                                            />
                                                                             <label
                                                                                 class="form-check-label"
                                                                                 for="inlineRadio2"
-                                                                                >그렇지않다</label
+                                                                            >
+                                                                                <input
+                                                                                    class="form-check-input"
+                                                                                    type="radio"
+                                                                                    name="inlineRadioOptions"
+                                                                                    id="inlineRadio2"
+                                                                                    :value="
+                                                                                        4
+                                                                                    "
+                                                                                />
+                                                                                그렇지
+                                                                                않다</label
                                                                             >
                                                                         </div>
                                                                         <div
                                                                             class="form-check form-check-inline"
                                                                         >
-                                                                            <input
-                                                                                class="form-check-input"
-                                                                                type="radio"
-                                                                                name="inlineRadioOptions"
-                                                                                id="inlineRadio2"
-                                                                                :value="
-                                                                                    5
-                                                                                "
-                                                                            />
                                                                             <label
                                                                                 class="form-check-label"
                                                                                 for="inlineRadio2"
-                                                                                >전혀그렇지않다</label
+                                                                            >
+                                                                                <input
+                                                                                    class="form-check-input"
+                                                                                    type="radio"
+                                                                                    name="inlineRadioOptions"
+                                                                                    id="inlineRadio2"
+                                                                                    :value="
+                                                                                        5
+                                                                                    "
+                                                                                />
+                                                                                전혀
+                                                                                그렇지
+                                                                                않다</label
                                                                             >
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div
-                                                                    class="col-auto"
-                                                                >
-                                                                    <!-- <i
-                                                        class="fas fa-comments fa-2x text-gray-300"
-                                                    ></i> -->
-                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <!-- Dropdown Card Example -->
+                                                        <!-- 설문지 부분 끝 -->
                                                     </div>
                                                     <div
                                                         v-else-if="
@@ -354,7 +311,13 @@
                                                         "
                                                         class="card border-left-warning shadow h-100 py-2"
                                                     >
-                                                        <div class="card-body">
+                                                        <div
+                                                            class="card-body"
+                                                            :class="{
+                                                                active:
+                                                                    item.isSelected
+                                                            }"
+                                                        >
                                                             <div
                                                                 class="row no-gutters align-items-center"
                                                             >
@@ -363,29 +326,41 @@
                                                                 >
                                                                     <div
                                                                         class="text-lg font-weight-bold text-warning text-uppercase mb-1"
+                                                                        v-if="
+                                                                            item.isSelected
+                                                                        "
                                                                     >
                                                                         <div>
+                                                                            섹션
                                                                             설명
+                                                                            <input
+                                                                                type="text"
+                                                                                style="width:87%;"
+                                                                                v-model="
+                                                                                    item.content
+                                                                                "
+                                                                            />
+                                                                            <button
+                                                                                class="buttonSection"
+                                                                                @click="
+                                                                                    deleteQuestion()
+                                                                                "
+                                                                            >
+                                                                                <font-awesome-icon
+                                                                                    icon="trash-alt"
+                                                                                />
+                                                                            </button>
                                                                         </div>
-                                                                        <i
-                                                                            class="fas fa-trash-alt"
-                                                                        ></i>
                                                                     </div>
-                                                                    <hr />
                                                                     <div
-                                                                        class="h5 mb-0 font-weight-bold text-gray-800 m-5"
+                                                                        class="text-lg font-weight-bold text-warning text-uppercase mb-1"
+                                                                        v-else
                                                                     >
                                                                         {{
                                                                             item.content
                                                                         }}
                                                                     </div>
-                                                                </div>
-                                                                <div
-                                                                    class="col-auto"
-                                                                >
-                                                                    <!-- <i
-                                                        class="fas fa-comments fa-2x text-gray-300"
-                                                    ></i> -->
+                                                                    <hr />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -394,10 +369,8 @@
                                                     <!--노랑이 끝-->
                                                 </div>
                                             </div>
-                                            <!-- Dropdown Card Example -->
                                         </div>
                                     </div>
-
                                     <!-- End of Main Content -->
                                 </div>
                                 <!-- End of Content Wrapper -->
@@ -413,42 +386,63 @@
     </div>
 </template>
 <script>
-// import Sidebar from '../components/layouts/Sidebar.vue'
-import Topbar from '../components/layouts/Topbar.vue'
+import Topbar from '../layouts/Topbar.vue'
 export default {
     name: '',
     components: { topbar: Topbar },
     data() {
         return {
-            course_name: '2021블록체인비즈니스과정',
-            class_name: 'Vue.js',
-            class_teacher_key: '고승원',
-            eval_order: '설문지 설명 :',
-            title: '2주차 강의 평가',
-            // modal1: false
+            eval_id: null,
             questions: [],
-            classId: 1
+            evaluationInfo: []
+        }
+    },
+    computed: {
+        user() {
+            return this.$store.state.user
         }
     },
     setup() {},
-    created() {},
-    mounted() {
-        this.getList()
+    created() {
+        this.eval_id = this.$route.query.eval_id
+        this.getQuestions()
+        this.getEvaluationPaper()
     },
+    mounted() {},
     unmounted() {},
     methods: {
-        async getList() {
+        async getQuestions() {
             this.questions = await this.$api('/api/questionList', 'post', {
-                param: [this.classId]
+                param: [this.eval_id]
             })
 
             console.log(this.questions)
         },
-        async saveAnswer() {}
+
+        // 평가지 정보 불러오기
+        async getEvaluationPaper() {
+            this.evaluationInfo = await this.$api(
+                '/api/getEvaluationPaper',
+                'post',
+                {
+                    param: [this.eval_id]
+                }
+            )
+
+            console.log(this.evaluationInfo)
+        },
+
+        // 평가 응답 DB 저장 함수
+        async saveAnswer() {
+            console.log(this.questions)
+
+            await this.$api('/api/saveAnswer', 'post', {
+                param: [this.questions.filter(q => q.type === 'Q')]
+            })
+        }
     }
 }
 </script>
-
 <style scoped>
 body {
     margin: 0;

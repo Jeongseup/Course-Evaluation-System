@@ -53,7 +53,6 @@ library.add(
     faSave,
     faAngleUp,
     faClipboardList,
-
     faTrashAlt
 )
 

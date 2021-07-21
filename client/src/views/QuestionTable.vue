@@ -1,6 +1,4 @@
 <template>
-    <!-- question_table 사용 eval_key , eval_oder, eval_contents, eval_type, eval_image -->
-
     <div>
         <!-- 컴포넌트 -->
         <div id="page-top">
@@ -10,24 +8,29 @@
                 <div id="content-wrapper" class="d-flex flex-column">
                     <!-- Main Content -->
                     <div id="content">
-                        <topbar />
+                        <topbar :userName="user.name" />
                         <!-- 컴포넌트 끝 -->
                         <body>
                             <a class="scroll rounded" href="#">
                                 <font-awesome-icon icon="angle-up" />
                             </a>
-                            <!-- body 바로 아래에 추가 스티커 -->
+                            <!-- 오른쪽 사이드 바, 스티커 시작 -->
                             <div class="menu-toggle rounded">
-                                <!-- 질문추가 -->
-                                <div @click="addQuetion('Q')" title="질문 추가">
+                                <!-- 질문 추가 버튼 -->
+                                <div
+                                    @click="addQuestion('Q')"
+                                    title="질문 추가"
+                                >
                                     <font-awesome-icon icon="file-signature" />
                                 </div>
-                                <!-- 섹션추가 -->
-                                <div @click="addQuetion('D')" title="섹션 추가">
+                                <!-- 섹션 추가 버튼 -->
+                                <div
+                                    @click="addQuestion('D')"
+                                    title="섹션 추가"
+                                >
                                     <font-awesome-icon icon="file-import" />
                                 </div>
-                                <!-- 이미지추가 -->
-                                <!-- <div><font-awesome-icon icon="images" /></div> -->
+                                <!-- 이미지 추가 버튼 -->
                                 <div style="clear: none" title="이미지 추가">
                                     <div @click="$refs.file.click()">
                                         <font-awesome-icon icon="images" />
@@ -40,29 +43,31 @@
                                         accept=".jpg, .png"
                                     />
                                 </div>
-
-                                <!-- 저장 -->
-                                <div @click="saveQuestion" title="저장">
+                                <!-- 저장 버튼 -->
+                                <div
+                                    @click="
+                                        ;[saveEvaluationInfo(), saveQuestion()]
+                                    "
+                                    title="저장"
+                                >
                                     <font-awesome-icon icon="save" />
                                 </div>
                             </div>
-                            <!-- 스티커 끝 -->
+                            <!-- 오른쪽 사이드 바, 스티커 끝 -->
 
-                            <!-- Page Wrapper -->
+                            <!-- 설문지 부분 시작 -->
                             <div id="wrapper">
-                                <!-- Sidebar -->
-                                <!-- End of Sidebar -->
-
                                 <!-- Content Wrapper -->
                                 <div
                                     id="content-wrapper"
                                     class="d-flex flex-column"
                                 >
-                                    <!-- Main Content -->
+                                    <!-- 설문지 헤드 -->
                                     <div id="content">
                                         <div class="card-header py-3">
                                             <div style="margin:30px;">
                                                 <!-- Button trigger modal -->
+                                                이것도 위치 바꿀 수 있을까?
                                                 <button
                                                     href="#"
                                                     type="button"
@@ -155,21 +160,6 @@
                                                                                                     </th>
                                                                                                 </tr>
                                                                                             </thead>
-                                                                                            <tfoot>
-                                                                                                <tr>
-                                                                                                    <th>
-                                                                                                        번호
-                                                                                                    </th>
-                                                                                                    <th>
-                                                                                                        수강생
-                                                                                                        이름
-                                                                                                    </th>
-
-                                                                                                    <th>
-                                                                                                        선택
-                                                                                                    </th>
-                                                                                                </tr>
-                                                                                            </tfoot>
                                                                                             <tbody>
                                                                                                 <tr
                                                                                                     :key="
@@ -180,7 +170,8 @@
                                                                                                 >
                                                                                                     <td>
                                                                                                         {{
-                                                                                                            i
+                                                                                                            i +
+                                                                                                                1
                                                                                                         }}
                                                                                                     </td>
                                                                                                     <td>
@@ -193,12 +184,11 @@
                                                                                                         <input
                                                                                                             type="checkbox"
                                                                                                             :value="
-                                                                                                                student.email
+                                                                                                                student.user_email
                                                                                                             "
                                                                                                             v-model="
                                                                                                                 checkedStudents
                                                                                                             "
-                                                                                                            checked
                                                                                                         />
                                                                                                     </td>
                                                                                                 </tr>
@@ -206,7 +196,6 @@
                                                                                         </table>
                                                                                     </div>
                                                                                 </div>
-
                                                                                 <!-- 표 끝 -->
                                                                             </div>
                                                                         </h6>
@@ -228,7 +217,7 @@
                                                                     class="btn btn-primary"
                                                                     data-dismiss="modal"
                                                                     @click="
-                                                                        sendEvalution
+                                                                        sendEvaluationPaper
                                                                     "
                                                                 >
                                                                     확인
@@ -238,78 +227,51 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!--class_table, course_table이용하여, 강좌명 class_name / course_name /class_teacher_key / start_date and end_date-->
+                                            <!-- class_table -->
                                             <div style="margin:5px;">
-                                                강좌명: {{ course_name }}
+                                                강좌명:
+                                                {{ classInfo[0].course_name }}
                                             </div>
                                             <div style="margin:5px;">
-                                                수업명: {{ class_name }}
+                                                수업명: {{ classInfo[0].name }}
                                             </div>
                                             <div style="margin:5px;">
-                                                강사명: {{ class_teacher_key }}
+                                                강사명:
+                                                {{ classInfo[0].teacher_name }}
                                             </div>
                                             <div style="margin:10px;">
-                                                설문 응답 종료 일 :
-                                                <input type="date" />
+                                                설문 응답 시작 :
+                                                <input
+                                                    type="datetime-local"
+                                                    v-model="evalStartTime"
+                                                />
                                             </div>
-
-                                            <!-- Illustrations -->
-
-                                            <div
-                                                class="col-xl-12 col-lg-9 col-md-6 mb-4"
-                                                :key="i"
-                                                v-for="(img, i) in imageList"
-                                            >
-                                                <div
-                                                    class="card border-left-warning shadow h-100 py-2"
-                                                >
-                                                    <div class="card-body">
-                                                        <div
-                                                            class="row no-gutters align-items-center"
-                                                        >
-                                                            <div
-                                                                class="col mr-2"
-                                                            >
-                                                                <div
-                                                                    class="text-lg font-weight-bold text-warning text-uppercase mb-1 text-center"
-                                                                >
-                                                                    <ul
-                                                                        class="img-items"
-                                                                    >
-                                                                        <li>
-                                                                            <div
-                                                                                style="position: relative"
-                                                                            >
-                                                                                <img
-                                                                                    :src="
-                                                                                        img.src
-                                                                                    "
-                                                                                    style="height: auto; width: 100%;"
-                                                                                />
-                                                                                <span
-                                                                                    class="del-mark"
-                                                                                    @click="
-                                                                                        deleteImg(
-                                                                                            i
-                                                                                        )
-                                                                                    "
-                                                                                    >X</span
-                                                                                >
-                                                                            </div>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            <div style="margin:10px;">
+                                                설문 응답 종료 :
+                                                <input
+                                                    type="datetime-local"
+                                                    v-model="evalEndTime"
+                                                />
                                             </div>
-
-                                            <!-- Dropdown Card Example -->
+                                            <div>
+                                                <input
+                                                    type="text"
+                                                    style="width: 100%;"
+                                                    placeholder="해당 평가지의 제목을 적어주세요."
+                                                    v-model="evalTitle"
+                                                />
+                                                <textarea
+                                                    name=""
+                                                    style="width: 100%"
+                                                    rows="10"
+                                                    placeholder="해당 평가지에  세부 설명을 적어주세요."
+                                                    v-model="evalDescription"
+                                                ></textarea>
+                                            </div>
+                                            <!-- 질문지 시작 -->
+                                            <!-- 이미지 리스트 -->
                                             <div class="row">
-                                                <!-- Pending Requests Card Example -->
                                                 <!-- 가운데 평가지 -->
-
                                                 <div
                                                     class="col-xl-12 col-lg-9 col-md-6 mb-4"
                                                     @click="setCurrentNo(i)"
@@ -351,7 +313,7 @@
                                                                             />
                                                                             <button
                                                                                 @click="
-                                                                                    deleteComponent()
+                                                                                    deleteQuestion()
                                                                                 "
                                                                             >
                                                                                 <font-awesome-icon
@@ -376,103 +338,112 @@
                                                                         <div
                                                                             class="form-check form-check-inline"
                                                                         >
-                                                                            <input
-                                                                                class="form-check-input"
-                                                                                type="radio"
-                                                                                disabled
-                                                                                name="inlineRadioOptions"
-                                                                                id="inlineRadio1"
-                                                                                :value="
-                                                                                    1
-                                                                                "
-                                                                            />
                                                                             <label
                                                                                 class="form-check-label"
                                                                                 for="inlineRadio1"
-                                                                                >매우그렇다</label
+                                                                            >
+                                                                                <input
+                                                                                    class="form-check-input"
+                                                                                    type="radio"
+                                                                                    disabled
+                                                                                    name="inlineRadioOptions"
+                                                                                    id="inlineRadio1"
+                                                                                    :value="
+                                                                                        1
+                                                                                    "
+                                                                                />
+                                                                                매우
+                                                                                그렇다</label
                                                                             >
                                                                         </div>
                                                                         <div
                                                                             class="form-check form-check-inline"
                                                                         >
-                                                                            <input
-                                                                                class="form-check-input"
-                                                                                type="radio"
-                                                                                disabled
-                                                                                name="inlineRadioOptions"
-                                                                                id="inlineRadio2"
-                                                                                :value="
-                                                                                    2
-                                                                                "
-                                                                            />
                                                                             <label
                                                                                 class="form-check-label"
                                                                                 for="inlineRadio2"
-                                                                                >그렇다</label
+                                                                            >
+                                                                                <input
+                                                                                    class="form-check-input"
+                                                                                    type="radio"
+                                                                                    disabled
+                                                                                    name="inlineRadioOptions"
+                                                                                    id="inlineRadio2"
+                                                                                    :value="
+                                                                                        2
+                                                                                    "
+                                                                                />
+                                                                                그렇다</label
                                                                             >
                                                                         </div>
                                                                         <div
                                                                             class="form-check form-check-inline"
                                                                         >
-                                                                            <input
-                                                                                class="form-check-input"
-                                                                                type="radio"
-                                                                                disabled
-                                                                                name="inlineRadioOptions"
-                                                                                id="inlineRadio2"
-                                                                                :value="
-                                                                                    3
-                                                                                "
-                                                                            />
                                                                             <label
                                                                                 class="form-check-label"
                                                                                 for="inlineRadio2"
-                                                                                >보통이다</label
+                                                                            >
+                                                                                <input
+                                                                                    class="form-check-input"
+                                                                                    type="radio"
+                                                                                    disabled
+                                                                                    name="inlineRadioOptions"
+                                                                                    id="inlineRadio2"
+                                                                                    :value="
+                                                                                        3
+                                                                                    "
+                                                                                />
+                                                                                보통이다</label
                                                                             >
                                                                         </div>
                                                                         <div
                                                                             class="form-check form-check-inline"
                                                                         >
-                                                                            <input
-                                                                                class="form-check-input"
-                                                                                type="radio"
-                                                                                disabled
-                                                                                name="inlineRadioOptions"
-                                                                                id="inlineRadio2"
-                                                                                :value="
-                                                                                    4
-                                                                                "
-                                                                            />
                                                                             <label
                                                                                 class="form-check-label"
                                                                                 for="inlineRadio2"
-                                                                                >그렇지않다</label
+                                                                            >
+                                                                                <input
+                                                                                    class="form-check-input"
+                                                                                    type="radio"
+                                                                                    disabled
+                                                                                    name="inlineRadioOptions"
+                                                                                    id="inlineRadio2"
+                                                                                    :value="
+                                                                                        4
+                                                                                    "
+                                                                                />
+                                                                                그렇지
+                                                                                않다</label
                                                                             >
                                                                         </div>
                                                                         <div
                                                                             class="form-check form-check-inline"
                                                                         >
-                                                                            <input
-                                                                                class="form-check-input"
-                                                                                type="radio"
-                                                                                disabled
-                                                                                name="inlineRadioOptions"
-                                                                                id="inlineRadio2"
-                                                                                :value="
-                                                                                    5
-                                                                                "
-                                                                            />
                                                                             <label
                                                                                 class="form-check-label"
                                                                                 for="inlineRadio2"
-                                                                                >전혀그렇지않다</label
+                                                                            >
+                                                                                <input
+                                                                                    class="form-check-input"
+                                                                                    type="radio"
+                                                                                    disabled
+                                                                                    name="inlineRadioOptions"
+                                                                                    id="inlineRadio2"
+                                                                                    :value="
+                                                                                        5
+                                                                                    "
+                                                                                />
+                                                                                전혀
+                                                                                그렇지
+                                                                                않다</label
                                                                             >
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <!-- Dropdown Card Example -->
+                                                        <!-- 설문지 부분 끝 -->
                                                     </div>
                                                     <div
                                                         v-else-if="
@@ -512,7 +483,7 @@
                                                                             <button
                                                                                 class="buttonSection"
                                                                                 @click="
-                                                                                    deleteComponent()
+                                                                                    deleteQuestion()
                                                                                 "
                                                                             >
                                                                                 <font-awesome-icon
@@ -538,15 +509,10 @@
                                                     <!--노랑이 끝-->
                                                 </div>
                                             </div>
-                                            <!-- Dropdown Card Example -->
                                         </div>
                                     </div>
-
-                                    <!-- End of Main Content -->
                                 </div>
-                                <!-- End of Content Wrapper -->
                             </div>
-                            <!-- End of Page Wrapper -->
                         </body>
                         <!-- 컴포넌트 -->
                     </div>
@@ -557,49 +523,29 @@
     </div>
 </template>
 <script>
-import Sidebar from '../components/layouts/Sidebar.vue'
-import Topbar from '../components/layouts/Topbar.vue'
+import Sidebar from '../layouts/Sidebar.vue'
+import Topbar from '../layouts/Topbar.vue'
 export default {
     name: '',
     components: { sidebar: Sidebar, topbar: Topbar },
     data() {
         return {
-            files: null,
-            imageList: [],
-
-            course_name: '2021블록체인비즈니스과정',
-            class_name: 'Vue.js',
-            class_teacher_key: '고승원',
-            eval_order: '설문지 설명 :',
-            title: '2주차 강의 평가',
-            modal2: false,
-            // modal1: false
-            // studentName: ['장태진', '태진장', '태진태', '진태진', '태진태진'],
+            classInfo: [],
             students: [],
             checkedStudents: [],
-            questions: [
-                {
-                    type: 'Q',
-                    content: '강사의 강의 속도는 적절했나요?',
-                    isSelected: false
-                },
-                {
-                    type: 'D',
-                    content: '다음은 강사에 대한 평가 질문입니다.',
-                    isSelected: false
-                },
-                {
-                    type: 'Q',
-                    content: '강사의 교수법은 적절했나요?',
-                    isSelected: false
-                },
-                {
-                    type: 'Q',
-                    content: '강사는 적절한 예제를 제시했나요?',
-                    isSelected: false
-                }
-            ],
+
+            questions: [],
+            evalTitle: '',
+            evalImageAddress: null,
+            evalDescription: '',
+            evalStartTime: null,
+            evalEndTime: null,
             selectedIndex: -1
+        }
+    },
+    computed: {
+        user() {
+            return this.$store.state.user
         }
     },
     setup() {},
@@ -623,6 +569,21 @@ export default {
     mounted() {},
     unmounted() {},
     methods: {
+        // created method : DB에서 학생 데이터 가져오기
+        async getStudentList() {
+            this.students = await this.$api('/api/studentList', 'post', {
+                param: [this.courseId, this.classId]
+            })
+            // console.log(this.students)
+        },
+
+        // created method : DB에서 현재 수업 정보 가져오기
+        async getClassInfo() {
+            this.classInfo = await this.$api('/api/classInfo', 'post', {
+                param: [this.classId]
+            })
+            console.log(this.classInfo)
+        },
         async sendEvalution() {
             console.log(this.checkedStudents)
             //  axios.post('/api/sendEvaluation', {param: [this.checkedStudents]})
@@ -632,6 +593,7 @@ export default {
 
             console.log(r)
         },
+        // 현재 수정 중인 질문박스 활성화 함수
         setCurrentNo(idx) {
             this.selectedIndex = idx
             this.questions.forEach(item => {
@@ -640,40 +602,67 @@ export default {
             this.questions[idx].isSelected = true
             console.log(this.questions[idx])
         },
-
-        addQuetion(type) {
+        // 질문 추가 함수
+        addQuestion(type) {
             this.questions.splice(this.selectedIndex + 1, 0, {
                 type: type,
-                content: ''
+                content: '',
+                isSelected: false
             })
+
+            this.setCurrentNo(this.selectedIndex + 1)
         },
-        deleteComponent() {
+        // 질문 삭제 함수
+        deleteQuestion() {
             this.questions.splice(this.selectedIndex, 1)
         },
 
+        // 학생에게 평가지를 열람 가능하도록 업데이트하는 함수
+        async sendEvalutionPaper() {
+            console.log(this.checkedStudents)
+
+            const res = await this.$api('/api/sendEvaluationPaper', 'post', {
+                param: [this.checkedStudents, this.classId]
+            })
+
+            console.log(res)
+        },
+
+        // 작성된 평가지 정보를 DB에 저장하는 함수
+        async saveEvaluationInfo() {
+            var oEvaluationPaper = {}
+            oEvaluationPaper.class_id = this.classId
+            oEvaluationPaper.title = this.evalTitle
+            oEvaluationPaper.information = this.evalDescription
+            oEvaluationPaper.start_time = this.evalStartTime
+            oEvaluationPaper.end_time = this.evalEndTime
+            oEvaluationPaper.image_address = this.evalImageAddress
+
+            const res = await this.$api('/api/saveEvaluationInfo', 'post', {
+                param: [oEvaluationPaper]
+            })
+
+            console.log(res)
+        },
+
+        // 평가지에 작성된 질문들을 DB에 저장하는 함수
         async saveQuestion() {
+            var questionData = []
+            const questionList = this.questions
+
+            for (var idx in questionList) {
+                questionList[idx].order = idx
+                questionList[idx].class_id = this.classId
+                questionList[idx].eval_id = this.classId
+
+                questionData.push(questionList[idx])
+            }
+
+            console.log(questionData)
             const r = await this.$api('/api/saveQuestion', 'post', {
-                param: [this.questions]
+                param: [questionData]
             })
-
             console.log(r)
-        },
-
-        async fileSelect(e) {
-            const r = await this.$upload('/api/uploadFile', e.target.files[0])
-            console.log(r)
-            this.imageList.push({
-                src: `http://localhost:3000/static/${r.filename}`,
-                filename: r.filename
-            })
-        },
-        async deleteImg(idx) {
-            var filename = this.imageList[idx].filename
-            const r = await this.$delete('/api/deleteFile?filename=' + filename)
-            console.log(r)
-            this.imageList = this.imageList.filter(
-                img => img.filename !== filename
-            )
         }
     }
 }
