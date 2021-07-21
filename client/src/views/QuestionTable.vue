@@ -25,7 +25,7 @@
                 />
             </div>
             <!-- 저장 버튼 -->
-            <div @click=";[saveEvaluationInfo(), saveQuestion()]" title="저장">
+            <div @click="saveEvaluationPaper(), saveQuestion()" title="저장">
                 <font-awesome-icon icon="save" />
             </div>
             <!-- Button trigger modal -->
@@ -236,28 +236,22 @@
                         <!-- class_table -->
                         <div style="margin:5px;">
                             강좌명:
-                            {{ classInfo[0].course_name }}
+                            {{ classInfo.course_name }}
                         </div>
                         <div style="margin:5px;">
-                            수업명: {{ classInfo[0].name }}
+                            수업명: {{ classInfo.name }}
                         </div>
                         <div style="margin:5px;">
                             강사명:
-                            {{ classInfo[0].teacher_name }}
+                            {{ classInfo.teacher_name }}
                         </div>
                         <div style="margin:10px;">
                             설문 응답 시작 :
-                            <input
-                                type="datetime-local"
-                                v-model="evalStartTime"
-                            />
+                            <input type="date" v-model="evalStartTime" />
                         </div>
                         <div style="margin:10px;">
                             설문 응답 종료 :
-                            <input
-                                type="datetime-local"
-                                v-model="evalEndTime"
-                            />
+                            <input type="date" v-model="evalEndTime" />
                         </div>
                         <div>
                             <input
@@ -497,7 +491,7 @@ export default {
     name: '',
     data() {
         return {
-            classInfo: [],
+            classInfo: {},
             students: [],
             checkedStudents: [],
 
@@ -524,8 +518,6 @@ export default {
         this.getClassInfo()
     },
     mounted() {
-        console.log(this.classInfo[0].course_name)
-
         const checkedStudents = []
         for (const student of this.students) {
             checkedStudents.push(student.user_email)
@@ -540,10 +532,11 @@ export default {
         // key = [class_id]
         // getStudentList: {
         async getStudentList() {
+            console.log(this.classId)
             this.students = await this.$api('/api/getStudentList', 'post', {
                 param: [this.classId]
             })
-            // console.log(this.students)
+            console.log('this.students', this.students)
         },
 
         // created method : DB에서 현재 수업 정보 가져오기
@@ -551,9 +544,11 @@ export default {
         // key = [course_id, class_id]
         // getClassInfo: {
         async getClassInfo() {
-            this.classInfo = await this.$api('/api/getClassInfo', 'post', {
-                param: [this.courseId, this.classId]
-            })
+            this.classInfo = (
+                await this.$api('/api/getClassInfo', 'post', {
+                    param: [this.courseId, this.classId]
+                })
+            )[0]
             console.log(this.classInfo)
         },
         // async sendEvalution() {

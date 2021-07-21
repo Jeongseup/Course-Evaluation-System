@@ -18,7 +18,6 @@
         <!-- 스티커 끝 -->
         <answermodal @callSaveAnswer="saveAnswer" />
         <!-- Page Wrapper -->
-        {{ answers }}
         <div id="wrapper">
             <!-- 설문지 부분 -->
             <div id="content-wrapper" class="d-flex flex-column">
@@ -29,10 +28,10 @@
                             class="text-lg font-weight-bold text-warning text-uppercase mb-1 text-center"
                         >
                             <h1>
-                                {{ evaluationInfo[0].title }}
+                                {{ evaluationInfo.title }}
                             </h1>
                             <h5>
-                                {{ evaluationInfo[0].information }}
+                                {{ evaluationInfo.information }}
                             </h5>
                             <div class="card shadow mb-4 rounded">
                                 <img src="../assets/images/cup.jpg" alt="..." />
@@ -40,10 +39,10 @@
                         </div>
                         <div style="margin:10px;">
                             설문 응답 시작 :
-                            {{ evaluationInfo[0].start_time }}
+                            {{ evaluationInfo.start_time }}
                             <br />
                             설문 응답 종료 :
-                            {{ evaluationInfo[0].end_time }}
+                            {{ evaluationInfo.end_time }}
                         </div>
                         <div class="row">
                             <!-- 가운데 평가지 -->
@@ -202,7 +201,7 @@ export default {
         return {
             eval_id: null,
             answers: [],
-            evaluationInfo: []
+            evaluationInfo: {}
         }
     },
     computed: {
@@ -242,15 +241,13 @@ export default {
 
         // 평가지 정보 불러오기
         async getEvaluationPaper() {
-            this.evaluationPaper = await this.$api(
-                '/api/getEvaluationPaper',
-                'post',
-                {
+            this.evaluationInfo = (
+                await this.$api('/api/getEvaluationPaper', 'post', {
                     param: [this.eval_id]
-                }
-            )
+                })
+            )[0]
 
-            console.log(this.evaluationPaper)
+            console.log(this.evaluationInfo)
         },
 
         // 평가 응답 DB 저장 함수

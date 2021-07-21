@@ -115,6 +115,12 @@ module.exports = {
         WHERE T1.class_id = ? AND T1.class_id = T2.class_id
         GROUP BY T1.class_id, T1.question_id, T1.answer_value`,
     },
-    checkEvaluationPaper: {},
-    updateEvaluationStatus: {},
+    checkEvaluationPaper: {
+        query: `SELECT count(DISTINCT(user_email)) AS eval_count, (SELECT count(*) FROM t_student WHERE current_eval_id = ?) AS student_count FROM t_answer WHERE class_id = ?`,
+    },
+    updateEvaluationStatus: {
+        query: `update t_class
+        SET eval_status_id = ?
+        where class_id = ?`,
+    },
 };
