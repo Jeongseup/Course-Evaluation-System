@@ -1,65 +1,69 @@
 <template>
-    <div class="bg-gradient-primary ">
-        <div class="container">
-            <!-- Outer Row -->
-            <div class="row justify-content-center">
-                <div class="col-xl-10 col-lg-12 col-md-9">
-                    <div class="card o-hidden border-0 shadow-lg my-5">
-                        <div class="card-body p-0">
-                            <!-- Nested Row within Card Body -->
-                            <div class="row">
-                                <div
-                                    class="col-lg-6 d-none d-lg-block bg-login-image"
-                                >
-                                    <img src="../assets/images/sky.jpg" />
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="p-5">
-                                        <div class="text-center">
-                                            <h1 class="h4 text-gray-900 mb-4">
-                                                Welcome Back!
-                                            </h1>
-                                        </div>
-                                        <form class="user">
-                                            <div class="form-group">
-                                                <input
-                                                    type="email"
-                                                    class="form-control form-control-user"
-                                                    id="exampleInputEmail"
-                                                    aria-describedby="emailHelp"
-                                                    placeholder="Enter Email Address..."
-                                                    v-model="input_email"
-                                                />
-                                            </div>
-                                            <div class="form-group">
-                                                <input
-                                                    type="password"
-                                                    class="form-control form-control-user"
-                                                    id="exampleInputPassword"
-                                                    placeholder="Password"
-                                                    v-model="input_pw"
-                                                />
-                                            </div>
-                                            <div class="form-group">
-                                                <div
-                                                    class="custom-control custom-checkbox small"
+    <div>
+        <body class="bg-gradient-image ">
+            <div class="fullPage">
+                <!-- Outer Row -->
+                <div class="row justify-content-center ">
+                    <div class="col-xl-4 col-lg-5 col-md-5 upMargin">
+                        <div
+                            class="card o-hidden border-0 shadow-lg my-3 seeBg"
+                        >
+                            <!-- 추가 시켜야 할 부분 :card border-bottom-primary shadow h-100 py-2 -->
+                            <div class="card-body p-0">
+                                <!-- Nested Row within Card Body -->
+                                <div>
+                                    <div
+                                        class="card-header py-3 border-top-primary"
+                                    >
+                                        <div>
+                                            <div class="text-center">
+                                                <h1
+                                                    class="h4 text-gray-900 mb-4"
                                                 >
+                                                    Welcome Back!
+                                                </h1>
+                                            </div>
+                                            <form class="user">
+                                                <div class="form-group">
                                                     <input
-                                                        type="checkbox"
-                                                        class="custom-control-input"
-                                                        id="customCheck"
+                                                        type="email"
+                                                        class="form-control form-control-user"
+                                                        id="exampleInputEmail"
+                                                        aria-describedby="emailHelp"
+                                                        placeholder="Enter Email Address..."
+                                                        v-model="input_email"
                                                     />
                                                 </div>
-                                            </div>
-                                            <a
-                                                class="btn btn-primary btn-user btn-block"
-                                                @click="onSubmit"
-                                                @keyup.enter="onSubmit"
-                                            >
-                                                Login
-                                            </a>
-                                        </form>
-                                        <hr />
+                                                <div class="form-group">
+                                                    <input
+                                                        type="password"
+                                                        class="form-control form-control-user"
+                                                        id="exampleInputPassword"
+                                                        placeholder="Password"
+                                                        v-model="input_pw"
+                                                    />
+                                                </div>
+                                                <div class="form-group">
+                                                    <div
+                                                        class="custom-control custom-checkbox small"
+                                                    >
+                                                        <input
+                                                            type="checkbox"
+                                                            class="custom-control-input"
+                                                            id="customCheck"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <a
+                                                    class="btn btn-primary btn-user btn-block"
+                                                    @click="onSubmit"
+                                                    @keyup.enter="onSubmit"
+                                                >
+                                                    Login
+                                                </a>
+                                            </form>
+                                            <hr />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -67,7 +71,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </body>
     </div>
 </template>
 <script>
@@ -93,14 +97,11 @@ export default {
         async onSubmit() {
             // 접근 유저 아이디 확인
             console.log('사용자가 입력한 ID', this.input_email)
-
             // DB에 요청
             const res = await this.$api('/api/getUserData', 'post', {
                 param: [this.input_email]
             })
-
             console.log(res)
-
             if (res[0] == null) {
                 // DB에 저장되지 않은 사용자 접근
                 window.alert('사용자 정보를 잘못 입력하셨습니다.')
@@ -112,13 +113,11 @@ export default {
                     // DB에 저장된 사용자 접근
                     // console.log(res[0])
                     const oUser = {}
-
                     oUser.type = res[0].user_type_id
                     oUser.email = res[0].user_email
                     oUser.password = res[0].password
                     oUser.name = res[0].name
                     oUser.tel = res[0].tel
-
                     // 저장된 유저 정보확인
                     // console.log(oUser)
                     this.$store.commit('user', oUser)
@@ -128,14 +127,12 @@ export default {
                 }
             }
         },
-
         // 학생이 접근하는 경우, 현재 설문조사가 가능한 지 확인한다.
         async confirmAccess() {
             console.log(this.user.email)
             const res = await this.$api('/api/getStudentData', 'post', {
                 param: [this.user.email]
             })
-
             if (res[0].eval_abled === 1) {
                 this.$router.push({
                     path: '/answertable',
@@ -145,7 +142,6 @@ export default {
                 window.alert('죄송합니다, 현재 평가할 수 없는 상태입니다.')
             }
         },
-
         goToPage(userType) {
             if (userType === 1) {
                 this.$router.push({
@@ -158,3 +154,34 @@ export default {
     }
 }
 </script>
+<style scoped>
+.bg-gradient-image {
+    /* background-color: #4e73df; */
+    /* background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%); */
+    background-size: cover;
+    /* background-image: url('../assets/one.jpg'); */
+    /* background-image: radial-gradient( */
+    background: linear-gradient(
+        to top,
+        lightgrey 0%,
+        lightgrey 1%,
+        #e0e0e0 26%,
+        #efefef 48%,
+        #d9d9d9 75%,
+        #bcbcbc 100%
+    );
+}
+.seeBg {
+    background-color: white;
+}
+.upMargin {
+    margin-top: 20vh;
+}
+.fullPage {
+    height: 100vh;
+}
+
+.border-top-primary {
+    border-top: 0.25rem solid #4e73df !important;
+}
+</style>
