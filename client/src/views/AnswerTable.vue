@@ -77,8 +77,8 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <router-link
-                                                to="/"
+                                            <a
+                                                href="/"
                                                 style="text-decoration: none;"
                                             >
                                                 <button
@@ -89,7 +89,7 @@
                                                 >
                                                     확인
                                                 </button>
-                                            </router-link>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
