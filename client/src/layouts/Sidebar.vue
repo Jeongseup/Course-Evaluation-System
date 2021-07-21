@@ -16,7 +16,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" @click="goToListPage()">
+            <a class="nav-link" href="/list">
                 <!-- <router-link to="/list" style="text-decoration: none;"> -->
                 <font-awesome-icon icon="home" />
                 <span style="color:white"> HOME</span>
@@ -27,11 +27,10 @@
         <hr class="sidebar-divider" />
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed">
+            <a class="nav-link collapsed" href="/coursetable">
                 <font-awesome-icon icon="chalkboard-teacher" />
-                <router-link to="/coursetable" style="text-decoration: none;">
-                    <span style="color:white"> 과정등록</span>
-                </router-link>
+
+                <span style="color:white"> 과정등록</span>
             </a>
         </li>
 
@@ -39,13 +38,12 @@
         <hr class="sidebar-divider" />
         <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed">
+            <a class="nav-link collapsed" href="/evaltable">
                 <!-- <router-link to="/questiontable" style="text-decoration: none;"> -->
 
                 <font-awesome-icon icon="edit" />
-                <router-link to="/evaltable" style="text-decoration: none;">
-                    <span style="color:white"> 평가지 생성</span>
-                </router-link>
+
+                <span style="color:white"> 평가지 생성</span>
             </a>
         </li>
 
@@ -53,28 +51,15 @@
         <hr class="sidebar-divider" />
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#">
+            <a class="nav-link collapsed" href="/list">
                 <font-awesome-icon icon="clipboard-list" />
-                <router-link to="/list" style="text-decoration: none;">
-                    <span style="color:white"> 평가 리스트</span>
-                </router-link>
+
+                <span style="color:white"> 평가 리스트</span>
             </a>
         </li>
 
         <!-- Divider -->
         <hr class="sidebar-divider" />
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#">
-                <font-awesome-icon icon="list-alt" />
-                <router-link to="/sidetest" style="text-decoration: none;">
-                    <span style="color:white"> 평가지 결과</span>
-                </router-link>
-            </a>
-        </li>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block" />
     </ul>
     <!-- End of Sidebar -->
 </template>
