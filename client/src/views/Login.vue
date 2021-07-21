@@ -32,6 +32,7 @@
                                                     class="form-control form-control-user"
                                                     id="exampleInputPassword"
                                                     placeholder="Password"
+                                                    @keyup.enter="onSubmit"
                                                     v-model="input_pw"
                                                 />
                                             </div>
@@ -49,7 +50,6 @@
                                             <a
                                                 class="btn btn-primary btn-user btn-block"
                                                 @click="onSubmit"
-                                                @keyup.enter="onSubmit"
                                             >
                                                 Login
                                             </a>
@@ -89,7 +89,7 @@ export default {
             // 접근 유저 아이디 확인
             console.log('사용자가 입력한 ID', this.input_email)
             // DB에 요청
-            const res = await this.$api('/api/getUserData', 'post', {
+            const res = await this.$api('/api/getUser', 'post', {
                 param: [this.input_email]
             })
             console.log(res)
@@ -118,21 +118,7 @@ export default {
                 }
             }
         },
-        // 학생이 접근하는 경우, 현재 설문조사가 가능한 지 확인한다.
-        async confirmAccess() {
-            console.log(this.user.email)
-            const res = await this.$api('/api/getStudentData', 'post', {
-                param: [this.user.email]
-            })
-            if (res[0].eval_abled === 1) {
-                this.$router.push({
-                    path: '/answertable',
-                    query: { eval_id: res[0].current_eval_id }
-                })
-            } else {
-                window.alert('죄송합니다, 현재 평가할 수 없는 상태입니다.')
-            }
-        },
+
         goToPage(userType) {
             if (userType === 1) {
                 this.$router.push({
@@ -140,6 +126,25 @@ export default {
                 })
             } else if (userType === 3) {
                 this.confirmAccess()
+            }
+        },
+
+        // 학생이 접근하는 경우, 현재 설문조사가 가능한 지 확인한다.
+        async confirmAccess() {
+            console.log(this.user.email)
+            const res = await this.$api('/api/getStudent', 'post', {
+                param: [this.user.email]
+            })
+            if (res[0].eval_abled === 1) {
+                this.$router.push({
+                    path: '/answertable',
+                    query: {
+                        eval_id: res[0].current_eval_id,
+                        user_email: this.user.email
+                    }
+                })
+            } else {
+                window.alert('죄송합니다, 현재 평가할 수 없는 상태입니다.')
             }
         }
     }
@@ -163,6 +168,7 @@ export default {
 }
 .seeBg {
     background-color: white;
+    border-top: 0.25rem solid #4e73df !important;
 }
 .upMargin {
     margin-top: 20vh;

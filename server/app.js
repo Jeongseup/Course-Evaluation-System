@@ -146,32 +146,9 @@ const sys = {
     user = ...
     password = ...
 */
-
-// post function for upload file
-app.post("/api/uploadFile", upload.single("attachment"), async (req, res) => {
-    console.log(req.file);
-    return res.status(200).json(req.file);
-});
-
-// delete function for uploaded file
-app.delete("/api/deleteFile", async (req, res) => {
-    const filePath = path.join(__dirname, "uploads", req.query.filename);
-    console.log(path);
-    fs.unlink(filePath, (err) => {
-        if (err) {
-            console.error(err);
-            res.status(400).json({
-                type: "E",
-                msg: "파일을 삭제할 수 없습니다. 다시 시도하세요.",
-            });
-        }
-
-        res.status(200).json({ type: "S", msg: "성공적으로 삭제되었습니다." });
-    });
-});
-
 // 평가지 생성 페이지, 질문 리스트 저장
 app.post("/api/saveQuestion", async (req, res) => {
+    console.log(req);
     console.log(req.body.param);
     console.log("/api/saveQuestion");
 
@@ -193,7 +170,6 @@ app.post("/api/saveQuestion", async (req, res) => {
         });
     }
 });
-
 // 평가지 생성 페이지 평가지 학생들에게 전송
 app.post("/api/sendEvaluationPaper", async (req, res) => {
     console.log(req.body.param[0]);
@@ -206,6 +182,7 @@ app.post("/api/sendEvaluationPaper", async (req, res) => {
             console.log(user_email);
             await sys.db("updateStudentAbled", [current_eval_id, user_email]);
         }
+        await sys.db("updateEvaluationStatus", [3, req.body.param[0].class_id]);
 
         res.status(200).send("Ok");
     } catch (err) {
@@ -216,11 +193,11 @@ app.post("/api/sendEvaluationPaper", async (req, res) => {
 });
 
 // 평가지 정보 저장
-app.post("/api/saveEvaluationInfo", async (req, res) => {
+app.post("/api/saveEvaluationPaper", async (req, res) => {
     console.log(req.body.param);
 
     try {
-        await sys.db("insertEvaluationInfo", req.body.param[0]);
+        await sys.db("insertEvaluationPaper", req.body.param[0]);
         res.status(200).send("Ok");
     } catch (err) {
         res.status(500).send({
@@ -234,22 +211,52 @@ app.post("/api/saveAnswer", async (req, res) => {
     console.log(req.body.param);
 
     try {
-        for (const question of req.body.param[0]) {
+        // 학생의 응답 DB에 저장
+        for (const answer of req.body.param[0]) {
             await sys.db("insertAnswer", {
-                question_id: question.id,
-                answer_value: question.answer,
-                class_id: question.class_id,
-                user_email: question.user_email,
+                question_id: answer.question_id,
+                answer_value: answer.answer,
+                class_id: answer.class_id,
+                user_email: answer.user_email,
             });
         }
 
+        // 응답한 학생 비활성화
+        await sys.db("updateStudent", req.body.param[1]);
         res.status(200).send("Ok");
+
+        // check count 조회
+        const check = await sys.db("checkEvaluationPaper", [
+            req.body.param[0].class_id,
+            req.body.param[0].class_id,
+        ]);
+        if (check[0].eval_count == check[0].student_count) {
+            // 업데이트
+            await sys.db("updateEvaluationStatus", [
+                4,
+                req.body.param[0].class_id,
+            ]);
+        }
     } catch (err) {
         res.status(500).send({
             error: err,
         });
     }
 });
+
+// 평가지 정보 저장
+// app.post("/api/getClassInfo", async (req, res) => {
+//     console.log(req.body.param[0]);
+
+//     try {
+//         await sys.db("getClassInfo", req.body.param[0]);
+//         res.status(200).send("Ok");
+//     } catch (err) {
+//         res.status(500).send({
+//             error: err,
+//         });
+//     }
+// });
 
 app.post("/api/:alias", async (req, res) => {
     console.log("alias computed!");

@@ -77,14 +77,14 @@
             </h5>
             <div class="d-flex justify-content-between align-items-center">
                 <div class="d-grid gap-1 col-14 mx-auto" role="group">
-                    <button
+                    <a
                         type="button"
                         class="btn btn-primary btn-sm"
                         style="[color:white; text-decoration:none; width:150px;]"
-                        @click="goToEvalCreatePage(item.class_id, courseId)"
+                        @click="goToResultPage(item.class_id, courseId)"
                     >
                         {{ item.eval_status_name }}
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -104,10 +104,18 @@ export default {
         }
     },
     methods: {
-        goToEvalCreatePage(classId, courseId) {
-            console.log(classId, courseId)
+        goToEvalCreatePage(classId) {
+            console.log(classId, this.courseId)
             this.$router.push({
                 path: '/questiontable',
+                query: { classId: classId, courseId: this.courseId }
+            })
+        },
+
+        goToResultPage(classId, courseId) {
+            console.log(classId, courseId)
+            this.$router.push({
+                path: '/sidetest',
                 query: { classId: classId, courseId: courseId }
             })
         }

@@ -1,90 +1,41 @@
 <template>
-    <div>
-        <!-- 컴포넌트 -->
-        <div id="page-top">
-            <!-- Page Wrapper -->
-            <div id="wrapper">
-                <sidebar />
-                <div id="content-wrapper" class="d-flex flex-column">
-                    <!-- Main Content -->
-                    <div id="content">
-                        <topbar />
-                        <!-- 컴포넌트 끝 -->
-                        <body>
-                            <!-- Page Wrapper -->
-                            <div>
-                                <!-- Content Wrapper -->
-                                <div
-                                    id="content-wrapper"
-                                    class="d-flex flex-column"
-                                >
-                                    <!-- Main Content -->
-                                    <div id="content">
-                                        <div class="container">
-                                            <!-- <div class="row g-3">
-                                                <div
-                                                    class="col-xl-3 col-lg-4 col-md-6"
-                                                > -->
-                                            <div class="dropdown">
-                                                <select
-                                                    name="one"
-                                                    class="dropdown-select"
-                                                    aria-label="Default select example"
-                                                    v-model="courseId"
-                                                    @click="
-                                                        getClassList(courseId)
-                                                    "
-                                                >
-                                                    <option
-                                                        :key="i"
-                                                        :value="item.course_id"
-                                                        v-for="(item,
-                                                        i) in courseList"
-                                                    >
-                                                        현재 선택된 과정은
-                                                        {{ item.name }}
-                                                        입니다.
-                                                    </option>
-                                                </select>
-                                            </div>
-                                            <!-- 클래스 카드가 들어갈 공간 -->
-                                            <div class="card shadow mb-4 ">
-                                                <div class="card-header py-4">
-                                                    <div class="row ">
-                                                        <!-- Class Card Component  -->
-                                                        <classcard
-                                                            :classList="
-                                                                classList
-                                                            "
-                                                            :courseId="courseId"
-                                                        />
-                                                        <!-- 컴포넌트 끝 -->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- 클래스 카드가 들어갈 공간 끝 -->
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End of Content Wrapper -->
-                            </div>
-                            <!-- End of Page Wrapper -->
-                        </body>
-                        <!-- 컴포넌트 -->
-                    </div>
+    <div class="container">
+        <div class="dropdown">
+            <select
+                name="one"
+                class="dropdown-select"
+                aria-label="Default select example"
+                v-model="courseId"
+                @click="getClassList(courseId)"
+            >
+                <option
+                    :key="i"
+                    :value="item.course_id"
+                    v-for="(item, i) in courseList"
+                >
+                    현재 선택된 과정은
+                    {{ item.name }}
+                    입니다.
+                </option>
+            </select>
+        </div>
+        <!-- 클래스 카드가 들어갈 공간 -->
+        <div class="card shadow mb-4 ">
+            <div class="card-header py-4">
+                <div class="row ">
+                    <!-- Class Card Component  -->
+                    <classcard :classList="classList" :courseId="courseId" />
                 </div>
             </div>
         </div>
-        <!-- 컴포넌트 끝 -->
     </div>
 </template>
 <script>
-import Sidebar from '../layouts/Sidebar.vue'
-import Topbar from '../layouts/Topbar.vue'
 import ClassCard from '../components/ClassCard.vue'
 export default {
     name: '',
-    components: { sidebar: Sidebar, topbar: Topbar, classcard: ClassCard },
+    components: { classcard: ClassCard },
+
     data() {
         return {
             courseId: null,
@@ -107,13 +58,19 @@ export default {
     mounted() {},
     unmounted() {},
     methods: {
+        // 유저가 담당한 모든 코스 정보 가져오기
+        // key = [user_email]
+        // getCourseList: {
         async getCourseList() {
-            this.courseList = await this.$api('/api/courseList', 'post', {
+            this.courseList = await this.$api('/api/getCourseList', 'post', {
                 param: [this.user.email]
             })
         },
+        // 코스별 정보 가져오기
+        // key = [course_id]
+        // getClassList: {
         async getClassList() {
-            this.classList = await this.$api('/api/classList', 'post', {
+            this.classList = await this.$api('/api/getClassList', 'post', {
                 param: [this.courseId]
             })
         }
