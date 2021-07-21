@@ -60,7 +60,6 @@
 import Sidebar from '../layouts/Sidebar.vue'
 import Topbar from '../layouts/Topbar.vue'
 import CourseCard from '../components/CourseCard.vue'
-
 export default {
     name: '',
     components: { sidebar: Sidebar, topbar: Topbar, coursecard: CourseCard },
@@ -85,7 +84,6 @@ export default {
             this.courseList = await this.$api('/api/courseList', 'post', {
                 param: [this.user.email]
             })
-
             console.log(this.courseList)
         }
     }

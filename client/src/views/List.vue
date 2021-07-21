@@ -456,9 +456,22 @@
                                                                                 }}
                                                                             </td>
                                                                             <td>
-                                                                                <button>
-                                                                                    선택
-                                                                                </button>
+                                                                                <div
+                                                                                    class="d-flex justify-content-between align-items-center"
+                                                                                >
+                                                                                    <div
+                                                                                        class="btn-group"
+                                                                                        role="group"
+                                                                                    >
+                                                                                        <button
+                                                                                            type="button"
+                                                                                            class="btn  btn-sm btn-primary"
+                                                                                            style="[text-decoration: none; color:white;]"
+                                                                                        >
+                                                                                            선택
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </div>
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
@@ -466,7 +479,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                     <!-- 항목별 평가 있는 공간 -->
                                                 </div>
                                             </div>
