@@ -5,6 +5,7 @@
             <!-- Page Wrapper -->
             <div id="wrapper">
                 <sidebar />
+
                 <div id="content-wrapper" class="d-flex flex-column">
                     <!-- Main Content -->
                     <div id="content">
@@ -20,81 +21,102 @@
                                     class="d-flex flex-column"
                                 >
                                     <!-- Main Content -->
-                                    <div id="content">
+                                    <div class="content">
                                         <div class="container">
                                             <div class="row g-3">
                                                 <div
-                                                    class="col-xl-3 col-lg-4 col-md-6"
+                                                    style="margin:30px;  btn float-right;"
                                                 >
+                                                    <a
+                                                        href="#"
+                                                        class="btn btn-primary  btn-icon-split "
+                                                    >
+                                                        <span class="text">
+                                                            + 새 과정 추가</span
+                                                        >
+                                                    </a>
+                                                </div>
+
+                                                <!-- 과정추가_card -->
+
+                                                <div class="card shadow mb-4">
                                                     <div
                                                         class="card-header py-3"
-                                                        style="margin:30px;  btn float-right;"
                                                     >
-                                                        <a
-                                                            href="#"
-                                                            class="btn btn-warning btn-icon-split "
-                                                        >
-                                                            <span class="text">
-                                                                + 새 과정
-                                                                추가</span
-                                                            >
-                                                        </a>
-                                                    </div>
-
-                                                    <!-- 과정추가_card -->
-                                                    <div
-                                                        class="card"
-                                                        style="width: 18rem;"
-                                                        :key="course.course_id"
-                                                        v-for="course in courseList"
-                                                    >
-                                                        <div class="card-body">
-                                                            <h5
-                                                                class="card-title"
-                                                            >
-                                                                {{
-                                                                    course.name
-                                                                }}
-                                                            </h5>
-                                                            <h6>
-                                                                기간 :
-                                                                {{
-                                                                    course.start_date
-                                                                }}
-                                                                ~
-                                                                {{
-                                                                    course.end_date
-                                                                }}
-                                                                <br />
-                                                                장소 :
-                                                                {{
-                                                                    course.place
-                                                                }}
-                                                                <br />
-                                                                설명 :
-                                                                {{
-                                                                    course.information
-                                                                }}
-                                                            </h6>
+                                                        <div class="row">
                                                             <div
-                                                                class="d-flex justify-content-between align-items-center"
+                                                                class="col-xl-4 col-md-12 mb-4"
+                                                                :key="
+                                                                    course.course_id
+                                                                "
+                                                                v-for="course in courseList"
                                                             >
                                                                 <div
-                                                                    class="btn-group"
-                                                                    role="group"
+                                                                    class="card border-bottom-primary shadow h-100 py-2"
                                                                 >
-                                                                    <button
-                                                                        type="button"
-                                                                        class="btn  btn-sm btn-dark"
-                                                                        style="[text-decoration: none; color:white;]"
-                                                                        @click="
-                                                                            goToCourse(
-                                                                                course.course_id
-                                                                            )
-                                                                        "
+                                                                    <!--여기부분이 box안에 padding주는 부분이다!-->
+                                                                    <div
+                                                                        class="card-body "
                                                                     >
-                                                                        들어가기
-                                                                    </button>
+                                                                        <div
+                                                                            class="row no-gutters align-items-center"
+                                                                        >
+                                                                            <h6
+                                                                                style="color:blue"
+                                                                                class="col mr-7"
+                                                                            >
+                                                                                과정명
+                                                                                :
+                                                                                {{
+                                                                                    course.name
+                                                                                }}
+                                                                            </h6>
+                                                                            <h6>
+                                                                                기간
+                                                                                :
+                                                                                {{
+                                                                                    course.start_date
+                                                                                }}
+                                                                                ~
+                                                                                {{
+                                                                                    course.end_date
+                                                                                }}
+                                                                                <br />
+                                                                                장소
+                                                                                :
+                                                                                {{
+                                                                                    course.place
+                                                                                }}
+                                                                                <br />
+                                                                                설명
+                                                                                :
+                                                                                {{
+                                                                                    course.information
+                                                                                }}
+                                                                            </h6>
+                                                                            <div
+                                                                                class="d-flex justify-content-between align-items-center"
+                                                                            >
+                                                                                <div
+                                                                                    class="btn-group"
+                                                                                    role="group"
+                                                                                >
+                                                                                    <button
+                                                                                        type="button"
+                                                                                        class="btn  btn-sm btn-primary "
+                                                                                        style="[text-decoration: none; color:white;  ]"
+                                                                                        @click="
+                                                                                            goToCourse(
+                                                                                                course.course_id
+                                                                                            )
+                                                                                        "
+                                                                                    >
+                                                                                        들어가기
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -158,3 +180,18 @@ export default {
     }
 }
 </script>
+<style scoped>
+.wrapper {
+    display: flex;
+}
+
+.wrapper .content-wrapper {
+    background-color: #f8f9fc;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.wrapper .content-wrapper .content {
+    flex: 1 0 auto;
+}
+</style>
