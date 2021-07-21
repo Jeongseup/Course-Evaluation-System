@@ -171,6 +171,7 @@ export default {
 }
 .seeBg {
     background-color: white;
+    border-top: 0.25rem solid #4e73df !important;
 }
 
 .upMargin {

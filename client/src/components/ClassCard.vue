@@ -77,14 +77,14 @@
             </h5>
             <div class="d-flex justify-content-between align-items-center">
                 <div class="d-grid gap-1 col-14 mx-auto" role="group">
-                    <button
+                    <a
                         type="button"
                         class="btn btn-primary btn-sm"
                         style="[color:white; text-decoration:none; width:150px;]"
-                        @click="goToEvalCreatePage(item.class_id, courseId)"
+                        href="/sidetest"
                     >
                         {{ item.eval_status_name }}
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
