@@ -118,7 +118,6 @@ export default {
                 }
             }
         },
-
         goToPage(userType) {
             if (userType === 1) {
                 this.$router.push({
@@ -128,7 +127,6 @@ export default {
                 this.confirmAccess()
             }
         },
-
         // 학생이 접근하는 경우, 현재 설문조사가 가능한 지 확인한다.
         async confirmAccess() {
             console.log(this.user.email)
