@@ -81,7 +81,7 @@
                         type="button"
                         class="btn btn-primary btn-sm"
                         style="[color:white; text-decoration:none; width:150px;]"
-                        @click="goToEvalCreatePage(item.class_id, courseId)"
+                        @click="goToResultPage(item.class_id, courseId)"
                     >
                         {{ item.eval_status_name }}
                     </button>
@@ -108,6 +108,14 @@ export default {
             console.log(classId, courseId)
             this.$router.push({
                 path: '/questiontable',
+                query: { classId: classId, courseId: courseId }
+            })
+        },
+
+        goToResultPage(classId, courseId) {
+            console.log(classId, courseId)
+            this.$router.push({
+                path: '/sidetest',
                 query: { classId: classId, courseId: courseId }
             })
         }

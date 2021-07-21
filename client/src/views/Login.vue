@@ -32,6 +32,7 @@
                                                     class="form-control form-control-user"
                                                     id="exampleInputPassword"
                                                     placeholder="Password"
+                                                    @keyup.enter="onSubmit"
                                                     v-model="input_pw"
                                                 />
                                             </div>
@@ -49,7 +50,6 @@
                                             <a
                                                 class="btn btn-primary btn-user btn-block"
                                                 @click="onSubmit"
-                                                @keyup.enter="onSubmit"
                                             >
                                                 Login
                                             </a>
@@ -144,7 +144,7 @@ export default {
         goToPage(userType) {
             if (userType === 1) {
                 this.$router.push({
-                    path: '/list'
+                    path: '/home'
                 })
             } else if (userType === 3) {
                 this.confirmAccess()
@@ -171,6 +171,7 @@ export default {
 }
 .seeBg {
     background-color: white;
+    border-top: 0.25rem solid #4e73df !important;
 }
 
 .upMargin {
