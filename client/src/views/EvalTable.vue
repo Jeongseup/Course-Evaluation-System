@@ -21,41 +21,48 @@
                                     <!-- Main Content -->
                                     <div id="content">
                                         <div class="container">
-                                            <div class="row g-3">
+                                            <!-- <div class="row g-3">
                                                 <div
                                                     class="col-xl-3 col-lg-4 col-md-6"
+                                                > -->
+                                            <div class="dropdown">
+                                                <select
+                                                    name="one"
+                                                    class="dropdown-select"
+                                                    aria-label="Default select example"
+                                                    v-model="courseId"
+                                                    @click="
+                                                        getClassList(courseId)
+                                                    "
                                                 >
-                                                    <select
-                                                        class="form-select m-3"
-                                                        aria-label="Default select example"
-                                                        v-model="courseId"
-                                                        @click="
-                                                            getClassList(
-                                                                courseId
-                                                            )
-                                                        "
+                                                    <option
+                                                        :key="i"
+                                                        :value="item.course_id"
+                                                        v-for="(item,
+                                                        i) in courseList"
                                                     >
-                                                        <option
-                                                            :key="i"
-                                                            :value="
-                                                                item.course_id
+                                                        현재 선택된 과정은
+                                                        {{ item.name }}
+                                                        입니다.
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <!-- 클래스 카드가 들어갈 공간 -->
+                                            <div class="card shadow mb-4 ">
+                                                <div class="card-header py-4">
+                                                    <div class="row ">
+                                                        <!-- Class Card Component  -->
+                                                        <classcard
+                                                            :classList="
+                                                                classList
                                                             "
-                                                            v-for="(item,
-                                                            i) in courseList"
-                                                        >
-                                                            현재 선택된 과정은
-                                                            {{ item.name }}
-                                                            입니다.
-                                                        </option>
-                                                    </select>
-
-                                                    <!-- Class Card Component  -->
-                                                    <classcard
-                                                        :classList="classList"
-                                                        :courseId="courseId"
-                                                    />
+                                                            :courseId="courseId"
+                                                        />
+                                                        <!-- 컴포넌트 끝 -->
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <!-- 클래스 카드가 들어갈 공간 끝 -->
                                         </div>
                                     </div>
                                 </div>
