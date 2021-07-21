@@ -11,10 +11,13 @@
                         <topbar :userName="user.name" />
                         <!-- 컴포넌트 끝 -->
                         <body>
+                            <!-- body 바로 아래에 추가 스티커 -->
+
                             <a class="scroll rounded" href="#">
                                 <font-awesome-icon icon="angle-up" />
                             </a>
-                            <!-- body 바로 아래에 추가 스티커 -->
+                            <!-- 스티커 끝 -->
+
                             <div class="menu-toggle rounded">
                                 <!-- Button trigger modal -->
                                 <div
@@ -28,7 +31,6 @@
                                 </div>
                                 <!-- Button trigger modal -->
                             </div>
-                            <!-- 스티커 끝 -->
 
                             <!-- Modal -->
                             <div

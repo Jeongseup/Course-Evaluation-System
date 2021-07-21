@@ -16,12 +16,10 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link">
+            <a class="nav-link" @click="goToListPage()">
                 <!-- <router-link to="/list" style="text-decoration: none;"> -->
                 <font-awesome-icon icon="home" />
-                <router-link to="/list" style="text-decoration: none;">
-                    <span style="color:white"> HOME</span>
-                </router-link>
+                <span style="color:white"> HOME</span>
             </a>
         </li>
 
@@ -80,3 +78,14 @@
     </ul>
     <!-- End of Sidebar -->
 </template>
+<script>
+export default {
+    methods: {
+        goToListPage() {
+            this.$router.push({
+                path: '/list'
+            })
+        }
+    }
+}
+</script>

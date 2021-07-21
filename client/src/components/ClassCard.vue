@@ -1,7 +1,7 @@
 <template>
     <div
-        class="card m-3"
-        style="width: 18rem;"
+        class="card border-bottom-primary shadow h-100 py-2"
+        style="width: 15rem; margin:auto"
         :key="i"
         v-for="(item, i) in classList"
     >
@@ -13,12 +13,12 @@
                 강사명 :
                 {{ item.teacher_name }}
             </h5>
-            <div class="row g-3">
-                <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-grid gap-1 col-14 mx-auto" role="group">
                     <button
                         type="button"
-                        class="btn btn-success btn-lg"
-                        style="[color:white; text-decoration:none; width:250px;]"
+                        class="btn btn-success btn-sm"
+                        style="[color:white; text-decoration:none; width:150px;]"
                         @click="goToEvalCreatePage(item.class_id)"
                     >
                         {{ item.eval_status_name }}
@@ -38,8 +38,8 @@
                 <div class="d-grid gap-1 col-14 mx-auto" role="group">
                     <button
                         type="button"
-                        class="btn btn-info btn-lg"
-                        style="[color:white; text-decoration:none; width:250px;]"
+                        class="btn btn-info btn-sm"
+                        style="[color:white; text-decoration:none; width:150px;]"
                         @click="goToEvalCreatePage(item.class_id)"
                     >
                         {{ item.eval_status_name }}
@@ -59,9 +59,8 @@
                 <div class="d-grid gap-1 col-14 mx-auto" role="group">
                     <button
                         type="button"
-                        class="btn btn-danger btn-lg"
-                        style="[color:white; text-decoration:none; width:250px;]"
-                        @click="goToEvalCreatePage(item.class_id)"
+                        class="btn btn-danger btn-sm"
+                        style="[color:white; text-decoration:none; width:150px;]"
                     >
                         {{ item.eval_status_name }}
                     </button>
@@ -80,8 +79,8 @@
                 <div class="d-grid gap-1 col-14 mx-auto" role="group">
                     <button
                         type="button"
-                        class="btn btn-primary btn-lg"
-                        style="[color:white; text-decoration:none; width:250px;]"
+                        class="btn btn-primary btn-sm"
+                        style="[color:white; text-decoration:none; width:150px;]"
                         @click="goToEvalCreatePage(item.class_id, courseId)"
                     >
                         {{ item.eval_status_name }}
@@ -115,3 +114,9 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.btn-danger:hover {
+    background-color: gray;
+}
+</style>

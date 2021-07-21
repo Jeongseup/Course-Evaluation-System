@@ -1,24 +1,43 @@
 <template>
-    <div>
-        <body class="bg-gradient-image ">
-            <div class="fullPage">
-                <!-- Outer Row -->
-                <div class="row justify-content-center ">
-                    <div class="col-xl-4 col-lg-5 col-md-5 upMargin">
-                        <div
-                            class="card o-hidden border-0 shadow-lg my-3 seeBg"
-                        >
-                            <!-- 추가 시켜야 할 부분 :card border-bottom-primary shadow h-100 py-2 -->
-                            <div class="card-body p-0">
-                                <!-- Nested Row within Card Body -->
+    <div class="bg-gradient-image ">
+        <div class="fullPage">
+            <!-- Outer Row -->
+            <div class="row justify-content-center ">
+                <div class="col-xl-4 col-lg-5 col-md-5 upMargin">
+                    <div class="card o-hidden border-0 shadow-lg my-3 seeBg">
+                        <div class="card-body p-0">
+                            <!-- Nested Row within Card Body -->
+                            <div>
                                 <div>
-                                    <div
-                                        class="card-header py-3 border-top-primary"
-                                    >
-                                        <div>
-                                            <div class="text-center">
-                                                <h1
-                                                    class="h4 text-gray-900 mb-4"
+                                    <div class="p-5">
+                                        <div class="text-center">
+                                            <h1 class="h4 text-gray-900 mb-4">
+                                                Welcome Back!
+                                            </h1>
+                                        </div>
+                                        <form class="user">
+                                            <div class="form-group">
+                                                <input
+                                                    type="email"
+                                                    class="form-control form-control-user"
+                                                    id="exampleInputEmail"
+                                                    aria-describedby="emailHelp"
+                                                    placeholder="Enter Email Address..."
+                                                    v-model="input_email"
+                                                />
+                                            </div>
+                                            <div class="form-group">
+                                                <input
+                                                    type="password"
+                                                    class="form-control form-control-user"
+                                                    id="exampleInputPassword"
+                                                    placeholder="Password"
+                                                    v-model="input_pw"
+                                                />
+                                            </div>
+                                            <div class="form-group">
+                                                <div
+                                                    class="custom-control custom-checkbox small"
                                                 >
                                                     Welcome Back!
                                                 </h1>
@@ -160,8 +179,7 @@ export default {
     /* background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%); */
     background-size: cover;
     /* background-image: url('../assets/one.jpg'); */
-    /* background-image: radial-gradient( */
-    background: linear-gradient(
+    background-image: linear-gradient(
         to top,
         lightgrey 0%,
         lightgrey 1%,
