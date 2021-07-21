@@ -49,179 +49,11 @@
                                                         </option>
                                                     </select>
 
-                                                    <!-- eval_table -> eval_status  -->
-                                                    <div
-                                                        class="card m-3"
-                                                        style="width: 18rem;"
-                                                        :key="i"
-                                                        v-for="(item,
-                                                        i) in classList"
-                                                    >
-                                                        <div
-                                                            v-if="
-                                                                item.eval_status_id ==
-                                                                    1
-                                                            "
-                                                            class="card-body"
-                                                        >
-                                                            <h5
-                                                                class="card-title"
-                                                            >
-                                                                강의명 :
-                                                                {{ item.name }}
-                                                                <br />
-                                                                강사명 :
-                                                                {{
-                                                                    item.teacher_name
-                                                                }}
-                                                            </h5>
-                                                            <div
-                                                                class="row g-3"
-                                                            >
-                                                                <div
-                                                                    class="col-xl-3 col-lg-4 col-md-6"
-                                                                >
-                                                                    <button
-                                                                        type="button"
-                                                                        class="btn btn-success btn-lg"
-                                                                        style="[color:white; text-decoration:none; width:250px;]"
-                                                                        @click="
-                                                                            goToEvalCreatePage(
-                                                                                item.class_id
-                                                                            )
-                                                                        "
-                                                                    >
-                                                                        {{
-                                                                            item.eval_status_name
-                                                                        }}
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div
-                                                            v-else-if="
-                                                                item.eval_status_id ==
-                                                                    2
-                                                            "
-                                                            class="card-body"
-                                                        >
-                                                            <h5
-                                                                class="card-title"
-                                                            >
-                                                                강의명 :
-                                                                {{ item.name }}
-                                                                <br />
-                                                                강사명 :
-                                                                {{
-                                                                    item.teacher_name
-                                                                }}
-                                                            </h5>
-                                                            <div
-                                                                class="d-flex justify-content-between align-items-center"
-                                                            >
-                                                                <div
-                                                                    class="d-grid gap-1 col-14 mx-auto"
-                                                                    role="group"
-                                                                >
-                                                                    <button
-                                                                        type="button"
-                                                                        class="btn btn-info btn-lg"
-                                                                        style="[color:white; text-decoration:none; width:250px;]"
-                                                                        @click="
-                                                                            goToEvalCreatePage(
-                                                                                item.class_id
-                                                                            )
-                                                                        "
-                                                                    >
-                                                                        {{
-                                                                            item.eval_status_name
-                                                                        }}
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div
-                                                            v-else-if="
-                                                                item.eval_status_id ==
-                                                                    3
-                                                            "
-                                                            class="card-body"
-                                                        >
-                                                            <h5
-                                                                class="card-title"
-                                                            >
-                                                                강의명 :
-                                                                {{ item.name }}
-                                                                <br />
-                                                                강사명 :
-                                                                {{
-                                                                    item.teacher_name
-                                                                }}
-                                                            </h5>
-                                                            <div
-                                                                class="d-flex justify-content-between align-items-center"
-                                                            >
-                                                                <div
-                                                                    class="d-grid gap-1 col-14 mx-auto"
-                                                                    role="group"
-                                                                >
-                                                                    <button
-                                                                        type="button"
-                                                                        class="btn btn-danger btn-lg"
-                                                                        style="[color:white; text-decoration:none; width:250px;]"
-                                                                        @click="
-                                                                            goToEvalCreatePage(
-                                                                                item.class_id
-                                                                            )
-                                                                        "
-                                                                    >
-                                                                        {{
-                                                                            item.eval_status_name
-                                                                        }}
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div
-                                                            v-else
-                                                            class="card-body"
-                                                        >
-                                                            <h5
-                                                                class="card-title"
-                                                            >
-                                                                강의명 :
-                                                                {{ item.name }}
-                                                                <br />
-                                                                강사명 :
-                                                                {{
-                                                                    item.teacher_name
-                                                                }}
-                                                            </h5>
-                                                            <div
-                                                                class="d-flex justify-content-between align-items-center"
-                                                            >
-                                                                <div
-                                                                    class="d-grid gap-1 col-14 mx-auto"
-                                                                    role="group"
-                                                                >
-                                                                    <button
-                                                                        type="button"
-                                                                        class="btn btn-primary btn-lg"
-                                                                        style="[color:white; text-decoration:none; width:250px;]"
-                                                                        @click="
-                                                                            goToEvalCreatePage(
-                                                                                item.class_id
-                                                                            )
-                                                                        "
-                                                                    >
-                                                                        {{
-                                                                            item.eval_status_name
-                                                                        }}
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <!-- Class Card Component  -->
+                                                    <classcard
+                                                        :classList="classList"
+                                                        :courseId="courseId"
+                                                    />
                                                 </div>
                                             </div>
                                         </div>
@@ -242,9 +74,11 @@
 <script>
 import Sidebar from '../layouts/Sidebar.vue'
 import Topbar from '../layouts/Topbar.vue'
+import ClassCard from '../components/ClassCard.vue'
+
 export default {
     name: '',
-    components: { sidebar: Sidebar, topbar: Topbar },
+    components: { sidebar: Sidebar, topbar: Topbar, classcard: ClassCard },
 
     data() {
         return {
@@ -276,12 +110,6 @@ export default {
         async getClassList() {
             this.classList = await this.$api('/api/classList', 'post', {
                 param: [this.courseId]
-            })
-        },
-        goToEvalCreatePage(classId) {
-            this.$router.push({
-                path: '/questiontable',
-                query: { classId: classId, courseId: this.courseId }
             })
         }
     }

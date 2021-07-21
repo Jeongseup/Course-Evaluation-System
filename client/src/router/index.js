@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import TemplateSide from '../views/TemplateSide.vue'
 import QuestionTable from '../views/QuestionTable.vue'
 import AnswerTable from '../views/AnswerTable.vue'
-import ClassTable from '../views/ClassTable.vue'
+import CourseTable from '../views/CourseTable.vue'
 import EvalTable from '../views/EvalTable.vue'
 import Login from '../views/Login.vue'
 import List from '../views/List.vue'
@@ -37,9 +37,9 @@ const routes = [
         component: AnswerTable
     },
     {
-        path: '/classtable',
-        name: 'ClassTable',
-        component: ClassTable
+        path: '/coursetable',
+        name: 'CourseTable',
+        component: CourseTable
     },
     {
         path: '/evaltable',
