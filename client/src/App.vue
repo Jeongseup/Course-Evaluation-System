@@ -1,9 +1,27 @@
 <template>
-    <div>
-        <router-view />
+    <div id="wrapper">
+        <sidebar />
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <topbar :userName="user.name" />
+            <div id="content">
+                <router-view />
+            </div>
+        </div>
     </div>
 </template>
-
+<script>
+import Sidebar from '@/layouts/Sidebar'
+import Topbar from '@/layouts/Topbar'
+export default {
+    components: { sidebar: Sidebar, topbar: Topbar },
+    computed: {
+        user() {
+            return this.$store.state.user
+        }
+    }
+}
+</script>
 <style>
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;

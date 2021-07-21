@@ -170,7 +170,6 @@ app.post("/api/saveQuestion", async (req, res) => {
         });
     }
 });
-
 // 평가지 생성 페이지 평가지 학생들에게 전송
 app.post("/api/sendEvaluationPaper", async (req, res) => {
     console.log(req.body.param[0]);
@@ -193,11 +192,11 @@ app.post("/api/sendEvaluationPaper", async (req, res) => {
 });
 
 // 평가지 정보 저장
-app.post("/api/saveEvaluationInfo", async (req, res) => {
+app.post("/api/saveEvaluationPaper", async (req, res) => {
     console.log(req.body.param);
 
     try {
-        await sys.db("insertEvaluationInfo", req.body.param[0]);
+        await sys.db("insertEvaluationPaper", req.body.param[0]);
         res.status(200).send("Ok");
     } catch (err) {
         res.status(500).send({
