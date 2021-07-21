@@ -191,7 +191,9 @@
                                                                                 <input
                                                                                     class="form-check-input"
                                                                                     type="radio"
-                                                                                    name="inlineRadioOptions"
+                                                                                    :name="[
+                                                                                        `inlineRadioOptions + ${i}`
+                                                                                    ]"
                                                                                     id="inlineRadio1"
                                                                                     :value="
                                                                                         1
@@ -211,7 +213,9 @@
                                                                                 <input
                                                                                     class="form-check-input"
                                                                                     type="radio"
-                                                                                    name="inlineRadioOptions"
+                                                                                    :name="[
+                                                                                        `inlineRadioOptions + ${i}`
+                                                                                    ]"
                                                                                     id="inlineRadio2"
                                                                                     :value="
                                                                                         2
@@ -230,7 +234,9 @@
                                                                                 <input
                                                                                     class="form-check-input"
                                                                                     type="radio"
-                                                                                    name="inlineRadioOptions"
+                                                                                    :name="[
+                                                                                        `inlineRadioOptions + ${i}`
+                                                                                    ]"
                                                                                     id="inlineRadio2"
                                                                                     :value="
                                                                                         3
@@ -249,7 +255,9 @@
                                                                                 <input
                                                                                     class="form-check-input"
                                                                                     type="radio"
-                                                                                    name="inlineRadioOptions"
+                                                                                    :name="[
+                                                                                        `inlineRadioOptions + ${i}`
+                                                                                    ]"
                                                                                     id="inlineRadio2"
                                                                                     :value="
                                                                                         4
@@ -269,7 +277,9 @@
                                                                                 <input
                                                                                     class="form-check-input"
                                                                                     type="radio"
-                                                                                    name="inlineRadioOptions"
+                                                                                    :name="[
+                                                                                        `inlineRadioOptions + ${i}`
+                                                                                    ]"
                                                                                     id="inlineRadio2"
                                                                                     :value="
                                                                                         5
