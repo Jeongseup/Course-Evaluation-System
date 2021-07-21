@@ -82,7 +82,10 @@
                                 </div>
                             </div>
 
+                            <!-- 스티커 끝 -->
+                            <answermodal @callSaveAnswer="saveAnswer" />
                             <!-- Page Wrapper -->
+                            {{ answers }}
                             <div id="wrapper">
                                 <!-- 설문지 부분 -->
                                 <div
@@ -120,22 +123,14 @@
                                                 <!-- 가운데 평가지 -->
                                                 <div
                                                     class="col-xl-12 col-lg-9 col-md-6 mb-4"
-                                                    @click="setCurrentNo(i)"
                                                     :key="i"
-                                                    v-for="(item,
-                                                    i) in questions"
+                                                    v-for="(item, i) in answers"
                                                 >
                                                     <div
                                                         v-if="item.type == 'Q'"
                                                         class="card border-left-warning shadow h-100 py-2"
                                                     >
-                                                        <div
-                                                            class="card-body"
-                                                            :class="{
-                                                                active:
-                                                                    item.isSelected
-                                                            }"
-                                                        >
+                                                        <div class="card-body">
                                                             <div
                                                                 class="row no-gutters align-items-center"
                                                             >
@@ -144,39 +139,11 @@
                                                                 >
                                                                     <div
                                                                         class="text-lg font-weight-bold text-warning text-uppercase mb-1"
-                                                                        v-if="
-                                                                            item.isSelected
-                                                                        "
-                                                                    >
-                                                                        <div>
-                                                                            질문
-                                                                            <input
-                                                                                type="text"
-                                                                                style="width:91%;"
-                                                                                v-model="
-                                                                                    item.content
-                                                                                "
-                                                                            />
-                                                                            <button
-                                                                                @click="
-                                                                                    deleteQuestion()
-                                                                                "
-                                                                            >
-                                                                                <font-awesome-icon
-                                                                                    icon="trash-alt"
-                                                                                />
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div
-                                                                        class="text-lg font-weight-bold text-warning text-uppercase mb-1"
-                                                                        v-else
                                                                     >
                                                                         {{
                                                                             item.content
                                                                         }}
                                                                     </div>
-
                                                                     <hr />
                                                                     <div
                                                                         class="h5 mb-0 font-weight-bold text-gray-800 m-5"
@@ -186,99 +153,99 @@
                                                                         >
                                                                             <label
                                                                                 class="form-check-label"
-                                                                                for="inlineRadio1"
                                                                             >
                                                                                 <input
                                                                                     class="form-check-input"
                                                                                     type="radio"
-                                                                                    name="inlineRadioOptions"
-                                                                                    id="inlineRadio1"
+                                                                                    v-model="
+                                                                                        item.answer
+                                                                                    "
                                                                                     :value="
                                                                                         1
                                                                                     "
                                                                                 />
                                                                                 매우
-                                                                                그렇다</label
-                                                                            >
+                                                                                그렇다
+                                                                            </label>
                                                                         </div>
                                                                         <div
                                                                             class="form-check form-check-inline"
                                                                         >
                                                                             <label
                                                                                 class="form-check-label"
-                                                                                for="inlineRadio2"
                                                                             >
                                                                                 <input
                                                                                     class="form-check-input"
                                                                                     type="radio"
-                                                                                    name="inlineRadioOptions"
-                                                                                    id="inlineRadio2"
+                                                                                    v-model="
+                                                                                        item.answer
+                                                                                    "
                                                                                     :value="
                                                                                         2
                                                                                     "
                                                                                 />
-                                                                                그렇다</label
-                                                                            >
+                                                                                그렇다
+                                                                            </label>
                                                                         </div>
                                                                         <div
                                                                             class="form-check form-check-inline"
                                                                         >
                                                                             <label
                                                                                 class="form-check-label"
-                                                                                for="inlineRadio2"
                                                                             >
                                                                                 <input
                                                                                     class="form-check-input"
                                                                                     type="radio"
-                                                                                    name="inlineRadioOptions"
-                                                                                    id="inlineRadio2"
+                                                                                    v-model="
+                                                                                        item.answer
+                                                                                    "
                                                                                     :value="
                                                                                         3
                                                                                     "
                                                                                 />
-                                                                                보통이다</label
-                                                                            >
+                                                                                보통이다
+                                                                            </label>
                                                                         </div>
                                                                         <div
                                                                             class="form-check form-check-inline"
                                                                         >
                                                                             <label
                                                                                 class="form-check-label"
-                                                                                for="inlineRadio2"
                                                                             >
                                                                                 <input
                                                                                     class="form-check-input"
                                                                                     type="radio"
-                                                                                    name="inlineRadioOptions"
-                                                                                    id="inlineRadio2"
+                                                                                    v-model="
+                                                                                        item.answer
+                                                                                    "
                                                                                     :value="
                                                                                         4
                                                                                     "
                                                                                 />
                                                                                 그렇지
-                                                                                않다</label
-                                                                            >
+                                                                                않다
+                                                                            </label>
                                                                         </div>
                                                                         <div
                                                                             class="form-check form-check-inline"
                                                                         >
                                                                             <label
                                                                                 class="form-check-label"
-                                                                                for="inlineRadio2"
                                                                             >
                                                                                 <input
                                                                                     class="form-check-input"
                                                                                     type="radio"
-                                                                                    name="inlineRadioOptions"
-                                                                                    id="inlineRadio2"
+                                                                                    v-model="
+                                                                                        item.answer
+                                                                                    "
                                                                                     :value="
                                                                                         5
                                                                                     "
                                                                                 />
                                                                                 전혀
                                                                                 그렇지
-                                                                                않다</label
-                                                                            >
+                                                                                않다
+                                                                            </label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -292,13 +259,7 @@
                                                         "
                                                         class="card border-left-warning shadow h-100 py-2"
                                                     >
-                                                        <div
-                                                            class="card-body"
-                                                            :class="{
-                                                                active:
-                                                                    item.isSelected
-                                                            }"
-                                                        >
+                                                        <div class="card-body">
                                                             <div
                                                                 class="row no-gutters align-items-center"
                                                             >
@@ -307,35 +268,6 @@
                                                                 >
                                                                     <div
                                                                         class="text-lg font-weight-bold text-warning text-uppercase mb-1"
-                                                                        v-if="
-                                                                            item.isSelected
-                                                                        "
-                                                                    >
-                                                                        <div>
-                                                                            섹션
-                                                                            설명
-                                                                            <input
-                                                                                type="text"
-                                                                                style="width:87%;"
-                                                                                v-model="
-                                                                                    item.content
-                                                                                "
-                                                                            />
-                                                                            <button
-                                                                                class="buttonSection"
-                                                                                @click="
-                                                                                    deleteQuestion()
-                                                                                "
-                                                                            >
-                                                                                <font-awesome-icon
-                                                                                    icon="trash-alt"
-                                                                                />
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div
-                                                                        class="text-lg font-weight-bold text-warning text-uppercase mb-1"
-                                                                        v-else
                                                                     >
                                                                         {{
                                                                             item.content
@@ -368,13 +300,14 @@
 </template>
 <script>
 import Topbar from '../layouts/Topbar.vue'
+import AnswerModal from '../components/AnswerModal.vue'
 export default {
     name: '',
-    components: { topbar: Topbar },
+    components: { topbar: Topbar, answermodal: AnswerModal },
     data() {
         return {
             eval_id: null,
-            questions: [],
+            answers: [],
             evaluationInfo: []
         }
     },
@@ -386,6 +319,7 @@ export default {
     setup() {},
     created() {
         this.eval_id = this.$route.query.eval_id
+        this.user_email = this.$route.query.user_email
         this.getQuestions()
         this.getEvaluationPaper()
     },
@@ -393,11 +327,23 @@ export default {
     unmounted() {},
     methods: {
         async getQuestions() {
-            this.questions = await this.$api('/api/questionList', 'post', {
+            // 평가 질문지 가져오기
+            const questions = await this.$api('/api/questionList', 'post', {
                 param: [this.eval_id]
             })
 
-            console.log(this.questions)
+            console.log(questions)
+            // 평가 질문지를 응답지로 바꾸기
+            this.answers = questions.map(q => {
+                return {
+                    class_id: q.class_id,
+                    content: q.content,
+                    question_id: q.question_id,
+                    type: q.type,
+                    answer: 0,
+                    user_email: this.user_email
+                }
+            })
         },
 
         // 평가지 정보 불러오기
@@ -415,10 +361,10 @@ export default {
 
         // 평가 응답 DB 저장 함수
         async saveAnswer() {
-            console.log(this.questions)
+            console.log(this.answers)
 
             await this.$api('/api/saveAnswer', 'post', {
-                param: [this.questions.filter(q => q.type === 'Q')]
+                param: [this.answers.filter(a => a.type === 'Q')]
             })
         },
 

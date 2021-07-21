@@ -294,6 +294,7 @@
                                                 </div>
                                             </div>
                                             <!-- class_table -->
+                                            {{ classInfo }}
                                             <div style="margin:5px;">
                                                 강좌명:
                                                 {{ classInfo[0].course_name }}
@@ -644,14 +645,14 @@ export default {
 
         // created method : DB에서 현재 수업 정보 가져오기
         async getClassInfo() {
-            this.classInfo = await this.$api('/api/classInfo', 'post', {
+            this.classInfo = await this.$api('/api/getClassInfo', 'post', {
                 param: [this.classId]
             })
             console.log(this.classInfo)
         },
         async sendEvalution() {
             console.log(this.checkedStudents)
-            //  axios.post('/api/sendEvaluation', {param: [this.checkedStudents]})
+
             const r = await this.$api('/api/sendEvaluation', 'post', {
                 param: [this.checkedStudents]
             })

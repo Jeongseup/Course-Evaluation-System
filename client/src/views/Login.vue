@@ -134,7 +134,10 @@ export default {
             if (res[0].eval_abled === 1) {
                 this.$router.push({
                     path: '/answertable',
-                    query: { eval_id: res[0].current_eval_id }
+                    query: {
+                        eval_id: res[0].current_eval_id,
+                        user_email: this.user.email
+                    }
                 })
             } else {
                 window.alert('죄송합니다, 현재 평가할 수 없는 상태입니다.')

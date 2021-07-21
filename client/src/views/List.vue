@@ -11,21 +11,15 @@
                         <topbar :userName="user.name" />
                         <!-- 컴포넌트 끝 -->
                         <body>
-                            <a class="scroll rounded" href="#">
-                                <font-awesome-icon icon="angle-up" />
-                            </a>
-
+                            <!-- 바디에 Angle up 스티커 추가 -->
+                            <angleupsticker />
                             <!-- Page Wrapper -->
                             <div class="wrapper">
-                                <!-- Sidebar -->
-                                <!-- End of Sidebar -->
                                 <!-- Content Wrapper -->
                                 <div class="d-flex flex-column content-wrapper">
                                     <!-- Main Content -->
                                     <div class="content">
                                         <!-- Topbar -->
-
-                                        <!-- DataTales Example -->
                                         <div class="card shadow mb-4">
                                             <div class="card-header py-3">
                                                 <h6
@@ -62,9 +56,6 @@
                                                                             <div
                                                                                 class="h5 mb-0 font-weight-bold text-gray-800"
                                                                             >
-                                                                                <!-- <section
-                                                                                    class="container"
-                                                                                > -->
                                                                                 <div
                                                                                     class="dropdown"
                                                                                 >
@@ -94,9 +85,6 @@
                                                                                 <!-- </section> -->
                                                                             </div>
                                                                         </div>
-                                                                        <div
-                                                                            class="col-auto"
-                                                                        ></div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -157,9 +145,6 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div
-                                                                            class="col-auto"
-                                                                        ></div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -487,10 +472,14 @@
 <script>
 import Sidebar from '../layouts/Sidebar.vue'
 import Topbar from '../layouts/Topbar.vue'
-
+import AngleUpSticker from '../components/AngleUpSticker.vue'
 export default {
     name: '',
-    components: { sidebar: Sidebar, topbar: Topbar },
+    components: {
+        sidebar: Sidebar,
+        topbar: Topbar,
+        angleupsticker: AngleUpSticker
+    },
 
     data() {
         return {
@@ -555,12 +544,25 @@ export default {
     setup() {},
     created() {},
     mounted() {
-        // 클래스 스타트 최소값
-        // 클라스 엔드 최대값
+        this.getCourseInfo()
     },
     unmounted() {},
     methods: {
-        // 조회한것 결과 나오도록
+        // list page에서 완료된 평가지 가져오기
+        // key = [user_email]
+        // getCompleteClassList
+        async getCourseInfo() {
+            console.log(this.user.email)
+            this.CompleteClassList = await this.$api(
+                '/api/getCompleteClassList',
+                'post',
+                {
+                    param: [this.user.email]
+                }
+            )
+
+            console.table(this.CompleteClassList)
+        }
     }
 }
 </script>
