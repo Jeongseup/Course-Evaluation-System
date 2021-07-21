@@ -25,7 +25,14 @@
                 />
             </div>
             <!-- 저장 버튼 -->
-            <div @click="saveEvaluationPaper(), saveQuestion()" title="저장">
+            <div
+                @click="saveEvaluationPaper(), saveQuestion()"
+                title="저장"
+                href="#"
+                type="button"
+                data-toggle="modal"
+                data-target="#staticBackdrop1"
+            >
                 <font-awesome-icon icon="save" />
             </div>
             <!-- Button trigger modal -->

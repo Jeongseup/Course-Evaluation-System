@@ -41,10 +41,7 @@
                                                         <div
                                                             class="h5 mb-0 font-weight-bold text-gray-800"
                                                         >
-                                                            {{
-                                                                resultPageData[0]
-                                                                    .teacherName
-                                                            }}
+                                                            {{ teacherName }} 님
                                                         </div>
                                                     </div>
                                                     <div class="col-auto"></div>
@@ -74,10 +71,7 @@
                                                         <div
                                                             class="h5 mb-0 font-weight-bold text-gray-800"
                                                         >
-                                                            {{
-                                                                resultPageData[0]
-                                                                    .className
-                                                            }}
+                                                            {{ className }}
                                                         </div>
                                                     </div>
                                                     <div class="col-auto"></div>
@@ -100,32 +94,22 @@
                                                             class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1"
                                                         >
                                                             강의 주최기관 :
-                                                            {{
-                                                                resultPageData[0]
-                                                                    .courseName
-                                                            }}
+                                                            {{ courseName }}
                                                         </div>
                                                         <div
                                                             class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1"
                                                         >
                                                             강의 장소 :
-                                                            {{
-                                                                resultPageData[0]
-                                                                    .classPlace
-                                                            }}
+                                                            {{ classPlace }}
                                                         </div>
                                                         <div
                                                             class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1"
                                                         >
                                                             강의 시기:{{
-                                                                resultPageData[0]
-                                                                    .classStart
+                                                                classStart
                                                             }}
                                                             ~
-                                                            {{
-                                                                resultPageData[0]
-                                                                    .classEnd
-                                                            }}
+                                                            {{ classEnd }}
                                                         </div>
                                                     </div>
                                                     <div class="col-auto"></div>
@@ -289,16 +273,13 @@ export default {
 
     data() {
         return {
-            resultPageData: [
-                {
-                    teacherName: '서버에서 받은 생님 이름',
-                    className: '서버에서 받은 강의 이름',
-                    courseName: '서버에서 받은 과정 이름',
-                    classPlace: '서버에서 받은 강의 장소',
-                    classStart: '서버에서 받은 강의 시작일',
-                    classEnd: '서버에서 받은 강의 종료일'
-                }
-            ],
+            teacherName: null,
+            className: null,
+            courseName: null,
+            classPlace: null,
+            classStart: null,
+            classEnd: null,
+
             // 평균 다시해야함
             average1: '서버에서 받은 평균(0~100)',
             average: 40,

@@ -1,12 +1,9 @@
 <template>
     <div id="wrapper">
-        <sidebar v-if="bShow != 0 ? false : true" />
+        <sidebar v-if="bShow" />
         <div id="content-wrapper" class="d-flex flex-column">
             <!-- Main Content -->
-            <topbar
-                :userName="user.name"
-                v-if="bShow == 2 ? true : bShow == 1 ? false : true"
-            />
+            <topbar :userName="user.name" v-if="bShow" />
             <div id="content">
                 <router-view @change-path="changePath" />
             </div>
@@ -25,21 +22,16 @@ export default {
     },
     data() {
         return {
-            bShow: 0
+            bShow: true
         }
     },
     mounted() {},
     methods: {
         changePath(path) {
-            // console.log(path)
-            // console.log('user', this.user.type)
-            if (path === '/') {
-                this.bShow = 1
-            } else if (this.user.type === 3) {
-                this.bShow = 2
-            } else {
-                this.bShow = 0
-            }
+            if (path === '/') this.bShow = false
+            else if (path === '/answertable') this.bShow = false
+            else if (path === '/home') this.bShow = false
+            else this.bShow = true
             console.log('path', this.bShow)
         }
     }
