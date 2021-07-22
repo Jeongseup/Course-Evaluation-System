@@ -319,12 +319,12 @@ export default {
                 })
             )[0]
 
-            this.teacher_name = res.teacher_name
-            this.class_name = res.name
-            this.course_name = res.course_name
-            this.place = res.place
-            this.start_date = res.start_date
-            this.end_date = res.end_date
+            this.teacherName = res.teacher_name
+            this.className = res.name
+            this.courseName = res.course_name
+            this.classPlace = res.place
+            this.classStart = res.start_date
+            this.classEnd = res.end_date
             console.log(res)
         },
 

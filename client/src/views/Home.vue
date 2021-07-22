@@ -5,7 +5,7 @@
                 <div class="top-title">
                     <div class="top-title">
                         <div style="margin:10px;">
-                            <h3 style="margin:10px;">
+                            <h3 class="h6" style="margin:10px;">
                                 고승원 강사님,<br />
                                 <br />
                                 부족한 저희를 정성껏 지도해주셔서 정말
@@ -15,11 +15,13 @@
                         <br />
                         <br />
                         <div>
-                            <h5>
-                                기술만 가지고는 품격이 쌓이지 않는다!<br />
-                                기술을 가지고 세상에 가치를 돌려줄 수 있는
-                                개발자, 참된 사람이 되어야 한다.
-                            </h5>
+                            <h6 style="color:blue" class="col mr-7">
+                                기술만 가지고는 품격이 쌓이지 않는다!
+                                <br />기술을 가지고 세상에 가치를 돌려줄 수 있는
+                                개발자,
+                                <br />
+                                참된 사람이 되어야 한다.
+                            </h6>
                         </div>
                         <br />
                     </div>
@@ -78,4 +80,9 @@ export default {
 /* .top-title_el {
     margin: 100px;
 } */
+
+.h6 {
+    font-size: 20px;
+    font-family: 'Nanum Gothic Coding';
+}
 </style>

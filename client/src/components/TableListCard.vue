@@ -50,7 +50,12 @@
                                 {{ a.end_date }}
                             </td>
                             <td>
-                                <button>
+                                <button
+                                    type="button"
+                                    class="btn  btn-sm btn-primary"
+                                    style="[text-decoration: none; color:white;]"
+                                    @click="goToResultPage(1, 1)"
+                                >
                                     선택
                                 </button>
                             </td>
@@ -69,6 +74,15 @@ export default {
             default: function() {
                 return []
             }
+        }
+    },
+    methods: {
+        goToResultPage(classId, courseId) {
+            console.log(classId, courseId)
+            this.$router.push({
+                path: '/sidetest',
+                query: { classId: classId, courseId: courseId }
+            })
         }
     }
 }
