@@ -11,8 +11,12 @@
                                 <div>
                                     <div class="p-5">
                                         <div class="text-center">
+                                            <img
+                                                src="../assets/images/logo2.png"
+                                                alt=""
+                                            />
                                             <h1 class="h4 text-gray-900 mb-4">
-                                                Welcome Back!
+                                                강사의품격
                                             </h1>
                                         </div>
                                         <form class="user">
@@ -65,6 +69,7 @@
         </div>
     </div>
 </template>
+
 <script>
 export default {
     name: '',

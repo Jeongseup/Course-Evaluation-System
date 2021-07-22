@@ -55,7 +55,7 @@ module.exports = {
     // key = [class_id]
     getClass: {
         query: `select T3.name as course_name, T1.*, T2.name as teacher_name from t_class T1, t_teacher T2, t_course T3
-        where T1.class_id = 4 and T1.class_id = T2.class_id and T1.course_id = T3.course_id `,
+        where T1.class_id = ? and T1.class_id = T2.class_id and T1.course_id = T3.course_id `,
     },
     // 한 유저의 데이터 가져오기
     // key = [user_email]

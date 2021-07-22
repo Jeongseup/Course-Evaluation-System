@@ -7,7 +7,7 @@
             href="#"
         >
             <div class="sidebar-brand-icon rotate-n-15">
-                <font-awesome-icon icon="laugh-wink" />
+                <img src="../assets/images/logo2.png" alt="" />
             </div>
             <div class="sidebar-brand-text mx-3">강사의 품격</div>
         </a>

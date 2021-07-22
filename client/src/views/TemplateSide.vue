@@ -281,29 +281,21 @@ export default {
             classEnd: null,
 
             // 평균 다시해야함
-            average1: '서버에서 받은 평균(0~100)',
-            average: 40,
+            averageTitle: '서버에서 받은 평균(0~100)',
+            averageScore: 40,
 
             result: [
                 {
-                    resultName: '서버에서 받아온 질문 1   ',
-                    resultValue: 80
+                    resultName: '강사의 교수법은 적절했나요?'
                 },
                 {
-                    resultName: '서버에서 받아온 질문 2   ',
-                    resultValue: 60
+                    resultName: '강사는 수업진행방식은 어땠나요?'
                 },
                 {
-                    resultName: '서버에서 받아온 질문 3   ',
-                    resultValue: 40
+                    resultName: '강사는 전문성이 있었나요?'
                 },
                 {
-                    resultName: '서버에서 받아온 질문 4   ',
-                    resultValue: 20
-                },
-                {
-                    resultName: '서버에서 받아온 질문 5   ',
-                    resultValue: 100
+                    resultName: '강사는 적절한 예시를 사용했나요?'
                 }
             ]
         }
@@ -321,17 +313,19 @@ export default {
         // key = [class_id]
         // SQL : getClass
         async getClass() {
-            const res = await this.$api('/api/getClass', 'post', {
-                param: [this.classId]
-            })
+            const res = (
+                await this.$api('/api/getClass', 'post', {
+                    param: [this.classId]
+                })
+            )[0]
 
-            this.teacherName = res[0].teacher_name
-            this.className = res[0].name
-            this.courseName = res[0].course_name
-            this.classPlace = res[0].place
-            this.classStart = res[0].start_date
-            this.classEnd = res[0].end_date
-            console.table(res)
+            this.teacher_name = res.teacher_name
+            this.class_name = res.name
+            this.course_name = res.course_name
+            this.place = res.place
+            this.start_date = res.start_date
+            this.end_date = res.end_date
+            console.log(res)
         },
 
         // Report page에서 완료된 평가지의 상세 정보 가져오기
@@ -343,6 +337,19 @@ export default {
             })
 
             console.table(res)
+            var resultScoreList = this.groupBy(res, 'question_id')
+            console.log('result', resultScoreList)
+        },
+
+        groupBy(objectArray, property) {
+            return objectArray.reduce(function(acc, obj) {
+                var key = obj[property]
+                if (!acc[key]) {
+                    acc[key] = []
+                }
+                acc[key].push(obj)
+                return acc
+            }, {})
         }
     }
 }
