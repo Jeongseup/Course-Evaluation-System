@@ -59,7 +59,7 @@
             <a class="nav-link collapsed" href="/evaltable">
                 <!-- <router-link to="/questiontable" style="text-decoration: none;"> -->
 
-                <font-awesome-icon icon="edit" />
+                <font-awesome-icon icon="address-card" />
 
                 <span style="color:white"> 수강생 조회</span>
             </a>
@@ -68,17 +68,9 @@
         <!-- Divider -->
         <hr class="sidebar-divider" />
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="/list">
-                <font-awesome-icon icon="clipboard-list" />
-            </a>
-            <!-- Divider -->
-            <hr class="sidebar-divider" />
-            <!-- Nav Item - Pages Collapse Menu -->
-        </li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="/sidetest">
+            <a class="nav-link collapsed" href="/list">
                 <font-awesome-icon icon="list-alt" />
 
                 <span style="color:white"> 평가 완료 리스트</span>

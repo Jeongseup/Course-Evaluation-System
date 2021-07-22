@@ -33,7 +33,8 @@ import {
     faAngleUp,
     faClipboardList,
     faTrashAlt,
-    faFileUpload
+    faFileUpload,
+    faAddressCard
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 library.add(
@@ -55,7 +56,8 @@ library.add(
     faAngleUp,
     faClipboardList,
     faTrashAlt,
-    faFileUpload
+    faFileUpload,
+    faAddressCard
 )
 
 const app = createApp(App)
