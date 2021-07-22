@@ -155,7 +155,7 @@
                                                         <div
                                                             class="text-xs font-weight-bold text-info text-uppercase mb-1 text-center"
                                                         >
-                                                            {{ average }}%
+                                                            {{ averageTitle }}%
                                                         </div>
                                                         <div
                                                             class="row no-gutters align-items-center"
@@ -175,7 +175,7 @@
                                                                         class="progress-bar bg-info"
                                                                         role="progressbar"
                                                                         :style="[
-                                                                            `width: ${average}%`
+                                                                            `width: ${averageScore}%`
                                                                         ]"
                                                                         aria-valuemin="0"
                                                                         aria-valuemax="100"
@@ -281,21 +281,25 @@ export default {
             classEnd: null,
 
             // 평균 다시해야함
-            averageTitle: '서버에서 받은 평균(0~100)',
-            averageScore: 40,
+            averageTitle: '이영인 강사의 평균(0~100)',
+            averageScore: 82.5,
 
             result: [
                 {
-                    resultName: '강사의 교수법은 적절했나요?'
+                    resultName: '강사의 교수법은 적절했나요?',
+                    resultValue: 80
                 },
                 {
-                    resultName: '강사는 수업진행방식은 어땠나요?'
+                    resultName: '강사는 수업진행방식은 어땠나요?',
+                    resultValue: 70
                 },
                 {
-                    resultName: '강사는 전문성이 있었나요?'
+                    resultName: '강사는 전문성이 있었나요?',
+                    resultValue: 100
                 },
                 {
-                    resultName: '강사는 적절한 예시를 사용했나요?'
+                    resultName: '강사는 적절한 예시를 사용했나요?',
+                    resultValue: 80
                 }
             ]
         }
