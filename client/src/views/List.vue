@@ -41,12 +41,12 @@
                                                     <div
                                                         class="h5 mb-0 font-weight-bold text-gray-800"
                                                     >
-                                                        <h2
+                                                        <h4
                                                             style="text-align: center;"
                                                         >
                                                             '{{ user.name }}'
                                                             님의 평가 리스트
-                                                        </h2>
+                                                        </h4>
                                                         <!-- 평가 리스트 -->
                                                     </div>
                                                 </div>

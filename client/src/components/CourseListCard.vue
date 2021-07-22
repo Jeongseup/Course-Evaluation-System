@@ -1,5 +1,5 @@
 <template>
-    <div class="col-xl-3 col-md-6 mb-4">
+    <div class="col-xl-3 col-md-6 mb-4 ">
         <div class="card border-left-primary shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
@@ -10,7 +10,7 @@
                             <font-awesome-icon icon="chalkboard-teacher" />
                             과정 이름
                         </div>
-                        <div :class="'h5 mb-0 font-weight-bold text-gray-800'">
+                        <div :class="'h6 mb-0 font-weight-bold text-gray-800'">
                             <div :class="dropdown">
                                 <select :class="'dropdown-select'">
                                     <option value="0">

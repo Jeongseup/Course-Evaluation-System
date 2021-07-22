@@ -10,9 +10,13 @@
                             <font-awesome-icon icon="user-edit" />
                             강사 명
                         </div>
-                        <div :class="'h5 mb-0 font-weight-bold text-gray-800'">
-                            <div :class="dropdown">
-                                <select :class="'dropdown-select'">
+                        <div :class="'h6 mb-0 font-weight-bold text-gray-800'">
+                            <div class="dropdown">
+                                <select
+                                    name="one"
+                                    class="dropdown-select"
+                                    aria-label="Default select example"
+                                >
                                     <option value="0">
                                         강사 선택
                                     </option>

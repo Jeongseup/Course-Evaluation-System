@@ -38,13 +38,6 @@
                                 <img src="../assets/images/cup.jpg" alt="..." />
                             </div>
                         </div>
-                        <div style="margin:10px;">
-                            설문 응답 시작 :
-                            {{ evaluationInfo.start_time }}
-                            <br />
-                            설문 응답 종료 :
-                            {{ evaluationInfo.end_time }}
-                        </div>
                         <div class="row">
                             <!-- 가운데 평가지 -->
                             <div

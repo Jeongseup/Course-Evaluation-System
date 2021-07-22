@@ -7,7 +7,6 @@ import CourseTable from '../views/CourseTable.vue'
 import EvalTable from '../views/EvalTable.vue'
 import Login from '../views/Login.vue'
 import List from '../views/List.vue'
-import select from '../views/select.vue'
 import Home from '../views/Home.vue'
 
 const routes = [
@@ -15,11 +14,6 @@ const routes = [
         path: '/home',
         name: 'Home',
         component: Home
-    },
-    {
-        path: '/select',
-        name: 'select',
-        component: select
     },
     {
         path: '/list',

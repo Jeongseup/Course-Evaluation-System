@@ -10,9 +10,9 @@
                             <font-awesome-icon icon="file-signature" />
                             강의 이름
                         </div>
-                        <div :class="'h5 mb-0 font-weight-bold text-gray-800'">
-                            <div :class="dropdown">
-                                <select :class="'dropdown-select'">
+                        <div class="h6 mb-0 font-weight-bold text-gray-800">
+                            <div class="dropdown">
+                                <select class="dropdown-select">
                                     <option value="0">
                                         강의선택
                                     </option>
