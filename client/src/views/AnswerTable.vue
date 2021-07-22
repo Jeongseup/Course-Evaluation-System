@@ -1,11 +1,12 @@
 <template>
-    <div>
+    <div sytle="margin:50px">
         <angleupsticker />
         <!-- 스티커 끝 -->
         <div class="menu-toggle rounded">
             <!-- Button trigger modal -->
             <div
                 @click="saveAnswer"
+                title="저장"
                 href="#"
                 type="button"
                 data-toggle="modal"
@@ -252,15 +253,21 @@ export default {
 
         // 평가 응답 DB 저장 함수
         async saveAnswer() {
-            console.log(this.answers)
+            console.log('answer is ', this.answers)
 
-            await this.$api('/api/saveAnswer', 'post', {
-                param: [this.answers.filter(a => a.type === 'Q')]
+            var classId = this.answers[0].class_id
+            // await this.$api('/api/saveAnswer', 'post', {
+            //     param: [this.answers.filter(a => a.type === 'Q')]
+            // })
+            const res = await this.$api('/api/updateEvaluationStatus', 'post', {
+                param: [4, classId]
             })
-        },
 
-        sendEvalution() {
-            console.log('안녕')
+            // const res = await this.$api('/api/updateEvaluationStatus', 'post', {
+            //     param: [2, this.classId]
+            // })
+
+            console.log(res)
         }
     }
 }

@@ -87,57 +87,7 @@ export default {
     data() {
         return {
             CompleteClassList: [],
-            listPageData: [
-                {
-                    teacherName: 'a',
-                    className: 'b',
-                    courseName: 'c',
-                    classStart: 'd',
-                    classEnd: 'e'
-                },
-                {
-                    teacherName: '장태진',
-                    className: '뷰',
-                    courseName: '블록체인',
-                    classStart: '21.07.01',
-                    classEnd: '21.07.20'
-                },
-                {
-                    teacherName: '가나다',
-                    className: '뷰우',
-                    courseName: '블록',
-                    classStart: '21.07.20',
-                    classEnd: '21.07.30'
-                },
-                {
-                    teacherName: '지금은',
-                    className: '새벽',
-                    courseName: '한시반',
-                    classStart: '20.07.01',
-                    classEnd: '21.07.20'
-                }
-            ],
-
-            teacherNameList: [
-                { teacherId: 1, teacherName: '장태진' },
-                { teacherId: 3, teacherName: '탵태진' },
-                { teacherId: 7, teacherName: '태진태진' }
-            ],
-            classNameList: [
-                { classId: 1, className: '자바스크립트' },
-                { classId: 3, className: '뷰' },
-                { classId: 7, className: '서버' }
-            ],
-            courseNameList: [
-                { courseId: 1, courseName: '블록체인' },
-                { courseId: 3, courseName: '빅데이터' },
-                { courseId: 7, courseName: '인공지능' }
-            ],
-            dateList: [
-                { classId: 1, classStart: 2104, classEnd: 2106 },
-                { classId: 3, classStart: 2106, classEnd: 2109 },
-                { classId: 7, classStart: 2104, classEnd: 2112 }
-            ]
+            listPageData: []
         }
     },
     computed: {
@@ -157,15 +107,21 @@ export default {
         // getCompleteClassList
         async getCompleteClassList() {
             console.log(this.user.email)
-            this.CompleteClassList = await this.$api(
+            var CompleteClassList = await this.$api(
                 '/api/getCompleteClassList',
                 'post',
                 {
                     param: [this.user.email]
                 }
             )
+            // var startDate = CompleteClassList.start_date
+            // console.log(startDate)
 
-            console.table(this.CompleteClassList)
+            // var endDate = CompleteClassList.end_date
+            // console.log(endDate)
+
+            // console.table(CompleteClassList)
+            this.CompleteClassList = CompleteClassList
         }
     }
 }
