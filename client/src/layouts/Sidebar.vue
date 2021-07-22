@@ -6,9 +6,15 @@
             class="sidebar-brand d-flex align-items-center justify-content-center"
             href="#"
         >
-            <div class="sidebar-brand-icon rotate-n-15">
+            <img
+                class="img-size"
+                src="../assets/images/logo2_negative.png"
+                alt=""
+            />
+            <!-- <div class="sidebar-brand-icon rotate-n-15">
                 <font-awesome-icon icon="laugh-wink" />
-            </div>
+            </div> -->
+
             <div class="sidebar-brand-text mx-3">강사의 품격</div>
         </a>
         <!-- Divider -->
@@ -89,3 +95,9 @@ export default {
     methods: {}
 }
 </script>
+<style scoped>
+.img-size {
+    width: 20%;
+    height: auto;
+}
+</style>
