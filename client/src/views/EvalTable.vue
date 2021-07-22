@@ -22,8 +22,9 @@
         <!-- 클래스 카드가 들어갈 공간 -->
         <div class="card shadow mb-4 ">
             <div class="card-header py-4">
-                <div class="row ">
+                <div class="row">
                     <!-- Class Card Component  -->
+
                     <classcard :classList="classList" :courseId="courseId" />
                 </div>
             </div>

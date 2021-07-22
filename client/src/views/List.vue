@@ -107,15 +107,21 @@ export default {
         // getCompleteClassList
         async getCompleteClassList() {
             console.log(this.user.email)
-            this.CompleteClassList = await this.$api(
+            var CompleteClassList = await this.$api(
                 '/api/getCompleteClassList',
                 'post',
                 {
                     param: [this.user.email]
                 }
             )
+            // var startDate = CompleteClassList.start_date
+            // console.log(startDate)
 
-            console.table(this.CompleteClassList)
+            // var endDate = CompleteClassList.end_date
+            // console.log(endDate)
+
+            // console.table(CompleteClassList)
+            this.CompleteClassList = CompleteClassList
         }
     }
 }

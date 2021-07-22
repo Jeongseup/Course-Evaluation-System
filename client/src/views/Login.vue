@@ -15,9 +15,10 @@
                                                 src="../assets/images/logo2.png"
                                                 alt=""
                                             />
-                                            <h1 class="h4 text-gray-900 mb-4">
+                                            <div class="text-gray-900 mb-4 h6">
                                                 강사의품격
-                                            </h1>
+                                            </div>
+                                            <!-- <div class="sidebar-brand-text mx-3 h6"> -->
                                         </div>
                                         <form class="user">
                                             <div class="form-group">

@@ -2,6 +2,7 @@
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion">
         <!-- Sidebar - Brand -->
+
         <a
             class="sidebar-brand d-flex align-items-center justify-content-center"
             href="#"
@@ -9,7 +10,10 @@
             <div class="sidebar-brand-icon rotate-n-15">
                 <img src="../assets/images/logo2.png" alt="" />
             </div>
-            <div class="sidebar-brand-text mx-3">강사의 품격</div>
+
+            <div class="sidebar-brand-text mx-3 h6">
+                강사의 품격
+            </div>
         </a>
         <!-- Divider -->
         <hr class="sidebar-divider my-0" />
@@ -81,3 +85,9 @@ export default {
     methods: {}
 }
 </script>
+<style scoped>
+.h6 {
+    font-size: 15px;
+    font-family: 'Nanum Gothic Coding';
+}
+</style>

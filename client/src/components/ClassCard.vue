@@ -6,13 +6,13 @@
         v-for="(item, i) in classList"
     >
         <div v-if="item.eval_status_id == 1" class="card-body">
-            <h5 class="card-title">
+            <h6 class="card-title">
                 강의명 :
                 {{ item.name }}
                 <br />
                 강사명 :
                 {{ item.teacher_name }}
-            </h5>
+            </h6>
             <div class="d-flex justify-content-between align-items-center">
                 <div class="d-grid gap-1 col-14 mx-auto" role="group">
                     <button
@@ -27,13 +27,13 @@
             </div>
         </div>
         <div v-else-if="item.eval_status_id == 2" class="card-body">
-            <h5 class="card-title">
+            <h6 class="card-title">
                 강의명 :
                 {{ item.name }}
                 <br />
                 강사명 :
                 {{ item.teacher_name }}
-            </h5>
+            </h6>
             <div class="d-flex justify-content-between align-items-center">
                 <div class="d-grid gap-1 col-14 mx-auto" role="group">
                     <button
@@ -48,13 +48,13 @@
             </div>
         </div>
         <div v-else-if="item.eval_status_id == 3" class="card-body">
-            <h5 class="card-title">
+            <h6 class="card-title">
                 강의명 :
                 {{ item.name }}
                 <br />
                 강사명 :
                 {{ item.teacher_name }}
-            </h5>
+            </h6>
             <div class="d-flex justify-content-between align-items-center">
                 <div class="d-grid gap-1 col-14 mx-auto" role="group">
                     <button
@@ -68,13 +68,13 @@
             </div>
         </div>
         <div v-else class="card-body">
-            <h5 class="card-title">
+            <h6 class="card-title">
                 강의명 :
                 {{ item.name }}
                 <br />
                 강사명 :
                 {{ item.teacher_name }}
-            </h5>
+            </h6>
             <div class="d-flex justify-content-between align-items-center">
                 <div class="d-grid gap-1 col-14 mx-auto" role="group">
                     <a

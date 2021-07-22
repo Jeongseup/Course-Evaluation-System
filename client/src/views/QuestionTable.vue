@@ -66,6 +66,7 @@
                             type="button"
                             class="btn btn-primary"
                             data-dismiss="modal"
+                            @click="goToHome"
                         >
                             확인
                         </button>
@@ -512,14 +513,7 @@ export default {
         this.getStudentList()
         this.getClassInfo()
     },
-    mounted() {
-        const checkedStudents = []
-        for (const student of this.students) {
-            checkedStudents.push(student.user_email)
-        }
-        this.checkedStudents = checkedStudents
-        console.log('default students', this.checkedStudents)
-    },
+    mounted() {},
     unmounted() {},
     methods: {
         // created method : DB에서 학생 데이터 가져오기
@@ -532,6 +526,14 @@ export default {
                 param: [this.classId]
             })
             console.log('this.students', this.students)
+
+            const checkedStudents = []
+            for (const student of this.students) {
+                // console.log(student.user_email)
+                checkedStudents.push(student.user_email)
+            }
+            this.checkedStudents = checkedStudents
+            console.log('default students', this.checkedStudents)
         },
 
         // created method : DB에서 현재 수업 정보 가져오기
@@ -584,9 +586,16 @@ export default {
         async sendEvaluationPaper() {
             console.log(this.checkedStudents)
 
-            const res = await this.$api('/api/sendEvaluationPaper', 'post', {
-                param: [this.checkedStudents, this.classId]
+            window.alert(
+                '죄송합니다, 현재 끝나지 않은 평가가 있습니다.\n현재 평가지를 임시 저장 합니다.'
+            )
+
+            const res = await this.$api('/api/updateEvaluationStatus', 'post', {
+                param: [2, this.classId]
             })
+            // const res = await this.$api('/api/sendEvaluationPaper', 'post', {
+            //     param: [this.checkedStudents, this.classId]
+            // })
 
             console.log(res)
         },
@@ -625,6 +634,11 @@ export default {
                 param: [questionData]
             })
             console.log(r)
+        },
+        goToHome() {
+            this.$router.push({
+                path: '/list'
+            })
         }
     }
 }

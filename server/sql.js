@@ -104,7 +104,10 @@ module.exports = {
     getCompleteClassList: {
         query: `SELECT 
         T1.course_id ,T1.name as course_name, 
-        T2.class_id, T2.name as class_name, T2.start_date, T2.end_date, T2.eval_status_id,
+        T2.class_id, T2.name as class_name, 
+        date_format(T2.start_date, '%Y-%m-%d') as start_date, 
+        date_format(T2.end_date, '%Y-%m-%d') as end_date, 
+        T2.eval_status_id,
         T3.name as teacher_name
         from t_course T1, t_class T2, t_teacher T3
         where T1.user_email = ? and T1.course_id  = T2.course_id and T2.class_id = T3.class_id and eval_status_id = 4`,
