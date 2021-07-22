@@ -47,13 +47,13 @@
                         <div class="row">
                             <!-- 가운데 평가지 -->
                             <div
-                                class="col-xl-12 col-lg-9 col-md-6 mb-4"
+                                class="col-xl-12 col-lg-6 col-md-6 mb-4"
                                 :key="i"
                                 v-for="(item, i) in answers"
                             >
                                 <div
                                     v-if="item.type == 'Q'"
-                                    class="card border-left-warning shadow h-100 py-2"
+                                    class="card border-left-warning shadow h-100 py-4"
                                 >
                                     <div class="card-body">
                                         <div
