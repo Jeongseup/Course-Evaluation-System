@@ -1,5 +1,5 @@
 <template>
-    <div sytle="margin:50px">
+    <div class="box">
         <angleupsticker />
         <!-- 스티커 끝 -->
         <div class="menu-toggle rounded">
@@ -266,12 +266,14 @@ export default {
 }
 </script>
 <style scoped>
-body {
-    margin: 0;
+.box {
+    height: 800px;
+    width: 1200px;
+    text-align: center;
+    margin: auto;
+    /* justify-content: center; */
 }
-div {
-    box-sizing: border-box;
-}
+
 .black-bg {
     width: 100%;
     height: 100%;
