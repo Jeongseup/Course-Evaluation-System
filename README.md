@@ -1,4 +1,4 @@
-# 🔗 Vue.js 미니 프로젝트
+# 🔗 블록체인 비즈니스 모델 개발 - Vue.js 미니 프로젝트
 
 ### 프로젝트 개요
 
@@ -26,12 +26,15 @@
 
 #### 프로젝트 기획(21.07.02 ~ 21.07.09)
 
-<a href ='./presentaion/강사의_품격-아이디에이션.pdf'>1. 강사의 품격, 아이디에이션</a><br>
-<a href ='./presentaion/강사의_품격-벤치마킹조사.pdf'>2. 강사의 품격, 벤치마킹 조사</a><br>
-<a href ='./presentaion/강사의_품격-벤치마킹.pdf'>3. 강사의 품격, 벤치마킹</a><br>
-<a href ='./presentaion/강사의_품격-와이어프레임.pdf'>4. 강사의 품격, 와이어프레임</a><br>
+<a href ='./presentaion/강사의_품격-아이디에이션.pdf'  target="_blank">1. 강사의 품격, 아이디에이션</a><br>
+<a href ='./presentaion/강사의_품격-벤치마킹조사.pdf'  target="_blank">2. 강사의 품격, 벤치마킹 조사</a><br>
+<a href ='./presentaion/강사의_품격-벤치마킹.pdf'  target="_blank">3. 강사의 품격, 벤치마킹</a><br>
+<a href ='./presentaion/강사의_품격-와이어프레임.pdf'  target="_blank">4. 강사의 품격, 와이어프레임</a><br>
 
 #### 프로젝트 개발(21.07.12 - 21.07.22)
+
+**개발시연영상**
+https://www.youtube.com/watch?v=5OQ0lyIy0eg
 
 **데이터베이스 레이아웃**
 
